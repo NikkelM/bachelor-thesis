@@ -1,5 +1,5 @@
 # Bachelor Thesis
-Repository for organizing my Bachelor Thesis for IT Systems Engineering at the EPIC research group @HPI
+Repository for organizing my Bachelor Thesis for IT Systems Engineering at the EPIC research group @hpi-epic
 
 ## Overleaf project
 
