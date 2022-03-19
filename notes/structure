@@ -1,0 +1,71 @@
+Four types of documentation:
+- Tests
+- Wiki
+- Docstrings (Python specific? -> alternatives in other languages)
+    - Interrogate
+- In-Code comments
+Pros and Cons
+Further documentation through CI automation/readthedocs.io/Sphinx
+
+Code style through:
+- Linting with Flake8
+- Automatic formatting using TOOLSFROMPRECOMMITHERE
+- Pre-commit for clean repository
+    - Additional action in CI to make sure
+
+CI:
+- Setting up the runner?
+- Self-hosted vs. Github hosted
+- Tests
+- Pre-commit
+- dispatch action for environment update
+- Different jobs (needs investigating & implementation)
+- DevOps:
+    - Deployment of… webserver? Docker? Pip-package?
+
+Two users as a goal:
+- Alex
+- SAP Feather
+Keeping the „takeover“ in mind throughout the process
+Making sure that code is highly maintainable & understandable
+Low barrier of entry (conda environment!!! -> needs to go!)
+
+Pip-package:
+- Motivation
+    - import from webserver
+    - easier to work with for users (entrypoint)
+        - defined „API“ through argparse
+- keeping recommerce, docker, webserver separate  
+- Python community disagreements (investigate!)
+- Iteration
+    - Simple version first, without pip (__init__.py)
+    - First pip version with just setup.py
+    - complete pip incl. Entrypoint, main.py, argparse
+- what should be in the package?
+- Challenges:
+    - relative paths
+    - user input
+    - additional (data) files
+    - working with docker & webserver & tests
+    - pytest vs. Pip -> not working (why? Propose ideas? Pros and cons?)
+- additional packages & dependencies  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
