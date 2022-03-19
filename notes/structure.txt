@@ -12,6 +12,11 @@ Code style through:
 - Automatic formatting using TOOLSFROMPRECOMMITHERE
 - Pre-commit for clean repository
     - Additional action in CI to make sure
+- Test & Docstring coverage
+    - coverage Pros & Cons
+    - Limits
+        - interrogate doesn‘t recognize inherited docstrings
+        - own interrogate version for thesis? 
 
 CI:
 - Setting up the runner?
