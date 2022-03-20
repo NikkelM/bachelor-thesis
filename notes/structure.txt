@@ -55,22 +55,24 @@ Pip-package:
     - pytest vs. Pip -> not working (why? Propose ideas? Pros and cons?)
 - additional packages & dependencies  
 
+=====================
 
+Introduction:
+- Project was from the beginning built for complete takeover by Alex & possible integration into SAP Feather
+- Therefore, documentation & maintainability was No° 1 priority (as it should always be)
+- Close collaboration with Alex
+- Little to no Python experience in the team
+- 
 
+Related Work:
+- How to deal with packaging is a heavily discussed topic in the Python community
 
+Main Part(s):
+1. Documentation & Code Style
+2. Tests/CI
+3. Packaging
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Conclusion/Takeaways:
+- Docstrings one of the best additions when the codebase grew larger,
+when not everyone can be a Code Owner (Collective Code Ownership impossible)
+- 
