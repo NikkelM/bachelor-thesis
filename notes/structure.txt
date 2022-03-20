@@ -15,7 +15,7 @@ Code style through:
 - Test & Docstring coverage
     - coverage Pros & Cons
     - Limits
-        - interrogate doesn‘t recognize inherited docstrings
+        - interrogate doesn't recognize inherited docstrings
         - own interrogate version for thesis? 
 
 CI:
