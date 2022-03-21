@@ -27,6 +27,8 @@ CI:
 - Different jobs (needs investigating & implementation)
 - DevOps:
     - Deployment of… webserver? Docker? Pip-package?
+	- documentation
+	- versioning (push to main, tags on Github)
 
 Two users as a goal:
 - Alex
@@ -39,7 +41,7 @@ Pip-package:
 - Motivation
     - import from webserver
     - easier to work with for users (entrypoint)
-        - defined „API“ through argparse
+        - defined "API" through argparse
 - keeping recommerce, docker, webserver separate  
 - Python community disagreements (investigate!)
 - Iteration
