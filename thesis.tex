@@ -37,13 +37,13 @@
 %    \boldNumberSetsfalse % Use this value if you want variables for number sets (like N or R) to appear in blackboard bold rather than bold.
 
     % The title of the thesis. The first argument is for the English name, the second is for the German name.
-    \myTitle{My Very Long, Informative, Expressive, and Definitely Fancy Title}{Eine adäquate Übersetzung meines Titels}
+    \myTitle{Retaining maintainability throughout the scaling of software projects using automated tools}{Deutscher Titel}
 
     % The author’s name.
     \myName{Nikkel Mollenhauer}
 
     % The author’s program.
-    \myProgram{IT Systems Engineering}
+    \myProgram{IT-Systems Engineering}
 
     % The date when the thesis will be handed in.
     \dateOfHandingIn{30. Juni 2022}
@@ -98,19 +98,30 @@
     \pagestyle{headings}
     \mainmatter
 
-    \chapter{Introduction}
-    \input{introduction/introduction}
-
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Please add the content of your thesis here. %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \part{The Beginning of It All}
+    \part{Introduction}
+    \input{introduction/introduction}
+
+	\chapter{Related Work (not really sure how much I can do here)}
+    \input{introduction/related_work}
+
+    \part{Challenges}
+	
+	\chapter{Types of Documentation used}
+	\input{to_be_ordered/types_of_documentation}
+
+    \part{Tools}
+
+	\chapter{Pre-commit}
+	\input{to_be_ordered/pre-commit}
+
+	\part{}
 
     \chapter{Demo Chapter}
     \input{DELETE/demo}
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% End of adding your content. %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
