@@ -76,76 +76,93 @@
 \begin{document}
 
 
-    \frontmatter
-    \include{core/title_page/title_page}
+\frontmatter
+\include{core/title_page/title_page}
 
-    \pagestyle{plain}
+\pagestyle{plain}
 
-    \addchap{Abstract}
-    \input{preface/abstract}
+\addchap{Abstract}
+\input{preface/abstract}
 
-    \selectlanguage{ngerman}
-    \addchap{Zusammenfassung}
-    \input{preface/abstractGerman}
-    \selectlanguage{british}
+\selectlanguage{ngerman}
+\addchap{Zusammenfassung}
+\input{preface/abstractGerman}
+\selectlanguage{british}
 
-    \addchap{Acknowledgments}
-    \input{preface/acknowledgments}
+\addchap{Acknowledgments}
+\input{preface/acknowledgments}
 
-    \setuptoc{toc}{totoc}
-    \tableofcontents
+\setuptoc{toc}{totoc}
+\tableofcontents
 
-    \pagestyle{headings}
-    \mainmatter
+\pagestyle{headings}
+\mainmatter
 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% Please add the content of your thesis here. %%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Please add the content of your thesis here. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \part{Introduction}
-    \input{introduction/introduction}
+\part{Introduction}
 
-	\chapter{Related Work (not really sure how much I can do here)}
-    \input{introduction/related_work}
+% * removes it from toc 
+% \chapter{Introduction}
+% \input{introduction/introduction}
 
-    \part{Challenges}
-	
-	\chapter{Types of Documentation used}
-	\input{to_be_ordered/types_of_documentation}
+\chapter{Knowing your Users(?)}
+\input{to_be_ordered/users}
 
-    \part{Tools}
+\chapter{Related Work(?)}
+\input{introduction/related_work}
 
-	\chapter{Pre-commit}
-	\input{to_be_ordered/pre-commit}
+\part{Challenges}
 
-	\part{}
+\chapter{Documentation}
+\input{to_be_ordered/documentation}
 
-    \chapter{Demo Chapter}
-    \input{DELETE/demo}
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% End of adding your content. %%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Tests}
+\input{to_be_ordered/tests}
+
+\part{Automation Tools}
+
+\chapter{Pre-commit}
+\input{to_be_ordered/pre-commit}
+
+\chapter{Github Actions}
+
+\chapter{Sphinx/Readthedocs}
+
+\part{Packaging the Project}
+
+\chapter{Why package the project?}
+
+\chapter{Using Pip}
+
+\chapter{Demo Chapter}
+\input{DELETE/demo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of adding your content. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-    % Add the following chapters not to the current ›part‹ but one level above instead.
-    \makeatletter
-        \def\toclevel@chapter{-1}
-        \def\toclevel@section{0}
-    \makeatother
+% Add the following chapters not to the current ›part‹ but one level above instead.
+\makeatletter
+\def\toclevel@chapter{-1}
+\def\toclevel@section{0}
+\makeatother
 
-    \chapter{Conclusions \& Outlook}
-    \input{conclusions/conclusions}
+\chapter{Conclusions \& Outlook}
+\input{conclusions/conclusions}
 
-    % Following are the files and commands for the bibliography and the author’s publications.
-    \pagestyle{plain}
+% Following are the files and commands for the bibliography and the author’s publications.
+\pagestyle{plain}
 
-    \renewcommand*{\bibfont}{\small}
-    \printbibheading
-    \addcontentsline{toc}{chapter}{Bibliography}
-    \printbibliography[heading = none]
+\renewcommand*{\bibfont}{\small}
+\printbibheading
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography[heading = none]
 
-    \addchap{Declaration of Authorship}
-    \input{core/declaration_of_authorship/declaration_of_authorship}
+\addchap{Declaration of Authorship}
+\input{core/declaration_of_authorship/declaration_of_authorship}
 
 
 \end{document}
