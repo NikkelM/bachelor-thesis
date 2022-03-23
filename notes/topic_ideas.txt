@@ -1,0 +1,50 @@
+Title:
+Scope: What is the general context?
+Problem: What is the specific problem?
+Significance: Why is it a problem? What are the reasons why it is a problem:
+Solution: How do you solve it?
+Evaluation: Does your solution fulfill expectations (very short)?
+
+Title: 
+- Retaining maintainability throughout the scaling of software projects (using automated tools)
+- Building Maintainability in (Lean "Build Integrity in")
+Scope:
+- Maintenance takes up to 70% of development costs -> maintainability is key
+- Types of maintenance:
+	- Corrective
+	- Adaptive
+	- Perfective
+	- Preventive
+Problem: 
+- It is said that maintenance on software starts after it has been delivered to the customer.
+But in agile projects that work in increments of working software, this shifts maintainability to be within scope
+of the actual development process. 
+How maintainable a software is can be measured in multiple categories:
+	- 
+
+Evaluation: What were the expectations: To have software that can be easily maintained
+Definition of "maintainability":
+	- Any other developer can understand the code without consulting the one who wrote it
+		- Includes docstrings, wiki, installation & Quick start guides
+	- Developers can be sure that their changes did not break unexpected parts of the software
+		- Not only Unit, but Integration and Acceptance tests are needed
+		- Clearly defined responsibilities
+		- Low coupling & high cohesion
+			- Measure this
+
+Did we fulfill expectations?
+- How easy or hard is it for new developers to contribute to the software?
+- Have we made sure that our tests...
+	- test the right things?
+	- are "complete"?
+	- can be maintained themselves?
+- How is our coupling & cohesion? Do the semantics/class definitions make sense?
+
+Outlook: If Usecase/Situation X comes up, how does our maintainability support this?
+- A new type of RL-Algorithm should be added
+- A new market parameter should be added
+- A new type of customer behaviour should be added
+- A new type of economy should be added
+- The User want a new way of monitoring and comparing an agent
+- A produced agent should be tested against an agent that comes from somewhere else
+
