@@ -1,0 +1,27 @@
+Zweck der Arbeit
+Direkt auf Endlösung: skalierbar, schnell, weil wir das so und so gemacht haben
+worum geht es im Projekt, kurze overview
+abgeleitete requirements, technisch
+Challenge: am ende gelöst durch folgende Komponenten
+Weniger Testfokus
+Users: Feather als Usecase für unser Tool
+Andere Seite aus akademischer Seite interessant, eher anonym, ohne Namen. Users == Motivation
+Scaling besser definieren
+Off-code skalierung
+nicht in der BEschreibung von Tools verlieren
+Relevant, die Challenges zu beschreiben im Kontext der Projektarbeit, warum die Tools das lösen
+Related work wird dadurch größer
+Möglichkeit, etwas zu evaluieren
+Conclusion & Challenges klar definieren
+konkreter machen über Titel & Abstract
+Präzise darstellen, wie wir es gemacht haben und immer sagen, warum
+
+Was ist...
+kontext
+problem
+warum ist das ein Problem - was sind die gründe
+wie ist das zu lösen
+kurze Beschreibung, warum es das gelöst hat
+
+
+ein subproblem aus dem ganzen bisherigen nehmen
