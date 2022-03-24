@@ -1,7 +1,7 @@
 Title:
 Scope: What is the general context?
 Problem: What is the specific problem?
-Significance: Why is it a problem? What are the reasons why it is a problem:
+Significance: Why is it a problem? What are the reasons why it is a problem?
 Solution: How do you solve it?
 Evaluation: Does your solution fulfill expectations (very short)?
 
@@ -18,9 +18,7 @@ Scope:
 Problem: 
 - It is said that maintenance on software starts after it has been delivered to the customer.
 But in agile projects that work in increments of working software, this shifts maintainability to be within scope
-of the actual development process. 
-How maintainable a software is can be measured in multiple categories:
-	- 
+of the actual development process.
 
 Evaluation: What were the expectations: To have software that can be easily maintained
 Definition of "maintainability":
