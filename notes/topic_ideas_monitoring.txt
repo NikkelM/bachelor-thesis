@@ -41,7 +41,19 @@ The Policyanalyzer can be used to get an overview of how an agent would react to
 price he would set for a new product if their only competitor sets a number of other prices, or depending on how many sales
 were made in the last time step.
 
-Evaluation: Using our monitoring framework, it is 
+Evaluation:
+Our monitoring framework offers an all-in-one solution for training and evaluating agents. During training, we save
+the best models in their respective timeframe. After training, we can evaluate and compare these models not only to each other,
+but also to other agents, both RL and rule-based, which comes close to a real market scenario, which has a mix of human actors,
+rule-based approaches and possibly other, rival RL-agents. Our tools can help to find areas in which the agents still struggle
+and thereby give pointers to what may need to change in the next iteration [this would require knowledge about which hyperparameters
+were changed leading to what change in model quality].
+
+
+What makes a good model?
+	- Consistently high rewards
+	- Few to no outliers - each one is a dent in the companies profit
+		- See which state and actions led to the outlier using Micro-analysis coming from Macro
 
 "Github Issues":
 - Start monitoring automatically after training
