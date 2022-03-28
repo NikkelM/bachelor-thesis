@@ -5,31 +5,44 @@ Significance: Why is it a problem? What are the reasons why it is a problem?
 Solution: How do you solve it?
 Evaluation: Does your solution fulfill expectations (very short)?
 
+Title Ideas for Monitoring:
+"Visualizing the performance of Reinforcement-Learning Agents"
+"Estimating the quality of Reinforcement-Learning Agents"
+
+
 Scope: 
 Agent training happens in a closed off environment on a specified market and against a set number of opponents.
 Before releasing agents onto a real market, their performance and robustness must be measured.
-
-Problem: RL Agents have been trained extensively and over long periods of time, on a certain marketplace and against
-a set number of competitors. But before releasing them, you need to be sure that they fulfill your expectations and 
+RL Agents are trained extensively and over long periods of time, on a certain marketplace and against
+a set number of competitors. The only metric you have during training is the agents mean profit after each episode,
+but before releasing them, you need to be sure that they fulfill your expectations and 
 can produce reliably good results, also when compared against other agents, both Rule-based and RL, which were
-not part of their training.
-How do you build a pipeline that can monitor and evaluate an agents performance after it has been trained,
-in order to classify and compare it to other agents? What metrics do you employ to make these classifications?
-How do you evaluate monitoring results without a universal truth (There is no "correct answer")?
+not part of their training. For this, you need to monitor a number of different metrics extensively.
 
-Significance: Training and playing around with agents in a simulated environment is risk-free - they do not
+Problem: 
+How do you build a pipeline that can monitor and evaluate an agents performance after it has been trained,
+in order to classify and compare it to other agents? 
+What metrics do you employ to make these classifications?
+How do you evaluate and *visualize* learnings from the monitoring process? 
+How do you evaluate monitoring results without a universal truth (There is no "correct answer")?
+	- How do you differentiate good agents from bad agents using the results?
+How do you incorporate learnings from the monitoring results to produce better agents in the future?
+
+Significance: 
+Training and playing around with agents in a simulated environment is risk-free - they do not
 interact with the real world and can therefore not influence real market states.
 But the ultimate goal of training these agents is to be able to give them real responsibilies and power over 
 a companies pricing policy. Before this transition into the real world market can happen, it needs to be made sure that
 agents are robust and can deal with any type of situation that may arise. Part of this process is making sure that 
 the simulated marketplace is as realistic as possible, but the major part that can and must win over customers (as in
 companies wanting to employ the agent to set their prices) is a display of continued profitability in different circumstances.
-This can not be achieved by training alone, but trained agents must then be put through rigorous stages of monitoring and
-evaluation to prove their capabilities.
+Trained agents must therefore be put through rigorous stages of monitoring and evaluation to prove their capabilities after
+training has completed, to make sure that performance during training was not due to outliers or anomalies, but due to a
+superior pricing policy by the agent.
 
 Solution:
 In our framework, we employed monitoring on both a Macro (Agent Monitoring) as well as a Micro (Exampleprinter) level 
-as well as a static tool (Policyanalyzer).
+as well as using static tool(s) (Policyanalyzer).
 The Macro level is achieved by running a large number of episodes and recording and classifying all actions and results of
 the actions by all participating agents. These metrics are then evaluated and allow for a large-scale analysis of an
 agents performance, most notably by being able to compare the overall profits against those fo other agents.
@@ -43,11 +56,11 @@ were made in the last time step.
 
 Evaluation:
 Our monitoring framework offers an all-in-one solution for training and evaluating agents. During training, we save
-the best models in their respective timeframe. After training, we can evaluate and compare these models not only to each other,
-but also to other agents, both RL and rule-based, which comes close to a real market scenario, which has a mix of human actors,
-rule-based approaches and possibly other, rival RL-agents. Our tools can help to find areas in which the agents still struggle
-and thereby give pointers to what may need to change in the next iteration [this would require knowledge about which hyperparameters
-were changed leading to what change in model quality].
+the best models in their respective timeframe (e.g. one model saved each 10000 episodes).
+After training, we can evaluate and compare these models not only to each other, but also to other agents, both RL and rule-based,
+which comes close to a real market scenario, which has a mix of human actors, rule-based approaches and possibly other, rival RL-agents.
+Our tools can help to find areas in which the agents still struggle and thereby give pointers to what may need to
+change in the next iteration. [this would require knowledge about which hyperparameters were changed leading to what change in model quality].
 
 
 What makes a good model?
@@ -55,7 +68,7 @@ What makes a good model?
 	- Few to no outliers - each one is a dent in the companies profit
 		- See which state and actions led to the outlier using Micro-analysis coming from Macro
 
-"Github Issues":
+"Github Issues" -> things that we could work on aiding this thesis concept:
 - Start monitoring automatically after training
 - CSV results of monitoring
 	- Ability to feed in CSV and get graphs/evaluation
