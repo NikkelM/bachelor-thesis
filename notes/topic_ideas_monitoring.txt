@@ -25,13 +25,13 @@ in order to classify and compare it to other agents?
 What metrics do you employ to make these classifications?
 How do you evaluate and *visualize* learnings from the monitoring process? 
 How do you evaluate monitoring results without a universal truth (There is no "correct answer")?
-	- How do you differentiate good agents from bad agents using the results?
+	- How do you differentiate good agents from bad agents using these results?
 How do you incorporate learnings from the monitoring results to produce better agents in the future?
 
 Significance: 
 Training and playing around with agents in a simulated environment is risk-free - they do not
 interact with the real world and can therefore not influence real market states.
-But the ultimate goal of training these agents is to be able to give them real responsibilies and power over 
+But the ultimate goal of training these agents is to be able to give them real responsibilities and power over 
 a companies pricing policy. Before this transition into the real world market can happen, it needs to be made sure that
 agents are robust and can deal with any type of situation that may arise. Part of this process is making sure that 
 the simulated marketplace is as realistic as possible, but the major part that can and must win over customers (as in
@@ -45,7 +45,7 @@ In our framework, we employed monitoring on both a Macro (Agent Monitoring) as w
 as well as using static tool(s) (Policyanalyzer).
 The Macro level is achieved by running a large number of episodes and recording and classifying all actions and results of
 the actions by all participating agents. These metrics are then evaluated and allow for a large-scale analysis of an
-agents performance, most notably by being able to compare the overall profits against those fo other agents.
+agents performance, most notably by being able to compare the overall profits against those of other agents.
 The Micro level concerns itself with monitoring each and every price set by the agent within a relatively small time window
 of one episode == x time steps == x times setting a price. This type of comparison can be for example used to see whether or not an 
 agent continuously undercuts prices of their competitors or forms a cartel with them. You could say that the Micro level concerns
@@ -57,7 +57,7 @@ were made in the last time step.
 Evaluation:
 Our monitoring framework offers an all-in-one solution for training and evaluating agents. During training, we save
 the best models in their respective timeframe (e.g. one model saved each 10000 episodes).
-After training, we can evaluate and compare these models not only to each other, but also to other agents, both RL and rule-based,
+After training, we can evaluate and compare these models not only with each other, but also with other agents, both RL and rule-based,
 which comes close to a real market scenario, which has a mix of human actors, rule-based approaches and possibly other, rival RL-agents.
 Our tools can help to find areas in which the agents still struggle and thereby give pointers to what may need to
 change in the next iteration. [this would require knowledge about which hyperparameters were changed leading to what change in model quality].
