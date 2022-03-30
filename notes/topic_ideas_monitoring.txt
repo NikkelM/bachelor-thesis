@@ -5,10 +5,19 @@ Significance: Why is it a problem? What are the reasons why it is a problem?
 Solution: How do you solve it?
 Evaluation: Does your solution fulfill expectations (very short)?
 
-Title Ideas for Monitoring:
-"Visualizing the performance of Reinforcement-Learning Agents"
-"Estimating the quality of Reinforcement-Learning Agents"
+Title Ideas for "Monitoring":
+"Visually evaluating the performance Reinforcement-Learning Agents in the context of Dynamic Pricing"
+	-> Primary focus on performance evaluation, but with a sub-focus on doing so visually, not by grinding numbers in a csv
+	-> Alternatively one could move the "Visually" to the end:
+"Evaluating the performance Reinforcement-Learning Agents in the context of Dynamic Pricing using visualizations"
 
+"Visualizing the performance of Reinforcement-Learning Agents in the context of Dynamic Pricing"
+	-> Does this lack the mention of "performance" or "quality" buzzwords?
+
+"Determining the quality of Reinforcement-Learning Agents in the context of Dynamic Pricing"
+or
+"Estimating the quality of Reinforcement-Learning Agents in the context of Dynamic Pricing"
+-> again, possibly pre- or appending a "visually" component
 
 Scope: 
 Agent training happens in a closed off environment on a specified market and against a set number of opponents.
@@ -41,7 +50,7 @@ training has completed, to make sure that performance during training was not du
 superior pricing policy by the agent.
 
 Solution:
-In our framework, we employed monitoring on both a Macro (Agent Monitoring) as well as a Micro (Exampleprinter) level 
+In our framework, we employed monitoring on both a Macro (Agent Monitoring, Live-Monitoring) as well as a Micro (Exampleprinter) level 
 as well as using static tool(s) (Policyanalyzer).
 The Macro level is achieved by running a large number of episodes and recording and classifying all actions and results of
 the actions by all participating agents. These metrics are then evaluated and allow for a large-scale analysis of an
