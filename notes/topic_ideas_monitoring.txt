@@ -6,7 +6,7 @@ Solution: How do you solve it?
 Evaluation: Does your solution fulfill expectations (very short)?
 
 Title Ideas for "Monitoring":
-"Visually evaluating the performance Reinforcement-Learning Agents in the context of Dynamic Pricing"
+"Visually evaluating the performance of Reinforcement-Learning Agents in the context of Dynamic Pricing"
 	-> Primary focus on performance evaluation, but with a sub-focus on doing so visually, not by grinding numbers in a csv
 	-> Alternatively one could move the "Visually" to the end:
 "Evaluating the performance Reinforcement-Learning Agents in the context of Dynamic Pricing using visualizations"
@@ -18,6 +18,30 @@ Title Ideas for "Monitoring":
 or
 "Estimating the quality of Reinforcement-Learning Agents in the context of Dynamic Pricing"
 -> again, possibly pre- or appending a "visually" component
+
+-------------
+
+Titelfeedback Johannes:
+Fragen:
+• Warum Fokus auf RL-Agents?
+• Nur Visualisieren als Thema oder auch nötige Schlussfolgerungen Teil der Arbeit?
+ 
+Zielsetzung innerhalb Titel ermöglicht Einstieg:
+ 
+"Visually evaluating the performance of Reinforcement-Learning Agents in the context of Dynamic Pricing"
+"Evaluating the performance of Reinforcement-Learning Agents in the context of Dynamic Pricing using visualizations"
+-> Wäre i.O. – Gegenvorschlag mit etwas mehr Fokus: 
+"Visualizing Strengths and Weaknesses of Agents for Dynamic Pricing in different (Re-)Commerce Markets."
+
+"Visualizing the performance of Reinforcement-Learning Agents in the context of Dynamic Pricing"
+-> Zielsetzung fehlt – Visualisierung und dann?
+ 
+"Determining the quality of Reinforcement-Learning Agents in the context of Dynamic Pricing"
+or
+"Estimating the quality of Reinforcement-Learning Agents in the context of Dynamic Pricing"
+-> Führt zu Fehlinterpretationen (Nichts mit Determination oder Estimation)
+
+---------------
 
 Scope: 
 Agent training happens in a closed off environment on a specified market and against a set number of opponents.
