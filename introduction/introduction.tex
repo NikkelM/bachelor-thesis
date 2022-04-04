@@ -2,15 +2,15 @@
 \begin{jointwork}
 	This thesis builds upon the bachelors project "Online Marketplace Simulation: A Testbed for Self-Learning Agents"
 	of the Enterprise Platform and Integration Concepts research group at the Hasso-Plattner-Institute. Therefore, the project will
-	be referenced and all examples and experiments, unless otherwise mentioned, will have been conducted using its framework. 
+	be referenced and all examples and experiments, unless otherwise mentioned, will have been conducted using its framework.
 \end{jointwork}
 
 \section{Introduction to the Recommerce platform}
 
 \subsection{The Circular Economy model}
-The main goal of the aforementioned bachelors project was to develop a realistic online marketplace that simulates 
+The main goal of the aforementioned bachelors project was to develop a realistic online marketplace that simulates
 a Circular Economy. A market is most commonly referred to as being a "Circular Economy" if it includes the three
-activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical 
+activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical
 Linear Economy market each product is being sold once at its \emph{new price} and after use being thrown away,
 in a Circular Economy, recycling and thereby waste reduction is a major focus. In our project, we modelled this by
 adding two additional price channels, \emph{re-buy price} and \emph{used price}, to the pre-existing \emph{new price} of a product.
@@ -23,15 +23,28 @@ From now on, we will refer to the Circular Economy market simply as \emph{the ma
 
 \subsection{Using the simulated marketplace to train agents}
 
-After the initial market was modelled the goal was to train agents using different reinforcement-learning (RL) algorithms 
-to dynamically set prices on this marketplace, both in monopolistic scenarios as well as in competition with each other.
+After the initial market was modelled the goal was to train agents using different reinforcement-learning algorithms
+to dynamically set prices on this marketplace, both in monopolistic scenarios as well as in competition with rule-based vendors
+which set prices following a strict set of pre-defined rules. \todo{Is the following sentence a footnote?}These rules can range from simply undercutting the
+lowest competitor's price to more advanced techniques such as price-fixing and -gouging.\todo{find out if we have such competitors}
+
+\begin{figure}
+	\centering
+	\includegraphics[height = 5 cm]{graphics/red_square_placeholder.png}\\[1 ex]
+	\caption{The reinforcement-learning model in the context of our market.}
+	\label{fig:IntroRLDiagram}
+\end{figure}
+
+Reinforcement-learning agents are trained through a process of trial-and-error. They interact with the market through an observable state
+and an action which influences the following state. \Cref{fig:IntroRLDiagram} illustrates the RL-model in the context of our 
+market. \todo{Create a nice diagram with the three prices}
 
 
 \section{An Overview of Reinforcement-Learning}
 
 Short description of Reinforcement learning:
 
-- Agent interacts with the environment only on the basis of a state, which contains information about the 
+- Agent interacts with the environment only on the basis of a state, which contains information about the
 environment that the agent can use to decide on one of a number of specified actions it can take.
 
 \section{Reliability and Robustness}
