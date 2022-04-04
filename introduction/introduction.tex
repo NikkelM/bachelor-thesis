@@ -1,16 +1,40 @@
 % Here you introduce your topic to the reader.
 \begin{jointwork}
-	This chapter will introduce the underlying concepts of the Reinforcement Learning approach and prepare us for the introduction of measures to monitor and evaluate agents trained in such a way.
+	This thesis builds upon the bachelors project "Online Marketplace Simulation: A Testbed for Self-Learning Agents"
+	of the Enterprise Platform and Integration Concepts research group at the Hasso-Plattner-Institute. Therefore, the project will
+	be referenced and all examples and experiments, unless otherwise mentioned, will have been conducted using its framework. 
 \end{jointwork}
 
-Demo Citation: \cite{reinforcementLearningOverview} \\
+\section{Introduction to the Recommerce platform}
+
+\subsection{The Circular Economy model}
+The main goal of the aforementioned bachelors project was to develop a realistic online marketplace that simulates 
+a Circular Economy. A market is most commonly referred to as being a "Circular Economy" if it includes the three
+activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical 
+Linear Economy market each product is being sold once at its \emph{new price} and after use being thrown away,
+in a Circular Economy, recycling and thereby waste reduction is a major focus. In our project, we modelled this by
+adding two additional price channels, \emph{re-buy price} and \emph{used price}, to the pre-existing \emph{new price} of a product.
+
+The \emph{re-buy price} is defined as the price a vendor is willing to pay a customer to buy back a used product, while the
+\emph{used price} is defined as the price the vendor sets for products they previously bought back and now want to sell alongside new products
+(whose price is defined by the \emph{new price}).
+
+From now on, we will refer to the Circular Economy market simply as \emph{the market}.
+
+\subsection{Using the simulated marketplace to train agents}
+
+After the initial market was modelled the goal was to train agents using different reinforcement-learning (RL) algorithms 
+to dynamically set prices on this marketplace, both in monopolistic scenarios as well as in competition with each other.
+
+
+\section{An Overview of Reinforcement-Learning}
 
 Short description of Reinforcement learning:
 
 - Agent interacts with the environment only on the basis of a state, which contains information about the 
 environment that the agent can use to decide on one of a number of specified actions it can take.
 
-\section{An Overview of Reinforcement-Learning}
+\section{Reliability and Robustness}
 
 
 Agents to be trained for real-world use
