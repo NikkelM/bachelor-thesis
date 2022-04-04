@@ -41,6 +41,9 @@ or
 "Estimating the quality of Reinforcement-Learning Agents in the context of Dynamic Pricing"
 -> Führt zu Fehlinterpretationen (Nichts mit Determination oder Estimation)
 
+Finaler Titel:
+"Monitoring Reliability and Robustness of Agents for Dynamic Pricing in different (Re-)Commerce Markets"
+"Monitoring der Zuverlässigkeit und Robustheit von Agenten für dynamische Bepreisung in unterschiedlichen (Re-)Commerce Märkten"
 ---------------
 
 Scope: 
