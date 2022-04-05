@@ -30,22 +30,17 @@ lowest competitor's price to more advanced techniques such as price-fixing and -
 
 \begin{figure}
 	\centering
-	\includegraphics[height = 5 cm]{graphics/RL-Overview.png}\\[1 ex]
+	\includegraphics[height = 7 cm]{graphics/RL-Overview.png}\\[1 ex]
 	\caption{The standard reinforcement-learning model in the context of our market.}
 	\label{fig:IntroRLDiagram}
 \end{figure}
 
 Reinforcement-learning agents are trained through a process of trial-and-error. They interact with the market through an observable state
 and an action which influences the following state. \Cref{fig:IntroRLDiagram} illustrates the RL-model in the context of our 
-market. \todo{Create a nice diagram with the three prices}
+market.\todo{Create a \emph{nicer} diagram with the three prices} The goal of the agent is to maximize the so-called reinforcement signal, 
+which in our case is the profit the agent made during the last cycle, since we want to train agents to maximize profits on real markets.
+By observing which prices lead to which reinforcement signal, the agents get more profitable over the course of training.
 
-
-\section{An Overview of Reinforcement-Learning}
-
-Short description of Reinforcement learning:
-
-- Agent interacts with the environment only on the basis of a state, which contains information about the
-environment that the agent can use to decide on one of a number of specified actions it can take.
 
 \section{Reliability and Robustness}
 
