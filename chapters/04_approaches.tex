@@ -12,15 +12,25 @@ Our workflow (which will be explained in more detail in \nameref{chapter:OurWork
 	\item On complete agents: After a training session has finished we have a complete and final set of data available for an agent, which enables us to perform more thorough and reliable tests. These can include simulating runs of a marketplace to gather data on the agent's performance in different scenarios and against different competitors, or running a static analysis of the agent's policy in different market states. The tools available for trained agents are in the same way also usable on rule-based agents.
 \end{enumerate}
 
-In the following sections, we will take a look at all of the tools our framework provides for monitoring agents. We will also discuss features that are currently not available, explaining how they could benefit the entire workflow or enrich the overall experience.
+In the following sections, we will take a look at all of the tools our framework provides for monitoring agents, distinguishing between the two general types of monitoring mentioned above. The goal of this section is to give a short overview of each tool, how and why they were implemented and what value they offer to the framework as a whole and to the analysis of agent reliability and robustness in particular. We will also discuss features that are currently not available, explaining how they could benefit the entire workflow or enrich the overall experience.
 
 \section{Monitoring during a training session}
 
+When talking about monitoring agents during a training session, we are of course talking about Reinforcement-Learning agents, since Rule-Based agents always perform the same and cannot be trained. \todo{Is this a footnote? This info should be obvious, but maybe should be mentioned for completeness?} Monitoring agents while they are still being trained enables us to be more closely connected to the training process. Ultimately, the goal of such monitoring tools is to be able to predict the estimated "quality" of the final trained agent as reliably as possible while the training is still going. Users must however be careful when interpreting the results of monitoring tools that work on "incomplete" agents, we will go more into this  in \nameref{chapter:InterpretResults}.
+
 \subsection{Tensorboard}
+
+The \emph{Tensorboard} is an external tool from the from the Reinforcement-Learning framework \todo{Library? etc., check the specifics of Tensorflow} Tensorflow. With jsut a few lines of code \todo{Question for the tutors: Do I give an example of such code?} a training session can be connected to a Tensorboard. We are then able to pass any number of parameters and metrics we deem interesting or useful to the Tensorboard, which then offers visualizations for each of them, updating live as the training progresses. Though the Tensorboard does not interpret data in any way, it is an immensely \todo{Spelling} useful tool for quickly and easily recording data and offering a first rough comparison of competitors in the market.
+\todo{Create some sample diagrams. Perhaps these can be re-used in the workflow section, so they could perhaps be moved to the Appendix for reference?}
+
 \subsection{Live-monitoring}
+
+Different than \todo{"Anders als"} the Tensorboard, monitoring tools \todo{"zusammengefasst"} under the term \emph{live-monitoring} were completely and from the ground up built by our team. For most of the visualizations, the \emph{pyplot} library \todo{Footnote with link} was used. Live-monitoring aims to be more configurable and in-depth with the metrics it offers than the aforementioned Tensorboard. \todo{make the current live-monitoring so that graphs are actually being created while the training is running, not like it is now with grpahs only being created afterwards} 
 
 \section{Monitoring complete agents}
 
 \subsection{Agent-monitoring}
 \subsection{Exampleprinter}
 \subsection{Policyanalyzer}
+
+\section{Features for the future}
