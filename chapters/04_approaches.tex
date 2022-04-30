@@ -25,11 +25,11 @@ The \emph{Tensorboard} is an external tool from the from the Reinforcement-Learn
 
 \subsection{Live-monitoring}
 
-Different than \todo{"Anders als"} the Tensorboard, monitoring tools \todo{"zusammengefasst"} under the term \emph{live-monitoring} were completely and from the ground up built by our team. For most of the visualizations, the \emph{pyplot} library \todo{Footnote with link} was used. Live-monitoring aims to be more configurable and in-depth with the metrics it offers than the aforementioned Tensorboard. \todo{make the current live-monitoring so that graphs are actually being created while the training is running, not like it is now with grpahs only being created afterwards} 
+Different than \todo{"Anders als"} the Tensorboard, monitoring tools \todo{"zusammengefasst"} under the term \emph{live-monitoring} were completely and from the ground up built by our team. For most of the visualizations, the \emph{pyplot} library \todo{Footnote with link} was used. Live-monitoring aims to be more configurable and in-depth with the metrics it offers than the aforementioned Tensorboard. \todo{make the current live-monitoring so that graphs are actually being created while the training is running, not like it is now with graphs only being created afterwards} During a training session, "intermediate" models, as we will call them, are being saved after a set number of episodes. \todo{Have we introduced the concept of episodes before? Should a Glossary be introduced, or do we do this stuff in the introductions?} These models contain the current policy of the agent and can be used the same as models of complete agents, the only difference being the quality of the agent, as those with a lower amount of trained episodes generally perform worse. \todo{Does this need a citation?} These intermediate models can then be used by a range of monitoring tools available to us. Since the models only contain the current policy of an agent but not the history of states and actions preceding the model, we need to run separate simulations on these models to be able to analyze and evaluate them. For this, we utilize our \emph{agent-monitoring} toolset, which will be explained in more detail in the \nameref{subsection:AgentMonitoring} section.
 
 \section{Monitoring complete agents}
 
-\subsection{Agent-monitoring}
+\subsection{Agent-monitoring} \label{subsection:AgentMonitoring}
 \subsection{Exampleprinter}
 \subsection{Policyanalyzer}
 
