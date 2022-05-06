@@ -7,7 +7,7 @@
 Our workflow (which will be explained in more detail in \nameref{chapter:OurWorkflow}) can generally be split into two parts when it comes to monitoring and evaluation of agents. In the future, when talking about the \emph{workflow} we will be talking about the process of configuring and starting a training session, where a Reinforcement-Learning agent is being trained on a specific marketplace against competitors. The \emph{workflow} also includes the subsequent collection of data used to evaluate the agent's performance. We are also introducing the term of the \emph{complete agent} in this section, which will be used to refer to both Reinforcement-Learning agents that have been fully trained as well as rule-based agents which do not need training. 
 
 \begin{enumerate}
-	\item During training: Having data available as soon as possible without having to wait for a long training session to end is crucial to an efficient workflow. Our framework enables us to analyze and visualize data while a training session is still running \todo{Implement this feature. It should at least be able to temporarily halt the training to start an intermediate training session}. This enables us to filter out agents with sub-par performance prematurely. This can be done using user-defined threshholds or on the basis of previoulsly collected data (e.g. only keeping agents that are performing better than at least 50\% of other agents after the same amount of training in comparable scenarios.) \todo{Also implement this feature. Allow users to set rules for when a training session should be terminated if the agent is not performing well at a certain point. Also, it should be able to give the program a set of datapoints and have it set rules if possible}
+	\item During training: Having data available as soon as possible without having to wait for a long training session to end is crucial to an efficient workflow. Our framework enables us to analyze and visualize data while a training session is still running \todo{Implement this feature. It should at least be able to temporarily halt the training to start an intermediate monitoring session}. This enables us to filter out agents with sub-par performance prematurely. This can be done using user-defined threshholds or on the basis of previoulsly collected data (e.g. only keeping agents that are performing better than at least 50\% of other agents after the same amount of training in comparable scenarios.) \todo{Also implement this feature. Allow users to set rules for when a training session should be terminated if the agent is not performing well at a certain point. Also, it should be able to give the program a set of datapoints and have it set rules if possible}
 
 	\item On complete agents: After a training session has finished we have a complete and final set of data available for an agent, which enables us to perform more thorough and reliable tests. These can include simulating runs of a marketplace to gather data on the agent's performance in different scenarios and against different competitors, or running a static analysis of the agent's policy in different market states. The tools available for trained agents are in the same way also usable on rule-based agents.
 \end{enumerate}
@@ -29,8 +29,16 @@ Unlike the Tensorboard, the monitoring tools summarised under the term \emph{liv
 
 \section{Monitoring complete agents}
 
+The following tools offer a wide range of functionalities for monitoring complete agents. We can use these tools to both determine the reliability and robustness of one certain agent, but also to compare different agents, either during a joined monitoring session or by comparing their results separately.
+
 \subsection{Agent-monitoring} \label{subsection:AgentMonitoring}
+
+
+
 \subsection{Exampleprinter}
+
+The \emph{exampleprinter} is a tool meant for quickly evaluating an agent in-depth. When run, each action the monitored agent takes is being recorded, in addition to market states and events, such as the number of customers arriving and the amount of products thrown away. For certain market scenarios such as the \emph{CircularEconomyRebuyPriceDuopoly}, which simulates a circular economy model with rebuy prices in which two vendors compete against each other, these actions and events are also being summarised as an animated graphic, where each time-step is being illustrated. \todo{Add in a graphic here. Perhaps have two of the time-steps to "simulate" the animation}
+
 \subsection{Policyanalyzer}
 
 \section{Features for the future}
