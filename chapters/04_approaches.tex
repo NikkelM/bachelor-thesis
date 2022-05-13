@@ -29,11 +29,19 @@ Unlike the Tensorboard, the monitoring tools summarised under the term \emph{liv
 
 \section{Monitoring complete agents}
 
-The following tools offer a wide range of functionalities for monitoring complete agents. We can use these tools to both determine the reliability and robustness of one certain agent, but also to compare different agents, either during a joined monitoring session or by comparing their results separately.
+The following tools offer a wide range of functionalities for monitoring complete agents. We can use these tools to both determine the reliability and robustness of one certain agent, but also to compare different agents, either during a joined monitoring session or by comparing results of monitoring runs on identically parametrized market situations.
 
 \subsection{Agent-monitoring} \label{subsection:AgentMonitoring}
 
-The
+Using the \emph{Agent-monitoring} toolset, users can configure a custom market simulation, using the following parameters:
+
+\begin{enumerate}
+	\item Episodes: This parameter decides how many independent simulations are run in sequence. At the start of each episode, the market state will be reset. Within an episode, each vendor runs through 50 timesteps, during each of which a price is set (depending on the chosen economy type, this can include a rebuy price for used items) and a set number of customers interact with the vendors.
+	\item Plot interval \todo{Currently, the plot interval is not used by anything, since the statistics-plots have been "removed" in favor of the tensorboard plots}: A number of diagram types enable the user to view averaged or aggregated data over a period of time. The plot interval parameter decides the size of these intervals. Smaller intervals mean more accurate but also more convoluted data points. Computational time also increases with a smaller interval size.
+	\item Marketplace: Using this parameter, the user can set the marketplace on which the monitoring session will be run. A wide variety of scenarios is available, which are explained in \todo{Section reference to introduction where the scenarios are explained}.
+\end{enumerate}
+
+During each episode and for each vendor, all actions and market events are being recorded using \emph{watchers}.\todo{Do I keep this new word? If yes, it should be explained at least a little bit!} At the end of a monitoring session, the collected data is evaluated in different visual formats. First of all, all data that would be available to see in the \emph{tensorboard} during a training session 
 
 \subsection{Exampleprinter}
 

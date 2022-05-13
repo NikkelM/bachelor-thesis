@@ -1,6 +1,14 @@
 - Glossary-type chapter for important keywords
-- vendor vs. agent
 - section in workflow for config files -> mention webserver?
+- section in introduction for different market scenarios. Linear, circular, rebuy, monopoly, duopoly, oligopoly
 
-- monitoring session vs. monitoring run -> decide on on
+Seemingly interchangeable phrases should be identical/used correctly across the thesis:
+- monitoring session vs. monitoring run
+- market simulation vs. market situation vs. (market) scenario
+- re-buy vs. rebuy and re-sell vs. resell
+
 - make sure vendors vs. agents is always used correctly
+
+
+approaches chapter:
+- "A" monitoring session vs. "The" monitoring session
