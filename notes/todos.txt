@@ -1,0 +1,6 @@
+- Glossary-type chapter for important keywords
+- vendor vs. agent
+- section in workflow for config files -> mention webserver?
+
+- monitoring session vs. monitoring run -> decide on on
+- make sure vendors vs. agents is always used correctly
