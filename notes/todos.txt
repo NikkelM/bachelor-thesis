@@ -1,11 +1,20 @@
 - Glossary-type chapter for important keywords
 - section in workflow for config files -> mention webserver?
 - section in introduction for different market scenarios. Linear, circular, rebuy, monopoly, duopoly, oligopoly
+- remove stuff from the ToC (subsections etc.)
+
+
+- direct vs. indirect speech
+- tenses
+- gender neutrality
+
+
 
 Seemingly interchangeable phrases should be identical/used correctly across the thesis:
 - monitoring session vs. monitoring run
 - market simulation vs. market situation vs. (market) scenario
 - re-buy vs. rebuy and re-sell vs. resell
+- refurbished vs. used
 
 - make sure vendors vs. agents is always used correctly
 
