@@ -6,12 +6,18 @@
 
 \section{Configuring the run}
 
-Unarguably\todo{Is this "zu wertend"?}, the most important part of the whole workflow is its configuration. Without it, each simulation and training session would produce similar, if not the same results. By tweaking different parameters of a run, market dynamics can be changed and agent performance be influenced. The goal of our monitoring tools is to enable users to assess the extent to which each changed parameter may have influenced certain characteristics of the training and/or monitoring session, and to enable them to make informed decisions for subsequent experiments.
+Unarguably\todo{Is this "zu wertend"?}, the most important part of the whole workflow is its configuration. Without it, each simulation and training session would produce similar, if not the same results. By tweaking different parameters of a run, market dynamics can be changed and agent performance be influenced. The goal of our monitoring tools is to enable users to assess the extent to which each parameter influences certain characteristics of the training and/or monitoring session, and to enable them to make informed decisions for subsequent experiments. 
+
+Ultimately, all configuration is done using various .json files which contain key-value pairs of the different configurable items. We further differentiate between different groups of configurations, which means that hyperparameters influencing the market, such as maximum possible prices or storage costs, are being handled separate from parameters needed for Reinforcement-Learning Agents, such as their learning rates.
+
+Our main goals when building our configuration tools were to make sure that users are able to quickly and safely configure their experiments in a way that is also easily reproducible. To be as user-friendly as possible, a lot of validation logic has been implemented to be able to catch invalid configurations as early as possible, making sure that whenever a training session is started, it is confirmed that the configuration is valid an the training will not fail due to wrongly set parameters at any point. Since our project has also been deployed to a remotely accessible, high-performant machine, we decided on creating an approachable web-interface for our configuration tool, which can now be used for both configuring, starting and evaluating experiments.
 
 \subsection{The webserver/Docker-API}
 
 \todo{Example screenshot of the webserver. Configuration and running page?}
+On our webserver, users can upload .json files containing any number of (valid) key-value pairs, or create configurations using a form that always makes sure that it contains only valid values. For example, if the user chooses a circular economy market scenario with rebuy prices enabled, the user will not be able to configure an agent that cannot operate on such a market.
 
+Aside from uploading or configuring complete, ready-to-go configurations, users can also choose to upload or create incomplete configurations, which can then be combined with other configuration objects to create a complete, valid configuration. This allows users to create multiple incomplete configurations containing only select parameters and then test all permutations of these configurations to observe the effect the different parameter combinations have on the experiment. \todo{Example of a mix and match of parameters}
 
 \section{During training}
 \subsection{Choosing what to show the user}

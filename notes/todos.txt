@@ -2,7 +2,7 @@
 - section in workflow for config files -> mention webserver?
 - section in introduction for different market scenarios. Linear, circular, rebuy, monopoly, duopoly, oligopoly
 - remove stuff from the ToC (subsections etc.)
-
+- Make sure code-y things are in \texttt{}
 
 - direct vs. indirect speech
 - tenses
