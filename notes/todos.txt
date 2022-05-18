@@ -15,6 +15,7 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 - market simulation vs. market situation vs. (market) scenario
 - re-buy vs. rebuy and re-sell vs. resell
 - refurbished vs. used
+- we vs. one vs. users
 
 - make sure vendors vs. agents is always used correctly
 
