@@ -8,7 +8,7 @@
 - tenses
 - gender neutrality
 
-
+- Capitalization, especially Rulebased, Reinforcement-Learning
 
 Seemingly interchangeable phrases should be identical/used correctly across the thesis:
 - monitoring session vs. monitoring run

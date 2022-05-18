@@ -26,8 +26,18 @@ The webserver then also offers the option of starting multiple runs of the same 
 
 \todo{Is this perhaps too much interpretation for this section?} A configuration can be interpreted as producing "reliable" agents if any number of simulations all converge on similar agent performances (meaning similar mean rewards). The more singular runs diverge from the mean \todo{mean or median? What do I use?}, the more the agent's performance is dependent on the initial market state, meaning that its performance is less stable, as it will produce unpredictable results on new, unknown market scenarios. A higher number of runs that produce agents which perform on similar levels of performance means that the specific configuration, to be axact the parameters responsible for the Reinforcement-Learning algorithm, produces "reliable" agents: No matter the state of the market, the agent can always be expected to perform on the same level that was observed during the training process, setting prices that lead to similar profits. Reliability is therefore one of the most important factors in determing an agent's overall quality, as the ultimate goal is always to be able to deploy the agent onto the real market, which will always differ from the simulated environments the agent experienced during training, simply due to the fact that real markets are being influenced by so many more parameters than one could model in our, or for that matter any simulation framework. 
 
-\section{During training}
-\subsection{Choosing what to show the user}
+\section{Choosing what to show the user during training}
+
+During the training process, we of course record all actions the different vendors take, both for the training agent and its competitors, be they also Reinforcement-Learning Agents or Rulebased agents. Market states and events are also being recorded, to be able to match them to the agent's actions later on. Users of course want to have an indicator of how the training run is going so far, both to inform themselves about the total progress of the training, but also about the quality of the agent they are training. We now have to decide what information is shown to the user, making sure that the user is well informed, whilst also holding back on displaying too much information at once, as the underlying data and states are ever-evolving, leading to many datapoints being invalidated shortly after their creation.
+
+In \nameref{section:WhenToMonitorWhat} we introduced the idea of running monitoring sessions while a training session is still runnning. To enable this, we need to save 
+
+In the following section, we will present a number of datapoints that could be chosen to be shown to the user, together with an analysis on where their strengths in informing the user lie.
+
+\subsection{Informing the user}
+
+
+
 \section{Saving models at certain stages during training}
 \subsection{Live-monitoring tools (see Chapter 4)}
 
