@@ -28,15 +28,15 @@ The webserver then also offers the option of starting multiple runs of the same 
 
 \section{Choosing what to show the user during training}
 
-During the training process, we of course record all actions the different vendors take, both for the training agent and its competitors, be they also Reinforcement-Learning Agents or Rulebased agents. Market states and events are also being recorded, to be able to match them to the agent's actions later on. Users of course want to have an indicator of how the training run is going so far, both to inform themselves about the total progress of the training, but also about the quality of the agent they are training. We now have to decide what information is shown to the user, making sure that the user is well informed, whilst also holding back on displaying too much information at once, as the underlying data and states are ever-evolving, leading to many datapoints being invalidated shortly after their creation.
+During the training process, we of course record all actions the different vendors take, both for the training agent and its competitors, be they also Reinforcement-Learning Agents or Rulebased agents. Market states and events are also being recorded, to be able to match them to the agent's actions later on. Users of course want to have an indicator of how the training run is going so far, both to inform themselves about the total progress of the training, but also about the quality of the agent they are training. We now have to decide what information is shown to the user, making sure that the user is well informed, whilst also holding back on displaying too much information at once to prevent confusion, as the underlying data and states are ever-evolving, leading to many datapoints being invalidated shortly after their creation.
 
-In \nameref{section:WhenToMonitorWhat} we introduced the idea of running monitoring sessions while a training session is still runnning. To enable this, we need to save 
+In \nameref{section:WhenToMonitorWhat} we introduced the idea of running monitoring sessions while a training session is still runnning. To enable this, we need to save so-called "intermediate" models of our agents at set intervals. These intermediate models contain the current policy of an agent, which we can then use in conjunction with our various monitoring tools to gather first information on the agent's performance, to then try and predict future characteristics. In some cases, we may find that the agent is developing in a wrong direction, leading to reduced profits or irrational policies. We can use this information to terminate a training session preemptively to save resources and time to start anew. \todo{This section sort of doesn't fit in with the flow of the points above and below}
 
 In the following section, we will present a number of datapoints that could be chosen to be shown to the user, together with an analysis on where their strengths in informing the user lie.
 
 \subsection{Informing the user}
 
-
+The first choice and a save bet when looking at datapoints that will be shown to users is the current training progress. Each training run is defined in its length by a parameter that sets the number of episodes that should be simulated. Each episode consists of an independently initialized market state on which another configurable amount of steps is run. Within each step, the vendors take turns in observing the current market state and then setting their prices for the new, used, and depending on the chosen marketplace, a rebuy price. 
 
 \section{Saving models at certain stages during training}
 \subsection{Live-monitoring tools (see Chapter 4)}
