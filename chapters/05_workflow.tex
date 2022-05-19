@@ -38,9 +38,8 @@ In the following section, we will present a number of datapoints that could be c
 
 The first choice and a save bet when looking at datapoints that will be shown to users is the current training progress. Each training run is defined in its length by a parameter that sets the number of episodes that should be simulated. Each episode consists of an independently initialized market state on which another configurable amount of steps is run. Within each step, the vendors take turns in observing the current market state and then setting their prices for the new, used, and depending on the chosen marketplace, a rebuy price. 
 
-\section{Saving models at certain stages during training}
-\subsection{Live-monitoring tools (see Chapter 4)}
+\section{After training/Complete agents/Why do we even monitor after training?}
 
-\section{After training/Complete agents}
-\subsection{Why do we even monitor these agents?}
+After training has completed, the most crucial phase of the workflow starts. As has been mentioned before, the end-goal of users using the simulation framework is to be able to deploy trained agents into real markets to set prices independently of human inputs or guidance. Starting from this premise, the goal of the training process is therefore to model the marketplace as realistically as possible, so that the trained agents can transfer the knowledge from their training to the real market "without noticing a difference". Before deploying agents to the real market, they need to be tested on their reliability and robustness, to make sure that their policies are not just effective under certain circumstances, but that they are also able to adapt to different market scenarios and behave accordingly.
+
 \subsection{Which datapoints prove to be/are most effective?}
