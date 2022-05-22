@@ -14,6 +14,7 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 - monitoring session vs. monitoring run
 - market simulation vs. market situation vs. (market) scenario
 - re-buy vs. rebuy and re-sell vs. resell
+	- rebuy prices vs. rebuy-prices
 - refurbished vs. used
 - we vs. one vs. users
 
