@@ -22,14 +22,16 @@ The main goal of the aforementioned bachelors project was to develop a realistic
 
 The \emph{re-buy price} is defined as the price a vendor is willing to pay a customer to buy back a used product, while the \emph{used price} is defined as the price the vendor sets for products they previously bought back and now want to sell alongside new products (whose price is defined by the \emph{new price}).
 
-From now on, we will refer to the Circular Economy market simply as \emph{the market}.
+In our framework, we implemented a number of "market blueprints" both for classic Linear Economy markets, as well as for Circular Economy markets both with and without rebuy-prices enabled. All market types offer various configurations for the number of competitors: Monopoly, Duopoly and Oligopoly scenarios can be configured, with the Duopoly and Oligopoly scenarios offering rulebased comeptitors specifically built for the respective market scenario. \todo{How big is the difference between Duopoly and Oligopoly actually?}
+
+From now on, when mentioning the general \emph{market} or \emph{marketplace}, we are referencing the Circular Economy marketplace with rebuy prices.
 
 \subsection{Using the simulated marketplace to train agents}\label{subsection:ReinforcementLearningIntroduction}
 
-After the initial market was modelled the goal was to train agents using different reinforcement-learning algorithms to dynamically set prices on this marketplace, both in monopolistic scenarios as well as in competition with rule-based vendors which set prices following a strict set of pre-defined rules. \todo{Is the following sentence a footnote?}These rules can range from simply undercutting the lowest competitor's price to more advanced techniques such as price-fixing and -gouging.\todo{find out if we have such competitors}
+After the initial market was modelled the goal was to train agents using different reinforcement-learning algorithms to dynamically set prices on this marketplace, both in monopolistic scenarios as well as in competition with rule-based vendors which set prices following a strict set of pre-defined rules. \todo{Is the following sentence a footnote?}These rules can range from simply undercutting the lowest competitor's price to more advanced techniques such as price-fixing and -gouging.\todo{find out if we have such competitors} Furthermore, functionality was added that allows for different Reinforcement learning algorithms to be trained against each other on the same marketplace, as well as functionality for so-called \emph{self-play}, where an agent plays against itself, or more precisely, against its own policy.
 
-% hbt! tells Latex to not put the figure at the top/bottom/newpage but exactly where defined
-\begin{figure}[hbt!]
+% [hbt!] tells Latex to not put the figure at the top/bottom/newpage but exactly where defined
+\begin{figure}
 	\centering
 	\includegraphics[height = 7 cm]{images/RL-Overview.png}\\[1 ex]
 	\caption{The standard reinforcement-learning model in the context of our market.}
