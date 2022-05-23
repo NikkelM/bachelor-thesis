@@ -1,8 +1,7 @@
 - Glossary-type chapter for important keywords
-- section in workflow for config files -> mention webserver?
-- section in introduction for different market scenarios. Linear, circular, rebuy, monopoly, duopoly, oligopoly
 - remove stuff from the ToC (subsections etc.)
 - Make sure code-y things are in \texttt{}
+- Add a link to the recommerce repository?
 
 - direct vs. indirect speech
 - tenses
@@ -17,9 +16,13 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 	- rebuy prices vs. rebuy-prices
 - refurbished vs. used
 - we vs. one vs. users
+- in the real market vs. on the real market
 
 - make sure vendors vs. agents is always used correctly
 
 
 approaches chapter:
 - "A" monitoring session vs. "The" monitoring session
+
+workflow chapter:
+- in the section for config files -> mention webserver?
