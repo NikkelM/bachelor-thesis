@@ -5,7 +5,7 @@
 \section{Objective of the Thesis}
 
 This thesis introduces ways to monitor the \emph{Reliability} and \emph{Robustness} of different agents (rule-based as well as trained using various Reinforcement-Learning (RL) approaches) tasked with dynamically pricing products in a Circular Economy marketplace. Since the terms \emph{Reliability} and \emph{Robustness} can be interpreted differently depending on context and personal experience, we will define our usage in the \nameref{subsection:ReliabilityAndRobustness} section.
-Following the term definitions, we will give a short introduction ans explanation of what a Circular Economy market is (\nameref{subsection:CircularEconomy}) as well as what Reinforcement Learning is and how we employ the technique in our framework (\nameref{subsection:ReinforcementLearningIntroduction}).
+Following the term definitions, we will give a short introduction ans explanation of what a Circular Economy market is (\nameref{section:CircularEconomy}) as well as what Reinforcement Learning is and how we employ the technique in our framework (\nameref{subsection:ReinforcementLearningIntroduction}).
 
 \subsection{Reliability and Robustness}\label{subsection:ReliabilityAndRobustness}
 
@@ -15,14 +15,10 @@ Following the term definitions, we will give a short introduction ans explanatio
 	\item \emph{Robustness}: \emph{Robustness} is the property that describes how well an agent performs over a longer period of time. In a real-world marketplace, consistency is key to success, so finding profitability outliers and their causes are a central part of evaluating an agent's Robustness.
 \end{enumerate}
 
-\section{Introduction to the Recommerce platform}
-
-\subsection{The Circular Economy model}\label{subsection:CircularEconomy}
+\section{The Circular Economy model}\label{section:CircularEconomy}
 The main goal of the aforementioned bachelors project was to develop a realistic online marketplace that simulates a Circular Economy. A market is most commonly referred to as being a "Circular Economy" if it includes the three activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical Linear Economy market each product is being sold once at its \emph{new price} and after use being thrown away, in a Circular Economy, recycling and thereby waste reduction is a major focus. In our project, we modelled this by adding two additional price channels, \emph{re-buy price} and \emph{used price}, to the pre-existing \emph{new price} of a product.
 
-The \emph{re-buy price} is defined as the price a vendor is willing to pay a customer to buy back a used product, while the \emph{used price} is defined as the price the vendor sets for products they previously bought back and now want to sell alongside new products (whose price is defined by the \emph{new price}).
-
-In our framework, we implemented a number of "market blueprints" both for classic Linear Economy markets, as well as for Circular Economy markets both with and without rebuy-prices enabled. All market types offer various configurations for the number of competitors: Monopoly, Duopoly and Oligopoly scenarios can be configured, with the Duopoly and Oligopoly scenarios offering rulebased comeptitors specifically built for the respective market scenario. \todo{How big is the difference between Duopoly and Oligopoly actually?}
+The \emph{re-buy price} is defined as the price a vendor is willing to pay a customer to buy back a used product, while the \emph{used price} is defined as the price the vendor sets for products they previously bought back and now want to sell alongside new products (whose price is defined by the \emph{new price}). We will go into more detail of how we modeled different market scenarios in \nameref{section:MarketScenarios}.
 
 From now on, when mentioning the general \emph{market} or \emph{marketplace}, we are referencing the Circular Economy marketplace with rebuy prices.
 
