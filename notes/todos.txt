@@ -17,6 +17,7 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 - refurbished vs. used
 - we vs. one vs. users
 - in the real market vs. on the real market
+- effect vs. affect
 
 - make sure vendors vs. agents is always used correctly
 
