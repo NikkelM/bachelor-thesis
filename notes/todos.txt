@@ -2,6 +2,7 @@
 - remove stuff from the ToC (subsections etc.)
 - Make sure code-y things are in \texttt{}
 - Add a link to the recommerce repository?
+- reformat labels to use meta-info for sections etc. (sec: vs section:) https://en.m.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
 
 - direct vs. indirect speech
 - tenses
@@ -18,6 +19,7 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 - we vs. one vs. users
 - in the real market vs. on the real market
 - effect vs. affect
+- reinforcement-learning vs. Reinforcement Learning
 
 - make sure vendors vs. agents is always used correctly
 
