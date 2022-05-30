@@ -6,7 +6,7 @@
 
 - direct vs. indirect speech
 - tenses
-- gender neutrality
+- gender neutrality (he vs. she vs. they for the user for example)
 
 - Capitalization, especially Rulebased, Reinforcement-Learning
 
@@ -19,7 +19,7 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 - we vs. one vs. users
 - in the real market vs. on the real market
 - effect vs. affect
-- reinforcement-learning vs. Reinforcement Learning
+- reinforcement-learning vs. Reinforcement Learning vs. RL vs. Reinforcement-Learning vs. ...
 
 - make sure vendors vs. agents is always used correctly
 
