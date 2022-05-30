@@ -4,7 +4,15 @@
 
 \section{Market scenarios} \label{sec:MarketScenarios}
 
-In our framework, we implemented a number of "market blueprints" both for classic Linear Economy markets, as well as for Circular Economy markets both with and without rebuy-prices enabled. All market types offer various configurations for the number of competitors: Monopoly, Duopoly and Oligopoly scenarios can be configured, with the Duopoly and Oligopoly scenarios offering rulebased competitors specifically built for the respective market scenario.
+In our framework, we implemented a number of "market blueprints" both for classic Linear Economy markets, as well as for Circular Economy markets both with and without rebuy-prices enabled. There are marketplaces available for each combination of the following two features:
+\begin{enumerate}
+    \item Marketplace type: Linear Economy, Circular Economy, Circular Economy with rebuy-prices
+	\item Market environment: Monopoly, Duopoly, Oligopoly
+\end{enumerate}
+The marketplace type defines the number of prices the vendor has to set. In a Linear Economy, vendors only set prices for new items, in a Circular Economy prices for refurbished items need to be set as well. In order to simulate a recommerce market, the user can choose a Circular Economy with rebuy-prices.
+The market environment defines the number of competing vendors in the simulation: Monopolistic and competitive markets are available, where the Duopoly is simply a particular version of an Oligopoly. Depending on the chosen market environment, one, two, or any number of vendors can be chosen to be used in the experiment.
+
+In most usecases of our framework, only one competitor in the market needs to be configured by the user, most of the times this will be a Reinforcement Learning agent that is to be trained. For this reason, each market environment is equipped with a pre-defined set of competitors that will play against the agent defined by the user. To allow for more control over the simulation, users are however also able to customize this "competitor-list" to use any vendor they want - as long as they are a valid fit for the marketplace type. In certain situations, such as the \nameref{subsec:AgentMonitoring} tool, multiple Reinforcement Learning agents can be chosen to compete on one market.\todo{Currently, all agents perform independent from each other on their markets, so this statement is incorrect}
 
 \section{Customers}
 
