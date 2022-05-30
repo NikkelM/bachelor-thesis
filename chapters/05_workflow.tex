@@ -32,7 +32,7 @@ During the training process, we of course record all actions the different vendo
 
 The first choice and a save bet when looking at datapoints that will be shown to users is the current training progress. Each training run is defined in its length by a parameter that sets the number of episodes that should be simulated. Each episode consists of an independently initialized market state on which a configurable amount of steps is run. Within each step, the vendors take turns in observing the current market state and then setting their prices for the new and used products and depending on the chosen marketplace, a rebuy price.\todo{Should episodes and steps be defined/explained earlier than this? In the introduction? Specific section/Chapter for important terms and phrases?} We use the training progress to drive the frequency with which data is being shown to the user using the console: Every 10 episodes, we output the current progress, containing both the current number of steps and episodes completed, as well as the mean reward over all episodes the agent has completed. Additionally, to give a more visual component to the training progress a progress bar is displayed, which also tries to estimate the training-time remaining, based on the previous length the simulation of an episode took.
 
-Using only these two datapoints, the user knows the two most important things: How far along in the training process he is, and how the agent is currently performing. 
+Using only these two datapoints, the user knows the two most important things: How far along in the training process he is, and how the agent is currently performing.
 
 \todo{Small paragraph for rl-vs-rl and self-training having different output}
 
