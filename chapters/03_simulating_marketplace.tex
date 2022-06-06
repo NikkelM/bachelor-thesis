@@ -47,7 +47,7 @@ While our framework will not be able to reproduce all types of pricing models us
 			            \item \emph{SAC}: Soft Actor-Critic
 			            \item \emph{TD3}: Twin-delayed deep deterministic policy gradient
 		            \end{itemize}
-		      We will be using some of these algorithms in our experiments and briefly compare them with our Rule-Based approaches using our various monitoring tools, which are introduced in \nameref{ch:Approaches}.
+		            We will be using some of these algorithms in our experiments and briefly compare them with our Rule-Based approaches using our various monitoring tools, which are introduced in \nameref{ch:Approaches}.
 	      \end{itemize}
 \end{enumerate}
 
@@ -57,4 +57,5 @@ While our framework will not be able to reproduce all types of pricing models us
 We do not claim in any way that our simulation framework is exhaustive or complete. There are a number of parameters influencing market dynamics, small and great, which have not been modelled due to time constraints or their unpredictability in their affect on the market state or customer decisions. Seasonality of demand, customer retention and loyalty through branding and unforeseen effects on market dynamics such as global events (for example, the Covid-19 pandemic) are just some of the places where our market simulation diverges from the real market. However, all of these factors are either very rare in nature (global, unforeseen events), only applicable to a subset of markets (brand loyalty) or can initially be discarded as their effect on market dynamics is predictable, making them a lower priority than other parameters (seasonality).
 
 Of course, this results in the fact that our framework can not be used out-of-the-box for any kind of market. However, great care was taken during the development process to build each part of the simulation in a modular way, so that new functionality can easily be integrated into it. Marketplaces, customers and vendors (rule-based as well as those using Reinforcement learning) have all been implemented as classes disconnected from each other, so that new variants of each can easily be added to the pool of available options to be used in experiments. The same goes for our monitoring tools, all of which have been built to work with any (valid) combination of input parameters.
-\todo{What effect does this have on our monitoring?}
+
+The lack of realism on certain areas of the framework does not directly impact the way that our monitoring tools work or can be used. It must however be noted that the interpretation of results must always be based on the knowledge of these limitations.
