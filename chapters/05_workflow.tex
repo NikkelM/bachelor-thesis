@@ -3,7 +3,7 @@
 \begin{jointwork}
 	The main goal of the bachelor's project is to provide a simple-to-use but powerful interface for training Reinforcement-Learning algorithms on highly configurable markets for users in both a research and a business context. To achieve this, multiple components \todo{Better word for components}had to be developed and connected to create the workflow we now provide. This section will go over the most important parts of the workflow, focusing on the way each of them supports the monitoring capabilities of the framework.
 \end{jointwork}
-
+\todo{Diagram for the whole workflow?}
 \section{Configuring the run}
 
 Unarguably\todo{Is this "zu wertend"?}, the most important part of the whole workflow is its configuration. Without it, each simulation and training session would produce similar, if not the same results. By tweaking different parameters of a run, market dynamics can be changed and agent performance be influenced. The goal of our monitoring tools is to enable users to assess the extent to which each parameter influences certain characteristics of the training and/or monitoring session, and to enable them to make informed decisions for subsequent experiments.
@@ -36,11 +36,11 @@ Using only these two datapoints, the user knows the two most important things: H
 
 \todo{Small paragraph for rl-vs-rl and self-training having different output}
 
-\subsection*{What else is done during training}
+\section*{The monitoring workflow}
 
-In \nameref{sec:WhenToMonitorWhat} we introduced the idea of running monitoring sessions while a training session is still runnning. To enable this, we need to save so-called "intermediate" models of our agents at set intervals. These intermediate models contain the current policy of an agent, which we can then use in conjunction with our various monitoring tools to gather first information on the agent's performance, to then try and predict future characteristics. In some cases, we may find that the agent is developing in a wrong direction, leading to reduced profits or irrational policies. We can use this information to terminate a training session preemptively to save resources and time to start anew.
+Within the recommerce workflow, there are two points in time where our monitoring tools are or can be used. While a training session is running, the \nameref{subsec:Tensorboard} tool is used to give insights into the current training run and detailed explanations of current states and actions. By saving intermediate models, the \nameref{subsec:LiveMonitoring} enables the user to compare agent models saved at different times within the training process. This can be especially useful when trying to determine the most effective amount of training steps after which a model does not improve further, to optimize future runs. After the training has finished, or at any point disconnected from a training session, our tools described in \nameref{sec:CompleteAgents} can be used to further analyze the trained models.
 
-\section{After training/Complete agents/Why do we even monitor after training?}
+\subsection*{After training}
 
 After training has completed, the most crucial phase of the workflow starts. As has been mentioned before, the end-goal of users using the simulation framework is to be able to deploy trained agents into real markets to set prices independently of human inputs or guidance. Starting from this premise, the goal of the training process is therefore to model the marketplace as realistically as possible, so that the trained agents can transfer the knowledge from their training to the real market "without noticing a difference". Before deploying agents to the real market, they need to be tested on their reliability and robustness, to make sure that their policies are not just effective under certain circumstances, but that they are also able to adapt to different market scenarios and behave accordingly.
 

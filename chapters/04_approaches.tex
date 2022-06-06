@@ -19,16 +19,16 @@ In the following sections, we will take a look at all of the tools our framework
 
 When talking about monitoring agents during a training session, we are of course talking about Reinforcement-Learning agents, since Rule-Based agents always perform the same and cannot be trained. \todo{Is this a footnote? This info should be obvious, but maybe should be mentioned for completeness?} Monitoring agents while they are still being trained enables us to be more closely connected to the training process. Ultimately, the goal of such monitoring tools is to be able to predict the estimated "quality" of the final trained agent as reliably as possible while the training is still going. Users must however be careful when interpreting the results of monitoring tools that work on "incomplete" agents, we will go more into this  in \nameref{ch:InterpretResults}.
 
-\subsection*{Tensorboard}
+\subsection*{Tensorboard} \label{subsec:Tensorboard}
 
 The \emph{Tensorboard} is an external tool from the from the Reinforcement-Learning library \emph{Tensorflow}\footnote[0][-0.2]{https://www.tensorflow.org/}. With just a few lines of code \todo{Question for the tutors: Do I give an example of such code?} a training session can be connected to a Tensorboard. We are then able to pass any number of parameters and metrics we deem interesting or useful to the Tensorboard, which then offers visualizations for each of them, updating live as the training progresses. Though the Tensorboard does not interpret data in any way, it is an immensely useful tool for quickly and easily recording data and offering a first rough comparison of competitors in the market.
 \todo{Create some sample diagrams. Perhaps these can be re-used in the workflow section, so they could perhaps be moved to the Appendix for reference?}
 
-\subsection*{Live-monitoring}
+\subsection*{Live-monitoring} \label{subsec:LiveMonitoring}
 
 Unlike the Tensorboard, the monitoring tools summarised under the term \emph{live-monitoring} were completely and from the ground up built by our team. For most of the visualizations, the \emph{matplotlib}\footnote[0][-0.2]{https://matplotlib.org/stable/index.html} library was used. Live-monitoring aims to be more configurable and in-depth with the metrics it offers than the aforementioned Tensorboard. \todo{make the current live-monitoring so that graphs are actually being created while the training is running, not like it is now with graphs only being created afterwards} During a training session, "intermediate" models, as we will call them, are being saved after a set number of episodes. \todo{Have we introduced the concept of episodes before? Should a Glossary be introduced, or do we do this stuff in the introduction?} These models contain the current policy of the agent and can be used the same as models of complete agents, the only difference being the quality of the agent, as those with a lower amount of trained episodes generally perform worse. \todo{Does this need a citation?} These intermediate models can then be used by a range of monitoring tools available to us. Since the models only contain the current policy of an agent but not the history of states and actions preceding the model, we need to run separate simulations on these models to be able to analyze and evaluate them. For this, we utilize our \emph{agent-monitoring} toolset, which will be explained in more detail in the \nameref{subsec:AgentMonitoring} section.
 
-\section{Monitoring complete agents}
+\section{Monitoring complete agents} \label{sec:CompleteAgents}
 
 The following tools offer a wide range of functionalities for monitoring complete agents. We can use these tools to both determine the reliability and robustness of one certain agent, but also to compare different agents, either during a joined monitoring session or by comparing results of monitoring runs on identically parametrized market situations.
 
