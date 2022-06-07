@@ -1,5 +1,5 @@
 \begin{jointwork}
-	This thesis builds upon the bachelors project "Online Marketplace Simulation: A Testbed for Self-Learning Agents" of the Enterprise Platform and Integration Concepts research group at the Hasso-Plattner-Institute. Therefore, the project will be referenced and all examples and experiments will have been conducted using its framework.
+	This thesis builds upon the bachelors project `Online Marketplace Simulation: A Testbed for Self-Learning Agents' of the Enterprise Platform and Integration Concepts research group at the Hasso-Plattner-Institute. Therefore, the project will be referenced and all examples and experiments will have been conducted using its framework.
 \end{jointwork}
 
 \section{Objective of the Thesis}
@@ -16,7 +16,7 @@ Following the term definitions, we will give a short introduction ans explanatio
 \end{enumerate}
 
 \section{The Circular Economy model}\label{sec:CircularEconomy}
-The main goal of the aforementioned bachelors project was to develop a realistic online marketplace that simulates a Circular Economy. A market is most commonly referred to as being a "Circular Economy" if it includes the three activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical Linear Economy market each product is being sold once at its \emph{new price} and after use being thrown away, in a Circular Economy, recycling and thereby waste reduction is a major focus. In our project, we modelled this by adding two additional price channels, \emph{re-buy price} and \emph{used price}, to the pre-existing \emph{new price} of a product.
+The main goal of the aforementioned bachelors project was to develop a realistic online marketplace that simulates a Circular Economy. A market is most commonly referred to as being a \emph{Circular Economy} if it includes the three activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical Linear Economy market each product is being sold once at its \emph{new price} and after use being thrown away, in a Circular Economy, recycling and thereby waste reduction is a major focus. In our project, we modelled this by adding two additional price channels, \emph{re-buy price} and \emph{used price}, to the pre-existing \emph{new price} of a product.
 
 The \emph{re-buy price} is defined as the price a vendor is willing to pay a customer to buy back a used product, while the \emph{used price} is defined as the price the vendor sets for products they previously bought back and now want to sell alongside new products (whose price is defined by the \emph{new price}). We will go into more detail of how we modelled different market scenarios in \nameref{sec:MarketScenarios}.
 
@@ -32,8 +32,7 @@ After the initial market was modelled the goal was to train agents using differe
 \begin{figure}
 	\centering
 	\includegraphics[height = 7 cm]{images/RL-Overview.png}\\[1 ex]
-	\caption{The standard reinforcement-learning model in the context of our market.}
-	\label{fig:IntroRLDiagram}
+	\caption{The standard reinforcement-learning model in the context of our market.}\label{fig:IntroRLDiagram}
 \end{figure}
 
 Reinforcement-learning agents are trained through a process of trial-and-error. They interact with the market through an observable state and an action which influences the following state. \Cref{fig:IntroRLDiagram} illustrates the RL-model in the context of our market.\todo{re-buy instead of buy-back in the diagram}\todo{Create a \emph{nicer} diagram with the three prices} The goal of the agent is to maximize its reinforcement signal, which in our case is the profit the agent made during the last episode, since we want to train agents to maximize profits on real markets. An episode consists of a fixed, configurable number of timesteps, where in each step each vendor (agent) sets their prices and customers make purchasing decisions. By observing which prices lead to which profits (reinforcement signal), the agents get more effective in their pricing decisions over the course of training.
