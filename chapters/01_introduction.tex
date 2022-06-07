@@ -8,14 +8,13 @@ This thesis introduces ways to monitor the \emph{Reliability} and \emph{Robustne
 Following the term definitions, we will give a short introduction ans explanation of what a Circular Economy market is (\nameref{sec:CircularEconomy}) as well as what Reinforcement Learning is and how we employ the technique in our framework (\nameref{subsec:ReinforcementLearningIntroduction}).
 
 \subsection*{Reliability and Robustness}\label{subsec:ReliabilityAndRobustness}
-
+\todo{Alex: `Hast du für Reliability und Robustness irgendeine Quantifizierung? Wenn ja, und wenn die Erklärung kompakt ist würde ich die hier schon bringen.' Quantifizierung der Begriffe: Welche Metriken kommen zum Einsatz, um die jeweils zu beurteilen? Warum?}
 \begin{enumerate}
 	\item \emph{Reliability}: With \emph{Reliability}, we describe the ability of an agent to be able to transfer knowledge of a certain type of marketplace and/or against a certain opponent over to a different scenario. If Agent A performs well against Agent B on marketplace M, does it perform the same against Agent C on marketplace M, or against Agent B on marketplace N?
-
 	\item \emph{Robustness}: \emph{Robustness} is the property that describes how well an agent performs over a longer period of time. In a real-world marketplace, consistency is key to success, so finding profitability outliers and their causes are a central part of evaluating an agent's Robustness.
 \end{enumerate}
 
-\section{The Circular Economy model}\label{sec:CircularEconomy}
+\section{The Circular Economy model}\label{sec:CircularEconomy}\todo{Alex: `Die Erklärung des Marktes ist noch sehr knapp gehalten und beschränkt sich augenscheinlich mehr auf die daraus resultierenden Preise als den Flow der Produkte. Letzteres wäre aber ein wichtiger Aspekt (Erklärung? Vlt. würde auch Visualisierung helfen)' Am Ende vom ersten Absatz: `This allow the simulated customers to return/re-sell products...'}
 The main goal of the aforementioned bachelors project was to develop a realistic online marketplace that simulates a Circular Economy. A market is most commonly referred to as being a \emph{Circular Economy} if it includes the three activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical Linear Economy market each product is being sold once at its \emph{new price} and after use being thrown away, in a Circular Economy, recycling and thereby waste reduction is a major focus. In our project, we modelled this by adding two additional price channels, \emph{re-buy price} and \emph{used price}, to the pre-existing \emph{new price} of a product.
 
 The \emph{re-buy price} is defined as the price a vendor is willing to pay a customer to buy back a used product, while the \emph{used price} is defined as the price the vendor sets for products they previously bought back and now want to sell alongside new products (whose price is defined by the \emph{new price}). We will go into more detail of how we modelled different market scenarios in \nameref{sec:MarketScenarios}.
@@ -24,7 +23,7 @@ In the context of e-commerce, Circular Economy markets are also referred to as \
 
 From now on, when mentioning the general \emph{market} or \emph{marketplace}, we are referencing the Circular Economy marketplace with re-buy prices.
 
-\subsection*{Using the simulated marketplace to train agents}\label{subsec:ReinforcementLearningIntroduction}
+\subsection*{Using the simulated marketplace to train agents}\label{subsec:ReinforcementLearningIntroduction}\todo{Alex: `Du bringst in der Einführung in der Erklärung des Marktes recht überraschend die Grundidee von RL. Das würde ich vielliecht in eine Extra-Sektion schieben.' -> evtl. in related work?}
 
 After the initial market was modelled the goal was to train agents using different reinforcement-learning algorithms to dynamically set prices on this marketplace, both in monopolistic scenarios as well as in competition with rule-based vendors which set prices following a strict set of pre-defined rules. These rules can range from simply undercutting the lowest competitor's price to more advanced techniques such as smart inventory management and reliance on previous sales data, which can in some cases and combinations even lead to price-fixing and -gouging between competing vendors (see \nameref{bullet:GameTheory} for a more in-depth analysis). Furthermore, functionality was added that allows for different Reinforcement learning algorithms to be trained against each other on the same marketplace, as well as functionality for so-called \emph{self-play}, where an agent plays against itself, or more precisely, against its own policy.
 

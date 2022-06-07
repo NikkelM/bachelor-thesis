@@ -29,3 +29,6 @@ approaches chapter:
 
 workflow chapter:
 - in the section for config files -> mention webserver?
+
+Feedback Alex v1: (Rest als to-dos)
+- Formulierungen wie "easily", "obviously" oder "of course" würde ich vermeiden. Kann man dir immer sehr schnell als ein "so offensichtlich, einfach oder nicht in frage zu stellen ist das gar nicht" ankreiden :)
