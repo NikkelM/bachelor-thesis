@@ -20,11 +20,28 @@ Customers are at the center of every type of marketplace, which makes them an in
 
 Most customers' behaviour can be classified into one of a (non-exhaustive) number of categories, such as \emph{Perfectionistic} or \emph{Impsulsive} consumers, proposed in \cite{ShoppingStyles}\todo{Table in appendix}. As we are focussing on dynamic pricing and our vendors can only change/influence the prices of their products, we decided on primarily building customers that value price over any other features a product may have, thereby incentivizing our vendors to make the most of their pricing power. This behaviour coincides with the shopping style of the \emph{Price Conscious} or\emph{`Value for money'} consumer.
 
-To make Linear markets a little more complex and add another dimension than just the \emph{new price} of a product for vendors to consider, random quality values are assigned to each vendor's products. Customers in this economy model were modelled take this quality value into account when making their purchasing decisions, further reinforcing the shopping style mentioned above. As Circular Economy markets are inherently more complex than their linear counterparts (through the addition of two new price channels, which influence each other through their effect on customers), it was decided to remove the additional layer of quality values from these markets.\todo{Formulas here for the customer decisionmaking process}
+To make Linear markets a little more complex and add another dimension than just the \emph{new price} of a product for vendors to consider, random quality values are assigned to each vendor's products. Customers in this economy model were modelled take this quality value into account when making their purchasing decisions, further reinforcing the shopping style mentioned above. As Circular Economy markets are inherently more complex than their linear counterparts (through the addition of two new price channels, which influence each other through their effect on customers), it was decided to remove the additional layer of quality values from these markets.
 
-Once a customer has decided to buy a product from any of the available vendors, they turn into an \emph{owner}. In the next step of the simulation, they are offered the option of selling their now used product back to one of the vendors. If they decide to do so, the vendor pays them the advertised \emph{re-buy price} and adds the used product to their inventory, from where it can then be sold as a refurbished product in the next step.
+Within each simulated step, after the various vendors have set their prices, purchase decisions are made by the customers. To save on computational time, probability distributions are used to determine what part of the total number of customers will decide to take which action. See below the way these distributions are calculated for an exemplary Circular Economy marketplace:
 
-As mentioned above, the current decisionmaking process of customers in our simulation is still quite basic. \nameref{sec:DivergingFromRealMarket} introduces a number of parameters and circumstances that have bigger or smaller impact on a customer's purchasing decision.
+Let \(P_{in}\) be the price of the new and \(P_{ir}\) the price of the refurbished product of vendor \(i\). Using these prices, we define \(R_{in}\) as the \emph{preference ratio} regarding \(P_{in}\):
+\begin{equation}
+	R_{in} := \frac{10}{P_{in}} - e^{P_{in} - 8}
+\end{equation}
+and similarly, \(R_{ir}\) as the \emph{preference ratio} regarding \(P_{ir}\):
+\begin{equation}
+	R_{ir} := \frac{5.5}{P_{ir}} - e^{P_{ir} - 5}
+\end{equation}
+
+In order to be usable as a probability distribution, the different ratios need to add up to \(1\). We use \emph{softmax} to normalize our values, after which each \emph{preference ratio} will be within the interval \((0,1)\), with all ratios adding up to \(1\) as needed.
+
+Following this, the market uses a \emph{multinomial} distribution to draw \(n\) samples, with \(n\) being the number of customers making a pruchasing decision in this step of the simulation.
+
+As mentioned above, the current decisionmaking process of customers in our simulation is still quite basic. \nameref{sec:DivergingFromRealMarket} introduces a number of parameters and circumstances that can be used to make customer behaviour more realistic. Through the modular approach when building the framework, any customer behaviour implemented in the future can easily be added to the pool of available options, as long as it manifests in the form of a probability distribution, at which point the number of customers can be split between different distributions when drawing from the \emph{multinomial} distribution (or any other distribution if so desired).
+
+\subsection*{Owners}
+
+Once a customer has decided to buy a product from any of the available vendors, they turn into an \emph{owner}. In the next step of the simulation, they are offered the option of selling their now used product back to one of the vendors\todo{Formula}. If they decide to do so, the vendor pays them the advertised \emph{re-buy price} and adds the used product to their inventory, from where it can then be sold as a refurbished product in the next step.
 
 \section{Vendors}\label{sec:ExplainVendors}\todo{Alex: `Die Erklärung der Methoden die ihr zum Pricing benutzt leidet ein wenig an der selben Angewohnheit, da werden Klassennamen genannt, mit denen der Leser potenziell nichts anfangen kann, aber eine Erklärung was die einzelnen Methoden tun fehlt fast völlig, oder benutzt sehr unspezifiscihe Formulierungen wie `This agent does not take pricing decisions of its competitors in the market into account, but simply acts according to its own storage costs.' Der letzte Satz gibt zwar eine gute Einleitung ab, aber erklärt nicht was der Algorithmus eigentlich tut. Wenn die Information welche Algorithmen zur Anwendung kamen relevant ist, sollte die Erklärung hier nicht nur eine interne Bezeichnung nennen, sondern wenigstens eine grobe Erklärung der Funktionsweise enthalten (wenn auch zB im Falle der RL Algos natürlich nicht so spezifisch wie in Jans Arbeit).'}\todo{Alex: `Welche dieser Methoden kommen auf der `ausgewerteten' Seite zum Einsatz? Welche sind nur Gegenspieler für die Auswertung? Das würde ich noch sauber abgrenzen.'}
 
