@@ -2,13 +2,14 @@
 - remove stuff from the ToC (subsections etc.)
 - Make sure code-y things are in \texttt{}
 - Add a link to the recommerce repository?
-- reformat labels to use meta-info for sections etc. (sec: vs section:) https://en.m.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
+- format labels to use meta-info for sections etc. (sec: vs section:) https://en.m.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
 
 - direct vs. indirect speech
 - tenses
 - gender neutrality (he vs. she vs. they for the user for example)
 
 - Capitalization, especially Rulebased, Reinforcement-Learning
+- \emph should be used consistently
 
 Seemingly interchangeable phrases should be identical/used correctly across the thesis:
 - monitoring session vs. monitoring run
