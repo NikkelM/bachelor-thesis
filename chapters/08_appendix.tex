@@ -14,6 +14,8 @@
 	\caption{Consumer Shopping Styles, taken from~\cite{ShoppingStyles}, including information from~\cite{ShoppingStyles2}}\label{tab:shoppingStyles}
 \end{table}
 
+\newpage
+
 \begin{table}[ht]
 	\begin{tabular}{p{1\textwidth}}
 		\toprule
@@ -45,3 +47,44 @@
 	\end{tabular}
 	\caption{15 areas of motivation toward second-hand shopping, taken from~\cite{SecondHandMotives} (descriptions omitted)}\label{tab:SecondHandMotives}
 \end{table}
+
+\newpage
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={Policy implementation of the \emph{RuleBasedCEAgent}}}
+\lstset{label={lst:PolicyRuleBasedCE}}
+\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+def policy(self, market_state) -> tuple:
+  products_in_storage = market_state[1]
+  price_refurbished = 0
+  price_new = self.config_market.production_price
+  rebuy_price = 0
+  if products_in_storage < self.config_market.max_storage/15:
+    # fill up the storage immediately
+    price_refurbished = int(self.config_market.max_price * 6/10)
+    price_new += int(self.config_market.max_price*6/10)
+    rebuy_price = price_refurbished-1
+
+  elif products_in_storage < self.config_market.max_storage/10:
+    # fill up the storage
+    price_refurbished = int(self.config_market.max_price * 5/10)
+    price_new += int(self.config_market.max_price * 5/10)
+    rebuy_price = price_refurbished - 2
+
+  elif products_in_storage < self.config_market.max_storage/8:
+    # storage content is ok
+    price_refurbished = int(self.config_market.max_price * 4/10)
+    price_new += int(self.config_market.max_price * 4/10)
+    rebuy_price = price_refurbished // 2
+
+  else:
+    # storage too full, get rid of some refurbished products
+    price_refurbished = int(self.config_market.max_price * 2/10)
+    price_new += int(self.config_market.max_price * 7/10)
+    rebuy_price = 0
+
+  price_new = min(9, price_new)
+  return (price_refurbished, price_new, rebuy_price)
+\end{lstlisting}
