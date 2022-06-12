@@ -2,7 +2,7 @@
 	This thesis builds upon the bachelors project `Online Marketplace Simulation: A Testbed for Self-Learning Agents' of the Enterprise Platform and Integration Concepts research group at the Hasso-Plattner-Institute. Therefore, the project will be referenced and all examples and experiments will have been conducted using its framework.
 \end{jointwork}
 
-\section{Objective of the Thesis}
+\section*{Objective of the Thesis}
 
 This thesis introduces ways to monitor and evaluate different agents (rule-based as well as trained using various Reinforcement-Learning approaches) tasked with dynamically pricing products in a \emph{Circular Economy} marketplace.
 % Since the terms \emph{Reliability} and \emph{Robustness} can be interpreted differently depending on context and personal experience, we will define our usage in the \nameref{subsec:ReliabilityAndRobustness} section. Following the term definitions, we will give a short introduction and explanation of what a Circular Economy market is (\nameref{sec:CircularEconomy}) as well as what Reinforcement Learning is and how we employ the technique in our framework (\nameref{subsec:ReinforcementLearningIntroduction}).
@@ -15,7 +15,7 @@ We will first introduce the general concept of a \emph{recommerce} market (\name
 % 	\item \emph{Robustness}: \emph{Robustness} is the property that describes how well an agent performs over a longer period of time. In a real-world marketplace, consistency is key to success, so finding profitability outliers and their causes are a central part of evaluating an agent's Robustness.
 % \end{enumerate}
 
-\section{The Circular Economy model}\label{sec:CircularEconomy}\todo{Better name for the section}
+\section*{The Circular Economy model}\label{sec:CircularEconomy}\todo{Better name for the section}
 The main goal of the aforementioned bachelors project was to develop an online marketplace that simulates a realistic Circular Economy market environment. A market is most commonly referred to as being a \emph{Circular Economy} if it includes the three activities of reduce, reuse and recycle \cite{circularEconomyDefinition}. This means that while in a classical Linear Economy market each product is being sold once at its \emph{new price} and after use being thrown away, in a Circular Economy, a focus is put on recycling and thereby waste reduction. In our project, we first started by modelling the simpler Linear Economy, upon which we then built the more complex Circular Economy markets. This was done by adding two additional price channels, \emph{re-buy price} and \emph{used price}, to the pre-existing \emph{new price} of a product. Refer to \Cref{fig:IntroMarketDynamics} for an overview of the product lifecycle in a Circular economy.
 
 \begin{figure}
