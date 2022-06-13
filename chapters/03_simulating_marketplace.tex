@@ -9,10 +9,10 @@ In our framework, we implemented a number of `market blueprints' both for classi
 	\item Marketplace type: Linear Economy, Circular Economy, Circular Economy with rebuy-prices
 	\item Market environment: Monopoly, Duopoly, Oligopoly
 \end{enumerate}
-The marketplace type defines the number of prices the vendor has to set. In a Linear Economy, vendors only set prices for new items, in a Circular Economy prices for refurbished items need to be set as well. In order to simulate a recommerce market, the user can choose a Circular Economy with rebuy-prices.
+The marketplace type defines the number of prices the vendor has to set. In a Linear Economy, vendors only set prices for new items, in a Circular Economy prices for refurbished items need to be set as well. In order to simulate a recommerce market, the user can choose a Circular Economy with rebuy-prices.\todo{Overview diagram of the whole framework}
 The market environment defines the number of competing vendors in the simulation: Monopolistic and competitive markets are available, where the Duopoly is simply a particular version of an Oligopoly. Depending on the chosen market environment, one, two, or any number of vendors can be chosen to be used in the experiment.
 
-In the most common usecase of our framework, the training of Reinforcement-Learning agents, only the agent that is to be trained needs to be configured by the user. For this reason, each market environment is equipped with a pre-defined set of competitors that will play against the agent defined by the user. To allow for more control over the simulation, users are however also able to customize this `competitor-list' to use any vendors they want - as long as they are a valid fit for the marketplace type and the number of competitors chosen matches the market environment. In certain situations, such as the \nameref{subsec:AgentMonitoring} tool, multiple Reinforcement Learning agents can be chosen to compete on one market.\todo{Market state random shuffle}
+In the most common usecase of our framework, the training of Reinforcement-Learning agents, only the agent that is to be trained needs to be configured by the user. For this reason, each market environment is equipped with a pre-defined set of competitors that will play against the agent defined by the user. To allow for more control over the simulation, users are however also able to customize this `competitor-list' to use any vendors they want - as long as they are a valid fit for the marketplace type and the number of competitors chosen matches the market environment. In certain situations, such as the \nameref{subsec:AgentMonitoring} tool, multiple Reinforcement Learning agents can be chosen to compete on one market.
 
 \section{Customers}\label{sec:Customers}
 
@@ -33,8 +33,7 @@ Within each simulated step, after the various vendors have set their prices, pur
 	\[
 		R_{ir} := \frac{5.5}{P_{ir}} - e^{P_{ir} - 5}
 	\]
-\end{definition}
-
+\end{definition}\todo{Graph for the preference ratios in Appendix?}
 
 In order to be usable as a probability distribution, the different ratios need to add up to \(1\). We use \emph{softmax} to normalize our values, after which each \emph{preference ratio} will be within the interval \((0,1)\), with all ratios adding up to \(1\) as needed.
 
