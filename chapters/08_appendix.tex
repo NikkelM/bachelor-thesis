@@ -50,12 +50,8 @@
 
 \newpage
 
-\todo{These code-inserts are really ugly... use something like https://carbon.now.sh/}
-\lstset{language=Python}
-\lstset{frame=lines}
 \lstset{caption={Policy implementation of the \emph{RuleBasedCEAgent}, simplified for readability}}
 \lstset{label={lst:PolicyRuleBasedCE}}
-\lstset{basicstyle=\footnotesize}
 \begin{lstlisting}
 def policy(market_state) -> tuple:
   products_in_storage = market_state[1]
@@ -92,11 +88,8 @@ def policy(market_state) -> tuple:
 
 \newpage
 
-\lstset{language=Python}
-\lstset{frame=lines}
 \lstset{caption={Policy implementation of the \emph{RuleBasedCERebuyAgentStorageMinimizer}, simplified for readability}}
 \lstset{label={lst:PolicyRuleBasedStorageMinimizer}}
-\lstset{basicstyle=\footnotesize}
 \begin{lstlisting}
 def policy(observation) -> tuple:
   own_storage = observation[1].item()
