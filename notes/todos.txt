@@ -9,6 +9,7 @@
 	- works only in chapters with no section in ToC (because of the counter)
 - check if all ref's are numbered correctly, same with sections
 - https://carbon.now.sh/ for code
+- Arbeiten der anderen zitieren
 
 - direct vs. indirect speech
 - tenses
