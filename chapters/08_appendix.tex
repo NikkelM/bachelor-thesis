@@ -50,41 +50,71 @@
 
 \newpage
 
+\todo{These code-inserts are really ugly... use something like https://carbon.now.sh/}
 \lstset{language=Python}
 \lstset{frame=lines}
-\lstset{caption={Policy implementation of the \emph{RuleBasedCEAgent}}}
+\lstset{caption={Policy implementation of the \emph{RuleBasedCEAgent}, simplified for readability}}
 \lstset{label={lst:PolicyRuleBasedCE}}
 \lstset{basicstyle=\footnotesize}
 \begin{lstlisting}
-def policy(self, market_state) -> tuple:
+def policy(market_state) -> tuple:
   products_in_storage = market_state[1]
   price_refurbished = 0
-  price_new = self.config_market.production_price
+  price_new = config_market.production_price
   rebuy_price = 0
-  if products_in_storage < self.config_market.max_storage/15:
+  if products_in_storage < config_market.max_storage/15:
     # fill up the storage immediately
-    price_refurbished = int(self.config_market.max_price * 6/10)
-    price_new += int(self.config_market.max_price*6/10)
+    price_refurbished = config_market.max_price * 6/10
+    price_new += config_market.max_price*6/10
     rebuy_price = price_refurbished-1
 
-  elif products_in_storage < self.config_market.max_storage/10:
+  elif products_in_storage < config_market.max_storage/10:
     # fill up the storage
-    price_refurbished = int(self.config_market.max_price * 5/10)
-    price_new += int(self.config_market.max_price * 5/10)
+    price_refurbished = config_market.max_price * 5/10
+    price_new += config_market.max_price * 5/10
     rebuy_price = price_refurbished - 2
 
-  elif products_in_storage < self.config_market.max_storage/8:
+  elif products_in_storage < config_market.max_storage/8:
     # storage content is ok
-    price_refurbished = int(self.config_market.max_price * 4/10)
-    price_new += int(self.config_market.max_price * 4/10)
+    price_refurbished = config_market.max_price * 4/10
+    price_new += config_market.max_price * 4/10
     rebuy_price = price_refurbished // 2
 
   else:
     # storage too full, get rid of some refurbished products
-    price_refurbished = int(self.config_market.max_price * 2/10)
-    price_new += int(self.config_market.max_price * 7/10)
+    price_refurbished = config_market.max_price * 2/10
+    price_new += config_market.max_price * 7/10
     rebuy_price = 0
 
   price_new = min(9, price_new)
   return (price_refurbished, price_new, rebuy_price)
+\end{lstlisting}
+
+\newpage
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={Policy implementation of the \emph{RuleBasedCERebuyAgentStorageMinimizer}, simplified for readability}}
+\lstset{label={lst:PolicyRuleBasedStorageMinimizer}}
+\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+def policy(observation) -> tuple:
+  own_storage = observation[1].item()
+  refurbished_prices, new_prices, rebuy_prices =
+      get_competitor_prices()
+
+  price_new = max(median(new_prices)-1,
+      config_market.production_price+1)
+
+  if own_storage < config_market.max_storage/15:
+    # fill up the storage immediately
+    price_refurbished = max(new_prices + refurbished_prices)
+    rebuy_price = price_new - 1
+
+  else:
+    # storage too full, get rid of some refurbished products
+    rebuy_price = min(rebuy_prices)-config_market.max_price*10
+    price_refurbished = int(np.quantile(refurbished_prices, 0.25))
+
+  return clamped_prices(price_refurbished, price_new, rebuy_price)
 \end{lstlisting}
