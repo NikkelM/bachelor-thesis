@@ -10,6 +10,7 @@
 - check if all ref's are numbered correctly, same with sections
 - https://carbon.now.sh/ for code
 - Arbeiten der anderen zitieren
+- Shorten/simplify class names, especially the RuleBased-Agents
 
 - direct vs. indirect speech
 - tenses
