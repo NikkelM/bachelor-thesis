@@ -1,0 +1,26 @@
+{
+	"task": "training",
+	"marketplace": "recommerce.market.circular.circular_sim_market.CircularEconomyRebuyPriceOligopoly",
+	"agents": [
+		{
+			"name": "Stable-Baselines (PPO)",
+			"agent_class": "recommerce.rl.stable_baselines.sb_ppo.StableBaselinesPPO",
+			"argument": ""
+		},
+		{
+			"name": "Fixed-Price",
+			"agent_class": "recommerce.market.circular.circular_vendors.FixedPriceCERebuyAgent",
+			"argument": [4, 7, 2]
+		},
+		{
+			"name": "CE-Rebuy Competitive",
+			"agent_class": "recommerce.market.circular.circular_vendors.RuleBasedCERebuyAgentCompetitive",
+			"argument": ""
+		},
+		{
+			"name": "Storage-Minimizer",
+			"agent_class": "recommerce.market.circular.circular_vendors.RuleBasedCERebuyAgentStorageMinimizer",
+			"argument": ""
+		}
+	]
+}
