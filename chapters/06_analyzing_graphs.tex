@@ -39,22 +39,22 @@ In the following sections we will use our different monitoring tools on the two 
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean1.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean1.pdf}\\
 		\subcaption{SAC-Duopoly\_1, 2000 training episodes}\label{fig:SACDuopolyProfitsMean1}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean2.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean2.pdf}\\
 		\subcaption{SAC-Duopoly\_2, 2000 training episodes}\label{fig:SACDuopolyProfitsMean2}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean3.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean3.pdf}\\
 		\subcaption{SAC-Duopoly\_3, 2000 training episodes}\label{fig:SACDuopolyProfitsMean3}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean4.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsMean4.pdf}\\
 		\subcaption{SAC-Duopoly\_4, 6000 training episodes}\label{fig:SACDuopolyProfitsMean4}
 	\end{subfigure}
 	\caption{Profit per episode of four different training runs of an SAC-Agent on a Duopoly market.}\label{fig:SACDuopolyProfitsMean}
@@ -72,22 +72,22 @@ This might lead one to believe that the two competitors' policies align closely 
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity1.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity1.pdf}\\
 		\subcaption{Model trained for 500 episodes}\label{fig:SACDuopolyProfitsDensity1}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity2.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity2.pdf}\\
 		\subcaption{Model trained for 1000 episodes}\label{fig:SACDuopolyProfitsDensity2}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity3.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity3.pdf}\\
 		\subcaption{Model trained for 1500 episodes}\label{fig:SACDuopolyProfitsDensity3}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\centering
-		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity4.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity4.pdf}\\
 		\subcaption{Model trained for 1999 episodes}\label{fig:SACDuopolyProfitsDensity4}
 	\end{subfigure}
 	\caption{Probability densities for achieving a certain profit for four different training stages of the SAC-Duopoly\_1 experiment.}\label{fig:SACDuopolyProfitsDensity}
@@ -101,7 +101,32 @@ We can also observe that the SAC-Agent models which were trained for longer are 
 
 Evaluating a model based on just the mean profits achieved by the monitored agents may not be enough for many users, which is why our Live-monitoring offers many other useful diagrams as well. In this section, we will take a look at a small selection of them. The graphs used will be from the SAC-Duopoly\_1 experiment.
 
-The question may arise how the profits achieved by the different vendors is split between the two available retail channels, how many products were bought back from customers and how much the vendors had to pay for storage of these used products. For all of these questions, the Live-monitoring offers two types of diagrams: First, the simple lineplots shown in \Cref{fig:SACDuopolyProfitsMean} can be used, as well as scatterplots which visualize the exact data recorded during the episode, instead of the trends which the lineplots show. \Cref{fig:SACDuopolyProfitChannelsMixed} shows the different metrics mentioned above in the two different formats.
+The question may arise how the profits achieved by the different vendors are split between the two available retail channels of new and refurbished products, how many products were bought back from customers or how much the vendors had to pay for storage of these used products. For all of these questions, the Live-monitoring offers two types of diagrams: First, the simple lineplots shown in \Cref{fig:SACDuopolyProfitsMean} can be used, as well as scatterplots which visualize the exact data recorded during the episode, instead of the trends which the lineplots show. \Cref{fig:SACDuopolyMixedGraphs} shows the different metrics mentioned above in the two different formats.
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyMixedGraphs1.pdf}\\
+		\subcaption{Amount of products sold back to vendors}\label{fig:SACDuopolyMixedGraphs1}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyMixedGraphs2.pdf}\\
+		\subcaption{Storage costs for bought back products}\label{fig:SACDuopolyMixedGraphs2}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyMixedGraphs3.pdf}\\
+		\subcaption{Profit from selling new products}\label{fig:SACDuopolyMixedGraphs3}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyMixedGraphs4.pdf}\\
+		\subcaption{Number of customers that bought nothing}\label{fig:SACDuopolyMixedGraphs4}
+	\end{subfigure}
+	\caption{Diagrams visualizing various datapoints collected during training of the SAC-Duopoly\_1 experiment.}\label{fig:SACDuopolyMixedGraphs}
+\end{figure}
 
 \section*{Which graphs are how useful?}
 \section*{What limitations are there?}
