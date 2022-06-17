@@ -101,9 +101,9 @@ We can also observe that the SAC-Agent models which were trained for longer are 
 
 Evaluating a model based on just the mean profits achieved by the monitored agents may not be enough for many users, which is why our Live-monitoring offers many other useful diagrams as well. In this section, we will take a look at a small selection of them. The graphs used will be from the SAC-Duopoly\_1 experiment.
 
-The question may arise how the profits achieved by the different vendors are split between the two available retail channels of new and refurbished products, how many products were bought back from customers or how much the vendors had to pay for storage of these used products. For all of these questions, the Live-monitoring offers two types of diagrams: First, the simple lineplots shown in \Cref{fig:SACDuopolyProfitsMean} can be used, as well as scatterplots which visualize the exact data recorded during the episode, instead of the trends which the lineplots show. \Cref{fig:SACDuopolyMixedGraphs} shows the different metrics mentioned above in the two different formats.
+The question may arise how the profits achieved by the different vendors are split between the two available retail channels of new and refurbished products, how many products were bought back from customers or how much the vendors had to pay for storage of these used products. For all of these questions, the Live-monitoring offers two types of diagrams: First, the simple lineplots shown in \Cref{fig:SACDuopolyProfitsMean} can be used, as well as scatterplots which visualize the exact data recorded during the episode, instead of the trends which the lineplots show. \Cref{fig:SACDuopolyMixedGraphs} shows a number of different metrics such as the ones mentioned above, all of which are available as both linepots and scatterplots.
 
-\begin{figure}
+\begin{figure}[!hbt]
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
@@ -127,6 +127,10 @@ The question may arise how the profits achieved by the different vendors are spl
 	\end{subfigure}
 	\caption{Diagrams visualizing various datapoints collected during training of the SAC-Duopoly\_1 experiment.}\label{fig:SACDuopolyMixedGraphs}
 \end{figure}
+
+Many connections can be made when evaluating different diagrams side-by-side, such as the rather obvious observation of the initially high storage costs of the SAC-Agent in \Cref{fig:SACDuopolyMixedGraphs2} being caused by a very high number of products that were bought back from customers (\Cref{fig:SACDuopolyMixedGraphs1}), which is in turn a cause of higher than optimal rebuy prices set by the Reinforcement-Learning Agent. High storage and rebuy costs will have then caused a policy change to set lower rebuy prices, thereby de-incentivizing customers to sell back as many products as they used to and lowering the agent's storage costs.
+
+The next pair of diagrams tells us two things: First, the vendors' initially low profits from selling new products as shown in \Cref{fig:SACDuopolyMixedGraphs3}, or in the bigger picture, low profits overall (\Cref{fig:SACDuopolyProfitsMean1}) were not caused by the vendors setting prices that are too low, but rather too high. This is confirmed by an initially very high number of customers which chose to not buy any of the products offered by the vendors (\Cref{fig:SACDuopolyMixedGraphs4}). Additionally, when comparing the total profits of the two vendors with the profits gained from selling only new products (\Cref{fig:SACDuopolyProfitsMean1} and \Cref{fig:SACDuopolyMixedGraphs3}), we can come to the conclusion that the SAC-Agent must have learned to prioritize selling refurbished products over new ones and keeping storage costs low, since we know that overall profits for the two vendors are about the same in the later parts of the training, but the SAC-Agent sells a lot less new products than its Rule-Based counterpart.
 
 \section*{Which graphs are how useful?}
 \section*{What limitations are there?}
