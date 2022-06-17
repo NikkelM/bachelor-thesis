@@ -33,6 +33,7 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 - effect vs. affect
 - reinforcement-learning vs. Reinforcement Learning vs. RL vs. Reinforcement-Learning vs. ...
 - TensorFlow not Tensorflow (same for board)
+- trained on x episodes vs. trained for x episodes
 
 - make sure vendors vs. agents is always used correctly
 
