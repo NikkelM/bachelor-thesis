@@ -11,6 +11,8 @@
 - https://carbon.now.sh/ for code
 - Arbeiten der anderen zitieren
 - Shorten/simplify class names, especially the RuleBased-Agents
+- make sure "Fachwörter" are all in the same format, normal, emph or texttt
+- Rename classes for the thesis to be more descriptive and short
 
 - direct vs. indirect speech
 - tenses
@@ -33,6 +35,8 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 
 - make sure vendors vs. agents is always used correctly
 
+- simulating marketplace chapter:
+- indentation of the inventory, databased etc. subssecs
 
 approaches chapter:
 - "A" monitoring session vs. "The" monitoring session

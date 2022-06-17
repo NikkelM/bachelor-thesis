@@ -8,11 +8,11 @@
 
 \subsection*{SAC-Duopoly}
 
-We will first be conducting two different experiments: For one experiment, we will train a Reinforcement-Learning Agent using the SAC-algorithm (see \nameref{item:StableBaselines}) on a Duopoly marketplace with rebuy prices. The agent will be trained against a Rule-Based agent, more specifically the \emph{RuleBasedCERebuyAgentStorageMinimizer}, as presented in \nameref{subsec:DataDrivenModels}. The concrete configurations can be found in \Cref{fig:SACDuopolyConfigEnvironment} and \Cref{fig:SACDuopolyConfigMarket}. We will refer to this experiment as the \emph{SAC-Duopoly}.
+We will first be conducting two different experiments: For one experiment, we will train a Reinforcement-Learning Agent using the SAC-algorithm (see \nameref{item:StableBaselines}\todo{Don't refer to own chapter if it is not explained there. Refer to stablebaselines documentation?}) on a Duopoly marketplace with rebuy prices. The agent will be trained against a Rule-Based agent, more specifically the \emph{RuleBasedCERebuyAgentStorageMinimizer}, as presented in \nameref{subsec:DataDrivenModels}. The concrete configurations can be found in \Cref{fig:SACDuopolyConfigEnvironment} and \Cref{fig:SACDuopolyConfigMarket}. We will refer to this experiment as the \emph{SAC-Duopoly}.
 
 \subsection*{PPO-Oligopoly}
 
-For the second experiment, we will be training a different Reinforcement-Learning agent on a more complex market with more participants: A PPO-agent (\nameref{item:StableBaselines}) will be trained on an Oligopoly-Scenario, again with rebuy prices enabled. Three different Rule-Based agents will compete against the PPO-Agent on the same market:
+For the second experiment, we will be training a different Reinforcement-Learning agent on a more complex market with more participants: A PPO-agent (\nameref{item:StableBaselines}\todo{Don't refer to own chapter if it is not explained there. Refer to stablebaselines documentation?}) will be trained on an Oligopoly-Scenario, again with rebuy prices enabled. Three different Rule-Based agents will compete against the PPO-Agent on the same market:
 
 \begin{enumerate}
 	\item A \emph{FixedPriceAgent}, which will always set the following three prices:
