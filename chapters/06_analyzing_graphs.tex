@@ -6,13 +6,15 @@
 
 \section*{Setting up the experiments}
 
+We will first be conducting two different experiments, using two different Reinforcement-Learning algorithms and two different market environments. Both experiments will however be conducted on the same marketplace type, a Circular Economy model with rebuy-prices. Both experiments will be conducted multiple times using the same configurations\todo{Why?}, and diagrams of different versions will be denoted using an underscore for differentiation.
+
 \subsection*{SAC-Duopoly}
 
-We will first be conducting two different experiments: For one experiment, we will train a Reinforcement-Learning Agent using the SAC-algorithm (see \nameref{item:StableBaselines}\todo{Don't refer to own chapter if it is not explained there. Refer to stablebaselines documentation?}) on a Duopoly marketplace with rebuy prices. The agent will be trained against a Rule-Based agent, more specifically the \emph{RuleBasedCERebuyAgentStorageMinimizer}, as presented in \nameref{subsec:DataDrivenModels}. The concrete configurations can be found in \Cref{fig:SACDuopolyConfigEnvironment} and \Cref{fig:SACDuopolyConfigMarket}. We will refer to this experiment as the \emph{SAC-Duopoly}.
+For the first experiment, we will train a Reinforcement-Learning Agent using the SAC-algorithm~\cite{StableBaselines3SAC} on a Duopoly marketplace with rebuy prices. The agent will be trained against a Rule-Based agent, more specifically the \emph{RuleBasedCERebuyAgentStorageMinimizer}, as presented in \nameref{subsec:DataDrivenModels}. The concrete configurations can be found in \Cref{fig:SACDuopolyConfigEnvironment} and \Cref{fig:SACDuopolyConfigMarket}. We will refer to this experiment as the \emph{SAC-Duopoly}.
 
 \subsection*{PPO-Oligopoly}
 
-For the second experiment, we will be training a different Reinforcement-Learning agent on a more complex market with more participants: A PPO-agent (\nameref{item:StableBaselines}\todo{Don't refer to own chapter if it is not explained there. Refer to stablebaselines documentation?}) will be trained on an Oligopoly-Scenario, again with rebuy prices enabled. Three different Rule-Based agents will compete against the PPO-Agent on the same market:
+For the second experiment, we will be training a different Reinforcement-Learning agent on a more complex market with more participants: A PPO-agent~\cite{StableBaselines3PPO} will be trained on an Oligopoly-Scenario, again with rebuy prices enabled. Three different Rule-Based agents will compete against the PPO-Agent on the same market:
 
 \begin{enumerate}
 	\item A \emph{FixedPriceAgent}, which will always set the following three prices:
@@ -25,24 +27,47 @@ For the second experiment, we will be training a different Reinforcement-Learnin
 	\item The second agent is a \emph{RuleBasedCERebuyAgentCompetitive}, a more complicated and sophisticated version of the simple \emph{RuleBasedCEAgent}, which was introduced in \nameref{subsec:InventoryBasedModels}. The competitive version used for this experiment combines features of both the basic \emph{RuleBasedCEAgent} and the \emph{RuleBasedCERebuyAgentStorageMinimizer}. It's policy implementation can be found in \todo{Insert code snippet in Appendix}xyz.
 	\item For the third competitor, we will again be using the \emph{RuleBasedCERebuyAgentStorageMinimizer}.
 \end{enumerate}
-
 This experiment will be referred to as the \emph{PPO-Oligopoly}.
 
 \section*{Experiment results}
 
-A commonly asked question when deciding on the quality of a Reinforcement-Learning Agent is their \emph{stability}\todo{cite?}. If an algorithm is stable, the trained agent will produce similar results over multiple training sessions, on the condition that the parameters do not differ. Not only the rewards achieved at the end of the training will be very similar, but also the amount of episodes needed to reach certain thresholds. In the case of the SAC-Duopoly experiment, we ran the same configuration three four times: For the first three times we used the exact same parameters, in the fourth experiment we tripled the amount of training episodes, meaning that the SAC-Agent had more time to alter its policy. \Cref{fig:SACDuopolyProfits} shows the results of these three training sessions, created using the \nameref{subsec:LiveMonitoring} tool, which runs directly after training has concluded, visualizing the data collected during the training process.
+In the following sections we will use our different monitoring tools on the two experiments we conducted. We will start with the Live monitoring tools, which runs automatically after the training run and creates over 90 graphs and diagrams already. Due to this high number of available diagrams, we will always only look at a curated selection, highlighting those with the most and least use for the user.
 
-\begin{figure}[ht]
+\subsection*{Live monitoring}
+
+\begin{figure}[!hbt]
 	\begin{subfigure}{\textwidth}
 		\centering
 		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfits1_2.pdf}\\[1 ex]
 	\end{subfigure}
 	\begin{subfigure}{\textwidth}
 		\centering
-		\includegraphics[width = .5\textwidth]{images/experiments/SACDuopoly/SACDuopolyProfits3.pdf}\\[1 ex]
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfits3_4.pdf}\\[1 ex]
 	\end{subfigure}
-	\caption{Profit per episode of three different training runs of an SAC-Agent on a Duopoly market}\label{fig:SACDuopolyProfits}
+	\caption{Profit per episode of four different training runs of an SAC-Agent on a Duopoly market. The agent in bottom right was trained using three times as many episodes as the other ones.}\label{fig:SACDuopolyProfitsMean}
 \end{figure}
+
+A commonly asked question when deciding on the quality of a Reinforcement-Learning Agent is their \emph{stability}\todo{cite?}. If an algorithm is stable, the trained agent will produce similar results over multiple training sessions, on the condition that the parameters do not differ. Not only the rewards achieved at the end of the training will be very similar, but also the amount of episodes needed to reach certain thresholds. In the case of the SAC-Duopoly experiment, we ran the same configuration four times: The first three experiments were run using the exact same parameters, for the fourth experiment the amount of training episodes were tripled, meaning that the SAC-Agent had more time to alter its policy. \Cref{fig:SACDuopolyProfitsMean} shows the results of these four training sessions, created using the \nameref{subsec:LiveMonitoring} tool and visualizes the data collected during the training process. Although many other graphs are created\todo{Table/List of all graphs needed}, the visualization of the total profit of the agent is the most convenient to use when evaluating an agent's performance, as the total profit is the parameter which the agent is trying to optimize.
+
+\Cref{fig:SACDuopolyProfitsMean} shows the stability of the SAC-Agent very well. The agent not only reached the break-even threshold of a reward of 0 after around 150 episodes in each of the four training runs, but no matter the total length of training, the profit would always stabilize and stay at around 670. Had the monitoring tools shown that the agent performs worse than expected in some of the experiments, we could conclude that this particular algorithm is not fit for the type of work required by our market simulation.
+
+We can also observe that the profits of the SAC-Agent and the Rule-Based Agent (in the case of this experiment, a \emph{RuleBasedCERebuyAgentStorageMinimizer}) seem to be closely linked to each other in this particular scenario. In the beginning of each experiment, when the Reinforcement-Learning agent still knows very little about the market and makes great losses, the Rule-Based agent also has a hard time to perform well. However, as soon as the SAC-Agent starts to perform better, the Rule-Based agent is also able to increase its mean profits at around the same rate as the SAC-Agent. Even more interestingly, the agents not only increase their profits at the same rate, but also very quickly arrive at a point where they earn the same mean amount as the other.
+
+This might lead one to believe that the two competitors' policies align closely with each other. To validate this claim, another type of diagram created by the Live monitoring tool can be used: The density plots. These diagrams visualize probability densities for the various datasets recorded. While the diagrams shown in \Cref{fig:SACDuopolyProfitsMean} simply visualize data that was collected during the training run, density plots are created by simulating the marketplace an additional time.\todo{This is explanatory, perhaps move it to the approaches chapter} This allows us to use the `intermediate' models we saved during the training run (see \nameref{subsec:LiveMonitoring}) to compare the Reinforcement-Learning Agent's policies at different points in time during the training, which can be useful to determine the optimal length of training to optimize the workflow.
+
+\begin{figure}[!hbt]
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity1_2.pdf}\\[1 ex]
+	\end{subfigure}
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/SACDuopolyProfitsDensity3_4.pdf}\\[1 ex]
+	\end{subfigure}
+	\caption{Probability densities for achieving a certain profit for four different training stages of the SAC-Duopoly\_1 experiment. The postfix of the agent name denotes the episode after which the model was saved.}\label{fig:SACDuopolyProfitsDensity}
+\end{figure}
+
+\Cref{fig:SACDuopolyProfitsDensity}
 
 \section*{Which graphs are how useful?}
 \section*{What limitations are there?}

@@ -13,6 +13,7 @@
 - Shorten/simplify class names, especially the RuleBased-Agents
 - make sure "Fachwörter" are all in the same format, normal, emph or texttt
 - Rename classes for the thesis to be more descriptive and short
+- Check indentations in front of paragraphs
 
 - direct vs. indirect speech
 - tenses
