@@ -34,6 +34,7 @@ Seemingly interchangeable phrases should be identical/used correctly across the 
 - reinforcement-learning vs. Reinforcement Learning vs. RL vs. Reinforcement-Learning vs. ...
 - TensorFlow not Tensorflow (same for board)
 - trained on x episodes vs. trained for x episodes
+- Live monitoring vs. Live-monitoring
 
 - make sure vendors vs. agents is always used correctly
 
