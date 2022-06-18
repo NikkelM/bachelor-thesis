@@ -106,8 +106,7 @@
 % \chapter*{Demo Chapter}
 % \input{DELETE/demo}
 
-% Adding a * removes it from toc 
-% Using \addchap adds it to ToC without numbering
+% Adding a * removes it from toc
 \chapter{Introduction}
 \input{chapters/01_introduction}
 
@@ -148,6 +147,9 @@
 \addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography[heading = none]
 
+% suppress page numbers
+\pagenumbering{gobble}
+% Using \addchap adds it to ToC without numbering
 \addchap{Appendix}
 \input{chapters/08_appendix}
 
