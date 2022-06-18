@@ -1,11 +1,27 @@
 \begin{jointwork}\label{ch:OurWorkflow}
-	The main goal of the market simulation framework is to provide a simple-to-use but powerful tool for training Reinforcement-Learning algorithms on highly configurable markets for users in both a research and a business context. To achieve this, multiple components had to be developed and connected to create the workflow we now provide. This section will go over the most important parts of the workflow, focusing on the way each of them supports the monitoring capabilities of the framework.
+	The main goal of the market simulation framework is to provide a simple-to-use but powerful tool for training Reinforcement-Learning algorithms on highly configurable markets for users in both a research and a business context. To achieve this, multiple components had to be developed and connected to create the workflow we now provide. This section will introduce the most important parts of the workflow.
 \end{jointwork}
-\todo{Diagram for the whole workflow? -> Maybe use one of the ones Leo created}
-\todo{Exemplary workflow to show how easy it is and how many graphs and diagrams you get to monitor things?}
 \todo{Judith: `Maybe change chapter order of this with Chapter 4?'}
 
-\section{Configuring the run}
+When working with our simulation framework, users can choose from two options: First, it is possible to use our tool via a custom Command line interface (CLI). Alternatively, users can interact with the framework through a web-interface, which utilizes Docker for remote-deployment of tasks issued by the user. For detailed insights into our web-interface and remote deployment processes, see \cite{JudithThesis}.
+
+\Cref{fig:WorkflowSwimlanes} depicts the common workflow activities in our framework. For all possible tasks, the user needs to provide configuration files, which define both the task to be worked on as well as parameters which influence market and agent behaviour (see \nameref{sec:ConfigureRun}). After the configuration files have been validated, the simulation framework initialized the requested marketplace and agents, and then starts the requested task, for which there are currently three options provided through the CLI or web-interface:
+
+\begin{itemize}
+	\item Training
+	\item (Agent-)Monitoring
+	\item Exampleprinter
+\end{itemize}
+
+At the end of the respective task, the user is always provided with the various diagrams and data collected during the respective task, which can then be used to start subsequent tasks.
+
+\section{Configuring the run}\label{sec:ConfigureRun}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width = \textwidth]{images/workflow_swimlanes.pdf}\\
+	\caption{Swimlane diagram depicting possible workflows, possible webserver interaction omitted}\label{fig:WorkflowSwimlanes}
+\end{figure}
 
 Configuration is one of the most important aspects of the workflow. Without it, each simulation and training session would produce similar, if not the same results. By tweaking different parameters of a run, market dynamics can be changed and agent behaviour and thereby performance be influenced. The goal of our monitoring tools is to enable users to assess the extent to which each parameter influences certain characteristics of the training and/or monitoring session, and to enable them to make informed decisions for subsequent experiments.
 
