@@ -5,7 +5,7 @@
 - format labels to use meta-info for sections etc. (sec: vs section:) https://en.m.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
 - Order items in Appendix according to when they are referenced first/according to their types
 - Numbered section not in ToC: https://latex.org/forum/viewtopic.php?t=11333
-	- number sections manually; \section*{1.2\space\space Section Title}
+	- number sections manually; \section*{1.2\space\space SectionTitle}
 	- works only in chapters with no section in ToC (because of the counter)
 - check if all ref's are numbered correctly, same with sections
 - https://carbon.now.sh/ for code
@@ -14,6 +14,7 @@
 - make sure "Fachwörter" are all in the same format, normal, emph or texttt
 - Rename classes for the thesis to be more descriptive and short
 - Check indentations in front of paragraphs
+- add some \newpage where sections are weirdly split
 
 - direct vs. indirect speech
 - tenses
