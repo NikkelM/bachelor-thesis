@@ -15,6 +15,7 @@
 - Rename classes for the thesis to be more descriptive and short
 - Check indentations in front of paragraphs
 - add some \newpage where sections are weirdly split
+- Review chapter and section titles
 
 - direct vs. indirect speech
 - tenses
