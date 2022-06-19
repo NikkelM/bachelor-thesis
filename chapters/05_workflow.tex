@@ -1,26 +1,20 @@
 \begin{jointwork}\label{ch:OurWorkflow}
 	The main goal of the market simulation framework is to provide a simple-to-use but powerful tool for training Reinforcement-Learning algorithms on highly configurable markets for users in both a research and a business context. To achieve this, multiple components had to be developed and connected to create the workflow we now provide. This section will introduce the most important parts of the workflow.
 \end{jointwork}
-\todo{Judith: `Maybe change chapter order of this with Chapter 4?'}
+\todo{Judith: `Maybe change chapter order of this with Chapter 4?'}\todo{This chapter was shortened a lot, if the order is not changed, I might integrate it into chapter 6.}
 
 When working with our simulation framework, users can choose from two options: First, it is possible to use our tool via a custom Command line interface (CLI). Alternatively, users can interact with the framework through a web-interface, which utilizes Docker for remote-deployment of tasks issued by the user. For detailed insights into our web-interface and remote deployment processes, see \cite{JudithThesis}.
 
-\Cref{fig:WorkflowSwimlanes} depicts the common workflow activities in our framework. For all possible tasks, the user needs to provide configuration files, which define both the task to be worked on as well as parameters which influence market and agent behaviour (see \nameref{sec:ConfigureRun}). After the configuration files have been validated, the simulation framework initialized the requested marketplace and agents, and then starts the requested task, for which there are currently three options provided through the CLI or web-interface:
+\Cref{fig:WorkflowSwimlanes} depicts the common workflow activities in our framework. For all possible tasks, the user needs to provide configuration files, which define both the task to be worked on as well as parameters which influence market and agent behaviour (see \nameref{sec:ConfigureRun}). After the configuration files have been validated, the simulation framework initialized the requested marketplace and agents, and then starts the requested task, for which there are currently three options provided through the CLI or web-interface: \emph{Training}, \emph{Agent-monitoring} and \emph{Exampleprinter}. You may have noticed that one of our monitoring tools is missing from this list, the \emph{Policyanalyzer} must unfortunately still be started manually by the user, as it has not been integrated into the rest of the workflow yet.
 
-\begin{itemize}
-	\item Training
-	\item (Agent-)Monitoring
-	\item Exampleprinter
-\end{itemize}
-
-At the end of the respective task, the user is always provided with the various diagrams and data collected during the respective task, which can then be used to start subsequent tasks.
+At the end of the respective task, the user is always provided with the various diagrams and data (e.g. trained Reinforcement-Learning models) collected during the respective task, which can then be used in subsequent tasks.
 
 \section{Configuring the run}\label{sec:ConfigureRun}
 
 \begin{figure}[t]
 	\centering
 	\includegraphics[width = \textwidth]{images/workflow_swimlanes.pdf}\\
-	\caption{Swimlane diagram depicting possible workflows, possible webserver interaction omitted}\label{fig:WorkflowSwimlanes}
+	\caption{Diagram depicting possible workflows, webserver interaction omitted}\label{fig:WorkflowSwimlanes}
 \end{figure}
 
 Configuration is one of the most important aspects of the workflow. Without it, each simulation and training session would produce similar, if not the same results. By tweaking different parameters of a run, market dynamics can be changed and agent behaviour and thereby performance be influenced. The goal of our monitoring tools is to enable users to assess the extent to which each parameter influences certain characteristics of the training and/or monitoring session, and to enable them to make informed decisions for subsequent experiments.
@@ -57,8 +51,8 @@ Ultimately, all configuration is done using various \texttt{.json} files which c
 
 \section{The monitoring workflow}
 
-Within the recommerce workflow, there are two points in time where our monitoring tools are or can be used. While a training session is running, the \nameref{subsec:TensorBoard} tool is automatically used to record metrics and give insights into the current training run, by creating visualizations of current states and actions. By saving intermediate models, the \nameref{subsec:LiveMonitoring} enables the user to compare agent models saved at different times within the training process. This can be especially useful when trying to determine the most effective amount of training steps after which a model does not improve further, or even worse, starts to deteriorate in performance\todo{Citation for the `possibility' of this}, to optimize future runs. After the training has finished, or at any point disconnected from a training session, our tools described in \nameref{sec:CompleteAgents} can be used to further analyze the trained models.\todo{Judith: `Auch wenn ich das training abbreche?' -> Mention this in chapter 6, run a long experiment and stop it prematurely. Live-monitoring is not run, but models are still saved}
+Within the recommerce workflow, there are two points in time where our monitoring tools are or can be used. While a training session is running, the \nameref{subsec:TensorBoard} tool is automatically used to record metrics and give insights into the current training run, by creating visualizations of current market states. By saving intermediate models, the \nameref{subsec:LiveMonitoring} enables the user to compare agent models saved at different times within the training process, after it has concluded. This can be especially useful when trying to determine the most effective amount of training steps after which a model does not improve further, to optimize future runs. After the training has finished, or at any point disconnected from a training session, our tools described in \nameref{sec:CompleteAgents} can be used to further analyze the trained models. If a training session is terminated by the user before it has completed, the Live-monitoring tool will not be run, but all intermediate models saved up to that point can still be used to monitor the agent's policy at that point in time. \nameref{ch:AnalyzingGraphs} is dedicated to the monitoring workflow, where we will first run a training session, and then monitor and evaluate the results we get from it.
 
-\subsection*{After training}
+% \subsection*{After training}
 
-After training has completed, the most crucial phase of the workflow starts\todo{This sentence is a bit harsh. Make it less `Crucial'}. As has been mentioned before, the end-goal of users using the simulation framework is to be able to deploy trained agents into real markets to set prices independently of human inputs or guidance. Starting from this premise, the goal of the training process is therefore to model the marketplace as realistically as possible, so that the trained agents can transfer the knowledge from their training to the real market `without noticing a difference'. Before deploying agents to the real market, they need to be tested on their reliability and robustness, to make sure that their policies are not just effective under certain circumstances, but that they are also able to adapt to different market scenarios and behave accordingly.
+% As has been mentioned before, the end-goal of users using the simulation framework is to be able to deploy trained agents into real markets to set prices independent of human input or guidance. Starting from this premise, the goal of the training process is therefore to model the marketplace as realistically as possible, so that the trained agents can transfer the knowledge from their training to the real market `without noticing a difference'. Before deploying agents to the real market, they need to be tested on their reliability and robustness, to make sure that their policies are not just effective under certain circumstances, but that they are also able to adapt to different market scenarios and behave accordingly.
