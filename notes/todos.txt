@@ -8,6 +8,7 @@
 	- number sections manually; \section*{1.2\space\space SectionTitle}
 	- works only in chapters with no section in ToC (because of the counter)
 - check if all ref's are numbered correctly, same with sections
+- check if all refs go to correct places (esp. figures)
 - https://carbon.now.sh/ for code
 - Arbeiten der anderen zitieren
 - Shorten/simplify class names, especially the RuleBased-Agents
