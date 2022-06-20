@@ -14,6 +14,12 @@ The market environment defines the number of competing vendors in the simulation
 
 In the most common usecase of our framework, the training of Reinforcement-Learning agents, only the agent (or multiple agents in the case of training multiple Reinforcement-Learning agents against each other) that is to be trained needs to be configured by the user, as each market environment is equipped with a pre-defined set of competitors that will play against the agent defined by the user. To allow for more control over the simulation, users are however also able to change these competitors to use any vendors they want - as long as they are a valid fit for the marketplace type and the number of competitors chosen matches the market environment.
 
+\begin{figure}[t]
+	\centering
+	\includegraphics[width = \textwidth]{images/overview_diagram.pdf}\\
+	\caption{Class diagram outlining interactions between the most important classes in our framework.}\label{fig:OverviewDiagram}
+\end{figure}
+
 \section{Customers}\label{sec:Customers}
 
 Customers are at the center of every type of marketplace, which makes them an integral part of our market simulation. However, since each customer in the real market is an individual with different reasonings and makes purchase decisions based upon personal preferences, modelling a realistic depiction of real-world customers proves to be very difficult and time-consuming. For this reason we decided to keep our initial implementation of the customers as simple as possible, taking into account future extension and scalability concerns.
