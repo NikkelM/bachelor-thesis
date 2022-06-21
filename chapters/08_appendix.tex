@@ -10,8 +10,8 @@
 		Impulsive/ Careless                     & Consumer who buys on the spur of the moment and appears unconcerned about how much he/she spends                       \\
 		Confused by Overchoice                  & Consumer perceiving too many brands and stores from which to choose and experiences information overload in the market \\
 		Habitual/ Brand Loyal                   & Consumer who repetitively chooses the same favorite brands and stores                                                  \\\bottomrule
-	\end{tabular}
-	\caption{Consumer Shopping Styles, from~\cite{ShoppingStyles}, including information from~\cite{ShoppingStyles2}}\label{tab:shoppingStyles}
+	\end{tabular}\\
+	\caption{Consumer Shopping Styles, from~\cite{ShoppingStyles}, including information from~\cite{ShoppingStyles2}.}\label{tab:shoppingStyles}
 \end{table}
 
 \newpage
@@ -44,18 +44,18 @@
 		\toprule
 		VI - 15 ANT-OST - Anti-ostentation dimension                                         \\
 		\bottomrule
-	\end{tabular}
-	\caption{15 areas of motivation toward second-hand shopping, from~\cite{SecondHandMotives} (descriptions omitted)}\label{tab:SecondHandMotives}
+	\end{tabular}\\
+	\caption{15 areas of motivation toward second-hand shopping, from~\cite{SecondHandMotives} (descriptions omitted).}\label{tab:SecondHandMotives}
 \end{table}
 
 \newpage
 
-\begin{figure}
+\begin{figure}[t]
 	\includegraphics[width = \textwidth]{images/policies/RuleBasedCEAgentPolicy.png}\\
 	\caption{Policy implementation of the \emph{RuleBasedCEAgent}, simplified for readability.}\label{fig:PolicyRuleBasedCE}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
 	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentStorageMinimizerPolicy.png}\\
 	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgentStorageMinimizer}, simplified for readability.}\label{fig:PolicyRuleBasedStorageMinimizer}
 \end{figure}
@@ -65,7 +65,7 @@
 	\caption{The \texttt{environment\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigEnvironment}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
 	\includegraphics[width = 0.9\textwidth]{images/configs/SACDuopolyMarket.png}\\
 	\caption{The \texttt{market\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigMarket}
 \end{figure}
@@ -74,3 +74,20 @@
 	\includegraphics[width = 0.75\textwidth]{images/configs/SACDuopolyAgent.png}\\
 	\caption{The configuration file for the SAC-Agent of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigAgent}
 \end{figure}
+
+\newpage
+
+\begin{table}[]
+	\begin{tabular}{|cr|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|}
+		\hline
+		\multicolumn{2}{|l|}{}                                       & \rotatebox{90}{state/in\_circulation} & \rotatebox{90}{state/in\_storage} & \rotatebox{90}{action/price\_new} & \rotatebox{90}{action/price\_refurbished} & \rotatebox{90}{action/rebuy\_price} & \rotatebox{90}{owner/throw\_away} & \rotatebox{90}{owner\_rebuys} & \rotatebox{90}{customer/purchase\_new} & \rotatebox{90}{customer/purchase\_refurbished\space} & \rotatebox{90}{customer/buy\_nothing} & \rotatebox{90}{profit/rebuy\_cost} & \rotatebox{90}{profit/storage\_cost} & \rotatebox{90}{profit/by\_new} & \rotatebox{90}{profit/by\_refurbished} & \rotatebox{90}{profit/all} & \rotatebox{90}{profit/reward}     \\ \hline
+		\multicolumn{2}{|r|}{Exampleprinter}                         & X                                     &                                   & X                                 & X                                         & X                                   & X                                 & X                             & X                                      & X                                                    &                                       &                                    &                                      &                                &                                        & X                          &                                   \\ \hline
+		\multicolumn{2}{|r|}{Tensorboard}                            & X                                     & X                                 & X                                 & X                                         & X                                   & X                                 & X                             & X                                      & X                                                    & X                                     & X                                  & X                                    & X                              & X                                      & X                          & X                                 \\ \hline
+		\multicolumn{1}{|c|}{\multirow{2}{*}{\rotatebox{90}{Live}}}  & Scatter                               & X                                 & X                                 & X                                         & X                                   & X                                 & X                             & X                                      & X                                                    & X                                     & X                                  & X                                    & X                              & X                                      & X                          & X                             &   \\ \cline{2-18}
+		\multicolumn{1}{|r|}{}                                       & Line                                  & X                                 & X                                 & X                                         & X                                   & X                                 & X                             & X                                      & X                                                    & X                                     & X                                  & X                                    & X                              & X                                      & X                          & X                             &   \\ \hline
+		\multicolumn{1}{|c|}{\multirow{3}{*}{\rotatebox{90}{Agent}}} & Density                               & X                                 & X                                 & X                                         & X                                   & X                                 & X                             & X                                      & X                                                    & X                                     & X                                  & X                                    & X                              & X                                      & X                          & X                             & X \\ \cline{2-18}
+		\multicolumn{1}{|r|}{}                                       & Violin                                & X                                 & X                                 & X                                         & X                                   & X                                 & X                             & X                                      & X                                                    & X                                     & X                                  & X                                    & X                              & X                                      & X                          & X                             & X \\ \cline{2-18}
+		\multicolumn{1}{|r|}{}                                       & Line                                  & X                                 & X                                 & X                                         & X                                   & X                                 & X                             & X                                      & X                                                    & X                                     & X                                  & X                                    & X                              & X                                      & X                          & X                             & X \\ \hline
+	\end{tabular}\\
+	\caption{All metrics recorded during the simulation and which monitoring tools visualize them.}\label{tab:AllMetrics}
+\end{table}

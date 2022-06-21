@@ -25,8 +25,8 @@
 \usepackage[T1]{fontenc}    % Allows to print special characters correctly.
 \usepackage
 [
-    ngerman,         % German is used for the German abstract.
-    main = british,  % This is the main language of the thesis.
+	ngerman,         % German is used for the German abstract.
+	main = british,  % This is the main language of the thesis.
 ]
 {babel}                     % Is responsible for sensible hyphenations.
 
@@ -71,7 +71,7 @@
 
 % The footnote number will not be reset after every chapter.
 \makeatletter%
-    \@removefromreset{footnote}{chapter}%
+\@removefromreset{footnote}{chapter}%
 \makeatother
 
 
@@ -116,13 +116,13 @@
 
 \newlength{\myoutermargin}
 \ifprintVersion
-    \ifprofessionalPrint
-        \setlength{\myoutermargin}{(\mypaperwidth - \mybodywidth) / \real{1.5} + \extraborderlength}
-    \else
-        \setlength{\myoutermargin}{(\mypaperwidth - \mybodywidth) / \real{1.5} - \mybindingcorrection}
-    \fi
+	\ifprofessionalPrint
+		\setlength{\myoutermargin}{(\mypaperwidth - \mybodywidth) / \real{1.5} + \extraborderlength}
+	\else
+		\setlength{\myoutermargin}{(\mypaperwidth - \mybodywidth) / \real{1.5} - \mybindingcorrection}
+	\fi
 \else
-    \setlength{\myoutermargin}{(\mypaperwidth - \mybodywidth) / \real{1.5}}
+	\setlength{\myoutermargin}{(\mypaperwidth - \mybodywidth) / \real{1.5}}
 \fi
 
 \newlength{\offset}
@@ -131,25 +131,25 @@
 \newlength{\mytopmargin}
 \setlength{\mytopmargin}{(\mypaperheight - \mybodyheight) / 3 + \offset}
 \ifprintVersion
-    \ifprofessionalPrint
-        \setlength{\mytopmargin}{(\mypaperheight - \mybodyheight) / 3 + \extraborderlength + \offset}
-    \fi
+	\ifprofessionalPrint
+		\setlength{\mytopmargin}{(\mypaperheight - \mybodyheight) / 3 + \extraborderlength + \offset}
+	\fi
 \fi
 
 \newlength{\myinnermargin}
 \setlength{\myinnermargin}{\mypaperwidth - \mybodywidth - \myoutermargin}
 \ifprintVersion
-    \ifprofessionalPrint
-        \setlength{\myinnermargin}{\mypaperwidth + \mybindingcorrection + 2\extraborderlength - \mybodywidth - \myoutermargin}
-    \fi
+	\ifprofessionalPrint
+		\setlength{\myinnermargin}{\mypaperwidth + \mybindingcorrection + 2\extraborderlength - \mybodywidth - \myoutermargin}
+	\fi
 \fi
 
 \newlength{\mybottommargin}
 \setlength{\mybottommargin}{\mypaperheight - \mybodyheight - \mytopmargin}
 \ifprintVersion
-    \ifprofessionalPrint
-        \setlength{\mybottommargin}{\mypaperheight + 2\extraborderlength - \mybodyheight - \mytopmargin}
-    \fi
+	\ifprofessionalPrint
+		\setlength{\mybottommargin}{\mypaperheight + 2\extraborderlength - \mybodyheight - \mytopmargin}
+	\fi
 \fi
 
 
@@ -162,17 +162,17 @@
 \newlength{\myheadsep} % Distance from the header to the body.
 \setlength{\myheadsep}{\mytopmargin / \real{\goldenratio} / \real{\goldenratio} - 1 ex + \offset / 2}
 \ifprintVersion
-    \ifprofessionalPrint
-        \setlength{\myheadsep}{(\mytopmargin - \extraborderlength) / \real{\goldenratio} / \real{\goldenratio} - 1 ex + \offset / 2}
-    \fi
+	\ifprofessionalPrint
+		\setlength{\myheadsep}{(\mytopmargin - \extraborderlength) / \real{\goldenratio} / \real{\goldenratio} - 1 ex + \offset / 2}
+	\fi
 \fi
 
 \newlength{\myfootskip} % Distance from the body to the footer.
 \setlength{\myfootskip}{\mybottommargin / \real{\goldenratio} - 1 ex}
 \ifprintVersion
-    \ifprofessionalPrint
-        \setlength{\myfootskip}{(\mybottommargin - \extraborderlength) / \real{\goldenratio} - 1 ex}
-    \fi
+	\ifprofessionalPrint
+		\setlength{\myfootskip}{(\mybottommargin - \extraborderlength) / \real{\goldenratio} - 1 ex}
+	\fi
 \fi
 
 
@@ -186,9 +186,9 @@
 \newlength{\mymarginoutersep} % Distance between the margin and the paper border.
 \setlength{\mymarginoutersep}{12 mm}
 \ifprintVersion
-    \ifprofessionalPrint
-        \setlength{\mymarginoutersep}{12 mm + \extraborderlength}
-    \fi
+	\ifprofessionalPrint
+		\setlength{\mymarginoutersep}{12 mm + \extraborderlength}
+	\fi
 \fi
 
 \newlength{\mymarginwidth} % Width of the margin.
@@ -199,28 +199,28 @@
 
 \usepackage
 [
-    % In the printed version, we add an extra border to each side as well as the binding correction for the width.
-    \ifprintVersion
-        \ifprofessionalPrint
-            paperwidth = \mypaperwidth + 2\extraborderlength + \mybindingcorrection,
-            paperheight = \mypaperheight + 2\extraborderlength,
-        \else
-            paperwidth = \mypaperwidth,
-            paperheight = \mypaperheight,
-        \fi
-    \else
-        paperwidth = \mypaperwidth,
-        paperheight = \mypaperheight,
-    \fi
-    textwidth = \mybodywidth,
-    textheight = \mybodyheight,
-    outer = \myoutermargin,
-    top = \mytopmargin,
-    headsep = \myheadsep,
-    footskip = \myfootskip,
-    marginparsep = \mymargininnersep,
-    marginparwidth = \mymarginwidth,
-%    showframe, % Use this option for debugging purposes in order to the an outline of all of the different parts of the page layout.
+	% In the printed version, we add an extra border to each side as well as the binding correction for the width.
+	\ifprintVersion
+		\ifprofessionalPrint
+			paperwidth = \mypaperwidth + 2\extraborderlength + \mybindingcorrection,
+			paperheight = \mypaperheight + 2\extraborderlength,
+		\else
+			paperwidth = \mypaperwidth,
+			paperheight = \mypaperheight,
+		\fi
+	\else
+		paperwidth = \mypaperwidth,
+		paperheight = \mypaperheight,
+	\fi
+	textwidth = \mybodywidth,
+	textheight = \mybodyheight,
+	outer = \myoutermargin,
+	top = \mytopmargin,
+	headsep = \myheadsep,
+	footskip = \myfootskip,
+	marginparsep = \mymargininnersep,
+	marginparwidth = \mymarginwidth,
+	% showframe, % Use this option for debugging purposes in order to the an outline of all of the different parts of the page layout.
 ]
 {geometry} % Used in order to define the dimensions of the page and its layout.
 
@@ -231,7 +231,7 @@
 
 \usepackage
 [
-%    draft, % Shows a lot of rules denoting the dimensions of the head and foot. Use this option only for debugging.
+	%    draft, % Shows a lot of rules denoting the dimensions of the head and foot. Use this option only for debugging.
 ]
 {scrlayer-scrpage} % Allows to adjust the definitions of the head and foot of a page.
 
@@ -241,8 +241,8 @@
 % Define the dimensions of the head and the foot. Since we want some information to appear in the margin, we extend the head and the foot by the respective lengths.
 \KOMAoptions
 {%
-    headwidth = \textwidth + \mymarginwidthwithinnersep,%
-    footwidth = \myoutermargin : \textwidth,%
+	headwidth = \textwidth + \mymarginwidthwithinnersep,%
+	footwidth = \myoutermargin : \textwidth,%
 }
 
 % Defines the formats for the chapter and section titles in the marks of the head.
@@ -261,9 +261,9 @@
 % Puts ›Chapter‹ followed by the current chapter number.
 \lehead%
 {%
-    \begin{minipage}[b]{\mymarginwidth}%
-        \small\raggedleft\normalfont\textsf{\textbf{\color{footerchapter}\chaptername\ \thechapter}}
-    \end{minipage}
+	\begin{minipage}[b]{\mymarginwidth}%
+		\small\raggedleft\normalfont\textsf{\textbf{\color{footerchapter}\chaptername\ \thechapter}}
+	\end{minipage}
 }
 % Put the title of the current chapter/section into the center of the head but push it to the border.
 \cehead{\hspace*{\mymarginwidthwithinnersep}\parbox{\textwidth}{\raggedright\leftmark}}
@@ -271,18 +271,18 @@
 % Head for odd pages.
 \rohead%
 {%
-    % Check whether a section has already started or not.
-    \Ifstr{\rightmark}{\leftmark}%
-    {%
-        \begin{minipage}[b]{\mymarginwidth}%
-            \small\raggedright\normalfont\textsf{\textbf{\color{footersection}Chapter\ \thechapter}}%
-        \end{minipage}%
-    }%
-    {%
-        \begin{minipage}[b]{\mymarginwidth}%
-            \small\raggedright\normalfont\textsf{\textbf{\color{footersection}Section\ \thesection}}%
-        \end{minipage}%
-    }%
+	% Check whether a section has already started or not.
+	\Ifstr{\rightmark}{\leftmark}%
+	{%
+		\begin{minipage}[b]{\mymarginwidth}%
+			\small\raggedright\normalfont\textsf{\textbf{\color{footersection}Chapter\ \thechapter}}%
+		\end{minipage}%
+	}%
+	{%
+		\begin{minipage}[b]{\mymarginwidth}%
+			\small\raggedright\normalfont\textsf{\textbf{\color{footersection}Section\ \thesection}}%
+		\end{minipage}%
+	}%
 }
 \cohead{\hspace*{-\mymarginwidthwithinnersep}\parbox{\textwidth}{\raggedleft\rightmark}}
 
@@ -293,18 +293,18 @@
 % The starred variant is used, since we want the format of the foot to also apply to the pagestyle ›plain‹.
 \lefoot*%
 {%
-    \vspace*{1 ex}%
-    {\color{stroke1}\rule{\myoutermargin - \mymargininnersep}{0.5 mm}}\\
-    \begin{minipage}[b]{\myoutermargin - \mymargininnersep}%
-        \raggedleft\normalfont\color{footerpagenr}\textbf{\thepage}%
-    \end{minipage}%
+	\vspace*{1 ex}%
+	{\color{stroke1}\rule{\myoutermargin - \mymargininnersep}{0.5 mm}}\\
+	\begin{minipage}[b]{\myoutermargin - \mymargininnersep}%
+		\raggedleft\normalfont\color{footerpagenr}\textbf{\thepage}%
+	\end{minipage}%
 }
 \rofoot*%
 {%
-    {\color{stroke1}\rule{\myoutermargin - \mymargininnersep}{0.5 mm}}\\
-    \begin{minipage}[b]{\myoutermargin - \mymargininnersep}%
-        \raggedright\normalfont\color{footerpagenr}\textbf{\thepage}%
-    \end{minipage}%
+	{\color{stroke1}\rule{\myoutermargin - \mymargininnersep}{0.5 mm}}\\
+	\begin{minipage}[b]{\myoutermargin - \mymargininnersep}%
+		\raggedright\normalfont\color{footerpagenr}\textbf{\thepage}%
+	\end{minipage}%
 }
 
 
@@ -315,10 +315,10 @@
 \usepackage{caption}
 \captionsetup
 {
-    font = small,
-    labelfont = {bf, sf, color = captionlabel},
-    format = plain,
-    singlelinecheck = off,
+	font = small,
+	labelfont = {bf, sf, color = captionlabel},
+	format = plain,
+	singlelinecheck = off,
 }
 
 
@@ -339,35 +339,35 @@
 % This command calls \partformat (#2) and displays the name of the part (#3).
 \renewcommand*{\partlineswithprefixformat}[3]%
 {%
-    #2
-    \thispagestyle{empty}
-    \setlength{\mytmpa}{0.618\mypaperwidth}%
-    \setlength{\mytmpb}{0.382\mypaperheight}%
-    \ifprintVersion
-        \ifprofessionalPrint
-            \setlength{\mytmpa}{0.618\mypaperwidth + \mybindingcorrection + \extraborderlength}%
-            \setlength{\mytmpb}{0.382\mypaperheight + \extraborderlength}%
-        \fi
-    \fi
-    \begin{tikzpicture}[overlay, remember picture]%
-        \node [inner sep = 0, outer sep = 0, anchor = north] at (current page.north west)%
-        {%
-            \begin{tikzpicture}[overlay, remember picture]%
-            \draw[color = stroke1, line width = 0.7 mm] (\mytmpa, 0) -- (\mytmpa, -\mytmpb);%
-            \end{tikzpicture}%
-        };%
-        \node (align) [align = right, below = \mytmpb - 2 ex, inner sep = 0, outer sep = 0, anchor = north west] at (current page.north west)%
-        {%
-            \hspace{\mytmpa}\hspace{0.5 em}\partname\ \thepart\\[1 ex]
-            \color{stroke1}#3%
-        };%
-    \end{tikzpicture}%
+	#2
+	\thispagestyle{empty}
+	\setlength{\mytmpa}{0.618\mypaperwidth}%
+	\setlength{\mytmpb}{0.382\mypaperheight}%
+	\ifprintVersion
+		\ifprofessionalPrint
+			\setlength{\mytmpa}{0.618\mypaperwidth + \mybindingcorrection + \extraborderlength}%
+			\setlength{\mytmpb}{0.382\mypaperheight + \extraborderlength}%
+		\fi
+	\fi
+	\begin{tikzpicture}[overlay, remember picture]%
+		\node [inner sep = 0, outer sep = 0, anchor = north] at (current page.north west)%
+		{%
+			\begin{tikzpicture}[overlay, remember picture]%
+				\draw[color = stroke1, line width = 0.7 mm] (\mytmpa, 0) -- (\mytmpa, -\mytmpb);%
+			\end{tikzpicture}%
+		};%
+		\node (align) [align = right, below = \mytmpb - 2 ex, inner sep = 0, outer sep = 0, anchor = north west] at (current page.north west)%
+		{%
+			\hspace{\mytmpa}\hspace{0.5 em}\partname\ \thepart\\[1 ex]
+			\color{stroke1}#3%
+		};%
+	\end{tikzpicture}%
 }
 % This command defines various parameters for the ›part‹ format.
 \RedeclareSectionCommand%
 [%
-    font = \normalfont\Huge\sffamily,
-    prefixfont = \normalfont\Huge\sffamily,
+	font = \normalfont\Huge\sffamily,
+	prefixfont = \normalfont\Huge\sffamily,
 ]
 {part}
 
@@ -382,59 +382,59 @@
 \newbool{chapterHasAStar}
 \renewcommand*{\chapterlinesformat}[3]%
 {%
-    % Check whether \chapter of \addchap has been used.
-    \Ifnumbered{#1}{\setbool{chapterHasANumber}{true}}{\setbool{chapterHasANumber}{false}}%
-    % Check whether \chapter* or \chapter has been used.
-    \Ifstr{#2}{}{\setbool{chapterHasAStar}{true}}{\setbool{chapterHasAStar}{false}}%
-    % Check whether a normal \chapter or something else is used.
-    \ifboolexpr{bool{chapterHasANumber} and not bool{chapterHasAStar}}%
-    {%
-        \begin{tikzpicture}[overlay, remember picture]%
-            \node [right = \myinnermargin, below = \mytopmargin, inner sep = 0, outer sep = 0, anchor = north west] (numbernode) at (current page.north west)%
-            {%
-                \hspace{\myinnermargin}%
-                \sffamily\fontsize{60}{60}\selectfont%
-                \color{chapternumber}%
-                \thechapter%
-            };%
-            \node [inner sep = 0, outer sep = 0, anchor = north west] at (numbernode.south west)%
-            {%
-                \begin{tikzpicture}[overlay, remember picture]%
-                    \draw[color = stroke1, line width = 0.7 mm] (\myinnermargin, -1 ex) -- (\paperwidth, -1 ex);%
-                \end{tikzpicture}%
-            };%
-            \node (align) [text width = \textwidth - 2 cm, align = right, right = \myinnermargin + \mybodywidth, inner sep = 0, outer sep = 0, anchor = east] at (numbernode.west)%
-            {%
-                #3%
-            };%
-        \end{tikzpicture}%
-    }%
-    {%
-        \begin{tikzpicture}[overlay, remember picture]%
-            \node [right = \myinnermargin, below = \mytopmargin, inner sep = 0, outer sep = 0, anchor = north west] (numbernode) at (current page.north west)%
-            {%
-                \hspace{\myinnermargin}%
-                \sffamily\fontsize{60}{60}\selectfont%
-                \color{white}%
-                \thechapter%
-            };%
-            \node [inner sep = 0, outer sep = 0, anchor = north west] at (numbernode.south west)%
-            {%
-                \begin{tikzpicture}[overlay, remember picture]%
-                    \draw[color = stroke1, line width = 0.7 mm] (\myinnermargin, -1 ex) -- (\paperwidth, -1 ex);%
-                \end{tikzpicture}%
-            };%
-            \node (align) [align = left, right = \myinnermargin, inner sep = 0, outer sep = 0, anchor = south west] at (numbernode.south west)%
-            {%
-                #3%
-            };%
-        \end{tikzpicture}%
-    }%
+	% Check whether \chapter of \addchap has been used.
+	\Ifnumbered{#1}{\setbool{chapterHasANumber}{true}}{\setbool{chapterHasANumber}{false}}%
+	% Check whether \chapter* or \chapter has been used.
+	\Ifstr{#2}{}{\setbool{chapterHasAStar}{true}}{\setbool{chapterHasAStar}{false}}%
+	% Check whether a normal \chapter or something else is used.
+	\ifboolexpr{bool{chapterHasANumber} and not bool{chapterHasAStar}}%
+	{%
+		\begin{tikzpicture}[overlay, remember picture]%
+			\node [right = \myinnermargin, below = \mytopmargin, inner sep = 0, outer sep = 0, anchor = north west] (numbernode) at (current page.north west)%
+			{%
+				\hspace{\myinnermargin}%
+				\sffamily\fontsize{60}{60}\selectfont%
+				\color{chapternumber}%
+				\thechapter%
+			};%
+			\node [inner sep = 0, outer sep = 0, anchor = north west] at (numbernode.south west)%
+			{%
+				\begin{tikzpicture}[overlay, remember picture]%
+					\draw[color = stroke1, line width = 0.7 mm] (\myinnermargin, -1 ex) -- (\paperwidth, -1 ex);%
+				\end{tikzpicture}%
+			};%
+			\node (align) [text width = \textwidth - 2 cm, align = right, right = \myinnermargin + \mybodywidth, inner sep = 0, outer sep = 0, anchor = east] at (numbernode.west)%
+			{%
+				#3%
+			};%
+		\end{tikzpicture}%
+	}%
+	{%
+		\begin{tikzpicture}[overlay, remember picture]%
+			\node [right = \myinnermargin, below = \mytopmargin, inner sep = 0, outer sep = 0, anchor = north west] (numbernode) at (current page.north west)%
+			{%
+				\hspace{\myinnermargin}%
+				\sffamily\fontsize{60}{60}\selectfont%
+				\color{white}%
+				\thechapter%
+			};%
+			\node [inner sep = 0, outer sep = 0, anchor = north west] at (numbernode.south west)%
+			{%
+				\begin{tikzpicture}[overlay, remember picture]%
+					\draw[color = stroke1, line width = 0.7 mm] (\myinnermargin, -1 ex) -- (\paperwidth, -1 ex);%
+				\end{tikzpicture}%
+			};%
+			\node (align) [align = left, right = \myinnermargin, inner sep = 0, outer sep = 0, anchor = south west] at (numbernode.south west)%
+			{%
+				#3%
+			};%
+		\end{tikzpicture}%
+	}%
 }
 \RedeclareSectionCommand%
 [%
-    font = \color{stroke1}\normalfont\huge\sffamily,
-    afterskip = 20 pt,
+	font = \color{stroke1}\normalfont\huge\sffamily,
+	afterskip = 20 pt,
 ]
 {chapter}
 
