@@ -17,6 +17,7 @@
 - Check indentations in front of paragraphs
 - add some \newpage where sections are weirdly split
 - Review chapter and section titles
+- remove color from links (format.tex Z. 85)
 
 - direct vs. indirect speech
 - tenses
