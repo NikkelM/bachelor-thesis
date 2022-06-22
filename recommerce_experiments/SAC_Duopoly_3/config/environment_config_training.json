@@ -3,13 +3,13 @@
 	"marketplace": "recommerce.market.circular.circular_sim_market.CircularEconomyRebuyPriceDuopoly",
 	"agents": [
 		{
-			"name": "Stable-Baselines (SAC)",
+			"name": "StableBaselinesSAC",
 			"agent_class": "recommerce.rl.stable_baselines.sb_sac.StableBaselinesSAC",
 			"argument": ""
 		},
 		{
-			"name": "Storage-Minimizer",
-			"agent_class": "recommerce.market.circular.circular_vendors.RuleBasedCERebuyAgentStorageMinimizer",
+			"name": "RuleBasedCERebuyAgentCompetitive",
+			"agent_class": "recommerce.market.circular.circular_vendors.RuleBasedCERebuyAgentCompetitive",
 			"argument": ""
 		}
 	]
