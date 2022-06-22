@@ -159,15 +159,25 @@ Violinplots do however not replace the need for densityplots, as both have an eq
 
 \subsection*{Exampleprinter}
 
-Run an exampleprinter, insert one frame of svg. Mention that it is normally animated. Talk about why this offers more or new info than the Live/Agent-monitoring.
+All of the diagrams shown in the previous section were created as part of the automatic monitoring done after a training session has concluded. There are however two other tools at our disposal to monitor the trained Reinforcement-Learning agent after they have been trained. For this, we only need the intermediate models saved during and at the end of training. In the case of the SAC-Duopoly\_1 experiment, we will be using the model saved after 1000 episodes, as we discovered it had the best performance at the end of \nameref{subsec:LiveMonitoringResults}. The first tool we will now utilize is the Exampleprinter, as introduced in \fullref{subsec:Exampleprinter}.
+
+To configure this monitoring run, we will again need three configuration files: one defining the task to be done (for which we will re-use \Cref{fig:SACDuopolyConfigEnvironment}, only exchanging the `task' keyword), and one for both the hyperparameter-configuration of the market and the SAC-Agent, for which we will also re-use the configuration files used for training (\Cref{fig:SACDuopolyConfigMarket} and \Cref{fig:SACDuopolyConfigAgent}). By using the same configuration files again, we can emulate the market the agent was initially trained on as closely as possible.
+
+At the end of the monitoring session, we receive an animated overview diagram that cycles through all timesteps, allowing us to identify and examine potentially interesting timesteps in the simulation. Due to the nature of this diagram being animated, we will not be able to thoroughly examine the results of this monitoring tool in this thesis. Instead \Cref{fig:SACDuopolyExampleprinter17}, which shows the $17^{th}$ timestep of the simulation, can be used to gain an understanding of the information that can be gained from this tool.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/exampleprinter/ExampleprinterStep17.pdf}\\
+	\caption{Actions and market states after step 17 of the exampleprinter monitoring session.}\label{fig:SACDuopolyExampleprinter17}
+\end{figure}
 
 \subsection*{Policyanalyzer}
 
 Run two different Policyanalyzer-runs: Once with only one feature, once with two features. Show how the info can be used to inform on the agent's quality. Maybe show one instance where it is not very useful.
 
-\subsection*{Why not run Agent-monitoring? If not, why is it separate from Live-monitoring}
+\subsection*{Agent-monitoring}
 
-We do not run it, as it is already run with the Live-monitoring. So after training, we do not need to do it again. It still exists, as you may want to monitor the trained models independentl of each other using different parameters, or to monitor only Rule-Based agents.
+Even though most of the diagrams that are created through the Agent-monitoring tool are created if it is run immediately after a training session, it is disconnected from the Live-monitoring tool. There are two major reasons for this: First, aside from training Reinforcement-Learning agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically Rule-Based pricing methods, as we have done ourselve for our Rule-Based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training a Reinforcement-Learning agent.
 
 \section*{Less useful diagrams}\label{sec:UselessDiagrams}
 
