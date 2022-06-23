@@ -1,3 +1,5 @@
+\section*{Tables}
+
 \begin{table}[ht]
 	\begin{tabular}{p{0.35\textwidth} p{0.65\textwidth}}
 		\toprule
@@ -14,9 +16,7 @@
 	\caption{Consumer Shopping Styles, from~\cite{ShoppingStyles}, including information from~\cite{ShoppingStyles2}.}\label{tab:shoppingStyles}
 \end{table}
 
-\newpage
-
-\begin{table}[ht]
+\begin{table}[!]
 	\begin{tabular}{p{1\textwidth}}
 		\toprule
 		I - Economic dimensions                                                              \\\midrule
@@ -48,41 +48,7 @@
 	\caption{15 areas of motivation toward second-hand shopping, from~\cite{SecondHandMotives} (descriptions omitted).}\label{tab:SecondHandMotives}
 \end{table}
 
-\newpage
-
-\begin{figure}[t]
-	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentPolicy.png}\\
-	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgent}, simplified for readability.}\label{fig:PolicyRuleBasedCERebuy}
-\end{figure}
-
-\begin{figure}[t]
-	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentStorageMinimizerPolicy.png}\\
-	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgentStorageMinimizer}, simplified for readability.}\label{fig:PolicyRuleBasedStorageMinmizer}
-\end{figure}
-
-\begin{figure}[t]
-	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentCompetitivePolicy.png}\\
-	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgentCompetitive}, simplified for readability.}\label{fig:PolicyRuleBasedCompetitive}
-\end{figure}
-
-\begin{figure}[t]
-	\includegraphics[width = \textwidth]{images/configs/SACDuopolyEnvironment.png}\\
-	\caption{The \texttt{environment\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigEnvironment}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width = 0.9\textwidth]{images/configs/SACDuopolyMarket.png}\\
-	\caption{The \texttt{market\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigMarket}
-\end{figure}
-
-\begin{figure}[t]
-	\includegraphics[width = 0.75\textwidth]{images/configs/SACDuopolyAgent.png}\\
-	\caption{The configuration file for the SAC-Agent of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigAgent}
-\end{figure}
-
-\newpage
-
-\begin{table}[]
+\begin{table}[!]
 	\begin{tabular}{|cr|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|p{2.2mm}|}
 		\hline
 		\multicolumn{2}{|l|}{}                                       & \rotatebox{90}{state/in\_circulation} & \rotatebox{90}{state/in\_storage} & \rotatebox{90}{action/price\_new} & \rotatebox{90}{action/price\_refurbished} & \rotatebox{90}{action/rebuy\_price} & \rotatebox{90}{owner/throw\_away} & \rotatebox{90}{owner\_rebuys} & \rotatebox{90}{customer/purchase\_new} & \rotatebox{90}{customer/purchase\_refurbished\space} & \rotatebox{90}{customer/buy\_nothing} & \rotatebox{90}{profit/rebuy\_cost} & \rotatebox{90}{profit/storage\_cost} & \rotatebox{90}{profit/by\_new} & \rotatebox{90}{profit/by\_refurbished} & \rotatebox{90}{profit/all} & \rotatebox{90}{profit/reward}     \\ \hline
@@ -96,3 +62,40 @@
 	\end{tabular}\\
 	\caption{All metrics recorded during the simulation and which monitoring tools visualize them.}\label{tab:AllMetrics}
 \end{table}
+
+\newpage
+\section*{Rule-Based agents - Policies}
+
+\begin{figure}[ht]
+	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentPolicy.png}\\
+	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgent}, simplified for readability.}\label{fig:PolicyRuleBasedCERebuy}
+\end{figure}
+
+\begin{figure}[ht]
+	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentStorageMinimizerPolicy.png}\\
+	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgentStorageMinimizer}, simplified for readability.}\label{fig:PolicyRuleBasedStorageMinmizer}
+\end{figure}
+
+\begin{figure}[!]
+	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentCompetitivePolicy.png}\\
+	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgentCompetitive}, simplified for readability.}\label{fig:PolicyRuleBasedCompetitive}
+\end{figure}
+
+\newpage
+\newpage
+\section*{SAC-Duopoly experiment - Configuration files}
+
+\begin{figure}[!]
+	\includegraphics[width = \textwidth]{images/configs/SACDuopolyEnvironment.png}\\
+	\caption{The \texttt{environment\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigEnvironment}
+\end{figure}
+
+\begin{figure}[ht]
+	\includegraphics[width = 0.9\textwidth]{images/configs/SACDuopolyMarket.png}\\
+	\caption{The \texttt{market\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigMarket}
+\end{figure}
+
+\begin{figure}[ht]
+	\includegraphics[width = 0.75\textwidth]{images/configs/SACDuopolyAgent.png}\\
+	\caption{The configuration file for the SAC-Agent of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigAgent}
+\end{figure}
