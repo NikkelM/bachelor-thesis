@@ -20,6 +20,7 @@
 - remove color from links (format.tex Z. 85)
 - textbf for different references? nameref, Cref, fullRef
 - highlight keywords throughout thesis
+- page numbers for appendix/Bibliography
 
 - direct vs. indirect speech
 - tenses
