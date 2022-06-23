@@ -177,7 +177,7 @@ Run two different Policyanalyzer-runs: Once with only one feature, once with two
 
 \subsection*{Agent-monitoring}
 
-Even though most of the diagrams that are created through the Agent-monitoring tool are created if it is run immediately after a training session, it is disconnected from the Live-monitoring tool. There are two major reasons for this:
+Even though most of the diagrams that are created through the Agent-monitoring tool are created if it is run immediately after a training session, it is disconnected from the Live-monitoring tool. There are two major reasons for this, explained in the following two sections.
 
 \subsubsection*{Testing Rule-Based pricing methods}
 
@@ -203,9 +203,33 @@ First, aside from training Reinforcement-Learning agents, even though this is th
 	\caption{Diagrams created during an Agent-monitoring session comparing two Rule-Based pricing methods.}\label{fig:RulebasedAgentMonitoring}
 \end{figure}
 
-\subsubsection*{Other competitors for trained agents}
+\subsubsection*{Testing trained models against different competitors}
 
-The second reason for having the Agent-monitoring as a stand-alone tool is to be able to monitor trained Reinforcement-Learning agents not only with the competitors they were trained against, but any combination of other agents, including other trained Reinforcement-Learning agents.\todo{Do it for SAC-Duopoly experiment}
+The second reason for having the Agent-monitoring as a stand-alone tool is to be able to monitor trained Reinforcement-Learning agents not only with the competitors they were trained against, but any combination of other agents, including other trained Reinforcement-Learning agents. \Cref{fig:SACDuopolyOtherCompetitors} shows this use-case on the example of our trained SAC-Agent from the SAC-Duopoly experiment playing not against the \emph{RuleBasedCERebuyAgentCompetitive} it was trained against, but instead playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, as introduced in the previous section.
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopolyOtherComp/SACOtherCompProfitsAll.pdf}\\
+		\subcaption{Total profits}\label{fig:SACDuopolyOtherCompetitors1}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopolyOtherComp/SACOtherCompStorageCosts.pdf}\\
+		\subcaption{Storage costs}\label{fig:SACDuopolyOtherCompetitors2}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopolyOtherComp/SACOtherCompPurchasesRefurbished.pdf}\\
+		\subcaption{Sales of refurbished items}\label{fig:SACDuopolyOtherCompetitors3}
+	\end{subfigure}
+	\caption{Diagrams created during an Agent-monitoring with the SAC-model saved after 1,000 training episodes playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}.}\label{fig:SACDuopolyOtherCompetitors}
+\end{figure}
+
+From \Cref{fig:SACDuopolyOtherCompetitors1} we can infer that the SAC-Agent we trained does not play as well against the \emph{RuleBasedCERebuyAgentStorageMinimizer} as it did against the \emph{RuleBasedCERebuyAgentCompetitive} (\Cref{fig:SACDuopolyProfitsMean1}), as it makes slightly less profits overall and is consistently being outperformed by the Rule-Based agent. This can be expected, as the trained agent no longer learns the behaviour of its competitor, but now acts according to the previously learned policy. This means that with a change of the competitor, the learned policy may not be as good as it was against the previous opponent.
+
+The impact the different Rule-Based agent has on the simulation can also be seen in the difference between storage costs of both vendors between the two monitoring runs. While in \Cref{fig:SACDuopolyMixedGraphs1}, both vendors paid storage costs between 50 and 150, this was not the case for the second simulation, where storage costs were much lower for both vendors (\Cref{fig:SACDuopolyOtherCompetitors2}). As the \emph{RuleBasedCERebuyAgentStorageMinimizer} focusses on keeping a low inventory at all times, it also buys back less items. This seems to have agreed with the SAC-Agent's policy, as the trained agent also kept fewer items in inventory in the simulation against this competitor. It was however not able to manage inventory as well as the Rule-Based agent, as both its storage costs were higher, and sales of refurbished items lower, see \Cref{fig:SACDuopolyOtherCompetitors3}.
 
 \section*{Less useful diagrams}\label{sec:UselessDiagrams}
 
