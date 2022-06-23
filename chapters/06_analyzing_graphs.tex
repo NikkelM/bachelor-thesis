@@ -168,7 +168,7 @@ At the end of the monitoring session, we receive an animated overview diagram th
 \begin{figure}[t]
 	\centering
 	\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/exampleprinter/ExampleprinterStep17.pdf}\\
-	\caption{Actions and market states after step 17 of the exampleprinter monitoring session.}\label{fig:SACDuopolyExampleprinter17}
+	\caption{Actions and market states during step 17 of the Exampleprinter session.}\label{fig:SACDuopolyExampleprinter17}
 \end{figure}
 
 \subsection*{Policyanalyzer}
@@ -181,7 +181,7 @@ Even though most of the diagrams that are created through the Agent-monitoring t
 
 \subsubsection*{Testing Rule-Based pricing methods}
 
-First, aside from training Reinforcement-Learning agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically Rule-Based pricing methods, as we have done ourselve for our Rule-Based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training a Reinforcement-Learning agent, which is not an option for this usecase. \Cref{fig:RulebasedAgentMonitoring} shows the results of an Agent-monitoring session with a \emph{RuleBasedCERebuyAgent} playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, which is a slightly more sophisticated version, trying to keep the amount of products in its storage as low as possible. Its policy can be found in \Cref{fig:PolicyRuleBasedStorageMinmizer}. As was already mentioned in \nameref{sec:ExplainVendors}, we can see that the \emph{RuleBasedCERebuyAgent} performed significantly worse than the other Rule-Based agent (\Cref{fig:RulebasedAgentMonitoring1}). This is mainly due to the fact that it is a purely \emph{Inventory-based} model, while the \emph{RuleBasedCERebuyAgentStorageMinimizer} is a \emph{Data-driven} model. Certain characteristics of the \emph{RuleBasedCERebuyAgentStorageMinimizer} can also be seen in \Cref{fig:RulebasedAgentMonitoring2} and \Cref{fig:RulebasedAgentMonitoring3}, as it sells significantly less refurbished products, but is still able to make about the same amount of profits as the simpler \emph{RuleBasedCERebuyAgent}. This can be attributed to its quality of keeping storage costs low by minimizing inventory size.
+First, aside from training Reinforcement-Learning agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically Rule-Based pricing methods, as we have done ourselve for our Rule-Based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training a Reinforcement-Learning agent, which is not an option for this usecase. \Cref{fig:RulebasedAgentMonitoring} shows the results of an Agent-monitoring session with a \emph{RuleBasedCERebuyAgent} playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, a \emph{Data-driven model} that tries to keep the amount of products in its storage as low as possible. Its policy can be found in \Cref{fig:PolicyRuleBasedStorageMinmizer}. As was already mentioned in \nameref{sec:ExplainVendors}, we can see that the \emph{RuleBasedCERebuyAgent} performed significantly worse than the other Rule-Based agent (\Cref{fig:RulebasedAgentMonitoring1}). This is mainly due to the fact that it is a purely \emph{Inventory-based model}, while the \emph{RuleBasedCERebuyAgentStorageMinimizer} is a \emph{Data-driven} model. Certain characteristics of the \emph{RuleBasedCERebuyAgentStorageMinimizer} can also be seen in \Cref{fig:RulebasedAgentMonitoring2} and \Cref{fig:RulebasedAgentMonitoring3}, as it sells significantly less refurbished products, but is still able to make about the same amount of profits as the simpler \emph{RuleBasedCERebuyAgent}. This can be attributed to its quality of keeping storage costs low by minimizing inventory size.
 
 \begin{figure}[t]
 	\centering
@@ -200,7 +200,7 @@ First, aside from training Reinforcement-Learning agents, even though this is th
 		\includegraphics[width = \textwidth]{images/experiments/rulebased/RuleBasedMonitoringProfitsRefurbished.pdf}\\
 		\subcaption{Profits by refurbished sales}\label{fig:RulebasedAgentMonitoring3}
 	\end{subfigure}
-	\caption{Violinplots showing a selection of collected data when running Agent-monitoring after training.}\label{fig:RulebasedAgentMonitoring}
+	\caption{Diagrams created during an Agent-monitoring session comparing two Rule-Based pricing methods.}\label{fig:RulebasedAgentMonitoring}
 \end{figure}
 
 \subsubsection*{Other competitors for trained agents}
