@@ -34,7 +34,7 @@ Before starting our monitoring, we will need to conduct an experiment, where a R
 
 \section*{Experiment results}
 
-In the following sections we will use our different monitoring tools on the results of the SAC-Duopoly experiment. We will start with the Live-monitoring tool, which runs automatically after the training run has completed and creates over 90 graphs and diagrams already. Due to this high number of available diagrams, we will always only look at a curated selection, highlighting those which give the best insights into the trained agent. We have also dedicated a section to diagrams which are being created, but not as useful to the user, where we will try to identify the reason for the lack of information that can be gained from these diagrams (\nameref{sec:UselessDiagrams}).
+In the following sections we will use our different monitoring tools on the results of the SAC-Duopoly experiment. We will start with the Live-monitoring tool, which runs automatically after the training run has completed and creates over 90 graphs and diagrams already. Due to this high number of available diagrams, we will always only look at a curated selection, highlighting those which give the best insights into the trained agent. We have also dedicated a section to diagrams which are being created, but not as useful to the user, where we will try to identify the reason for the lack of information that can be gained from these diagrams (\nameref{sec:UselessDiagrams}).\todo{@Rainer @Alex: In this section I would only mention the reaaaaally old `statistics plots', which are not entirely useful, but not necessarily useless as well. For space reasons as well, should I really write that section? I don't think it would add much beyond `we made these graphs, but they show data in a weird way, so they are not as useful as others'?}
 
 \subsection*{Live- and Agent-monitoring}\label{subsec:LiveMonitoringResults}
 
@@ -171,9 +171,57 @@ At the end of the monitoring session, we receive an animated overview diagram th
 	\caption{Actions and market states during step 17 of the Exampleprinter session.}\label{fig:SACDuopolyExampleprinter17}
 \end{figure}
 
-\subsection*{Policyanalyzer}
+\subsection*{Policyanalyzer}\label{subsec:ResultsPolicyanalyzer}
 
-Run two different Policyanalyzer-runs: Once with only one feature, once with two features. Show how the info can be used to inform on the agent's quality. Maybe show one instance where it is not very useful.
+After a Reinforcement-Learning agent has been succesfully trained, or after implementing a new Rule-Based pricing method, users may want to analyze specific characteristics of the agent's policy. For this, the Policyanalyzer can be used. We will show both use-cases of the Policyanalyzer, by first analyzing the policy of our trained SAC-Agent and then analyzing the policy of one of our Rule-Based agents, the \emph{RuleBasedCERebuyAgentStorageMinimizer}. As was explained in \nameref{subsec:Policyanalyzer}, we need to define both a marketplace and a template market state before running the Policyanalyzer. For our experiments, we used a Circular economy with rebuy prices, and the following default market state:
+
+\begin{itemize}
+	\setlength\itemsep{0.1em}
+	\item Number of products in circulation: 75
+	\item Competitor's price for new products: 5
+	\item Competitor's price for refurbished products: 3
+	\item Competitor's rebuy price: 2
+	\item Number of items in own storage: 10
+	\item Number of items in competitor's storage: 12
+\end{itemize}
+
+In each run, the Policyanalyzer will then replace two of those values, as specified by the user, with the features that should be analyzed. For our first use-case, we will analyze the policy of our trained SAC-Agent. The features that should be replaced are the SAC-Agent's own storage, which will range from 0 to 100, and the competitor's price for refurbished items, ranging from 0 to 10. Note that it does not matter which policy the competitor follows, as the tool does not simulate the market, but only pass market states to the monitored agent. \Cref{fig:PolicyanalyzerSAC} shows the respective new and refurbished prices the SAC-Agent would set upon receiving these specific market states.
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/policyanalyzer/SACPolicyanalyzerNewPrice.png}\\
+		\subcaption{New prices}\label{fig:PolicyanalyzerSAC1}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/policyanalyzer/SACPolicyanalyzerRefurbishedPrice.png}\\
+		\subcaption{Refurbished prices}\label{fig:PolicyanalyzerSAC2}
+	\end{subfigure}
+	\caption{Which prices the trained SAC-Agent would set following specific market state combinations.}\label{fig:PolicyanalyzerSAC}
+\end{figure}
+
+From \Cref{fig:PolicyanalyzerSAC1} we can infer that the SAC-Agent is not very likely to ever set new prices lower than 6, which coincides with the observed prices set during training, see \Cref{fig:SACDuopolyMixedGraphs4}. \Cref{fig:PolicyanalyzerSAC1} also shows that the SAC-Agent will increase prices for new items if it has a higher number of items in its storage, but not necessarily if the competitor's price for refurbished items rises. By increasing the price for new items, the agent tries to de-incentive customers to buy those items from it. At the same time, when looking at \Cref{fig:PolicyanalyzerSAC2}, the SAC-Agent will also decrease the price for refurbished items if it has more in storage, again to incentivize customers to buy those products. From both of these diagrams we can see that the SAC-Agent prioritizes making pricing decisions based on the amount of items in its storage, and less based on competitor prices.
+
+Next, we will analyze the policy of the \emph{RuleBasedCERebuyAgentStorageMinimizer} using the Policyanalyzer. \Cref{fig:PolicyanalyzerRuleBased} shows the results of this monitoring session. \Cref{fig:PolicyanalyzerRuleBased1} shows the prices set by the vendor for new products, which follows the agent's policy implementation (see \Cref{fig:PolicyRuleBasedStorageMinimizer}) of always undercutting competitor prices by 1, but always sell above production price (which in this case is 3, see \Cref{fig:SACDuopolyConfigMarket}).
+
+\begin{figure}[b]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/rulebased/policyanalyzer/RuleBasedPolicyanalyzerNewPrice.png}\\
+		\subcaption{New prices}\label{fig:PolicyanalyzerRuleBased1}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/rulebased/policyanalyzer/RuleBasedPolicyanalyzerRebuyPrice.png}\\
+		\subcaption{Rebuy prices}\label{fig:PolicyanalyzerRuleBased2}
+	\end{subfigure}
+	\caption{Which prices the \emph{RuleBasedCERebuyAgentStorageMinimizer} would set following specific market state combinations.}\label{fig:PolicyanalyzerRuleBased}
+\end{figure}
+
+\Cref{fig:PolicyanalyzerRuleBased2} shows the price the Rule-Based agent will set for buying back items from customers. According to its policy, the rebuy price depends on both the agent's own storage and either its own price for new items (if inventory is low) or competitor's rebuy prices, both of which can be seen nicely in the diagram. As soon as inventory exceeds the limit set in the policy, the agent sets a rebuy price that is 1 lower than the lowest competitor's rebuy price - which in this case is 2, as defined by the template market state. If inventory is low enough, rebuy prices are instead dependent on the vendor's own new prices, as seen in \Cref{fig:PolicyanalyzerRuleBased1}, always being one lower, also following the competitor's new price.
 
 \subsection*{Other use-cases for Agent-monitoring}
 
@@ -181,9 +229,9 @@ Even though most of the diagrams that are created through the Agent-monitoring t
 
 \subsubsection*{Testing Rule-Based pricing methods}
 
-First, aside from training Reinforcement-Learning agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically Rule-Based pricing methods, as we have done ourselve for our Rule-Based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training a Reinforcement-Learning agent, which is not an option for this usecase. \Cref{fig:RulebasedAgentMonitoring} shows the results of an Agent-monitoring session with a \emph{RuleBasedCERebuyAgent} playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, a \emph{Data-driven model} that tries to keep the amount of products in its storage as low as possible. Its policy can be found in \Cref{fig:PolicyRuleBasedStorageMinmizer}. As was already mentioned in \nameref{sec:ExplainVendors}, we can see that the \emph{RuleBasedCERebuyAgent} performed significantly worse than the other Rule-Based agent (\Cref{fig:RulebasedAgentMonitoring1}). This is mainly due to the fact that it is a purely \emph{Inventory-based model}, while the \emph{RuleBasedCERebuyAgentStorageMinimizer} is a \emph{Data-driven} model. Certain characteristics of the \emph{RuleBasedCERebuyAgentStorageMinimizer} can also be seen in \Cref{fig:RulebasedAgentMonitoring2} and \Cref{fig:RulebasedAgentMonitoring3}, as it sells significantly less refurbished products, but is still able to make about the same amount of profits as the simpler \emph{RuleBasedCERebuyAgent}. This can be attributed to its quality of keeping storage costs low by minimizing inventory size.
+First, aside from training Reinforcement-Learning agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically Rule-Based pricing methods, as we have done ourselve for our Rule-Based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training a Reinforcement-Learning agent, which is not an option for this usecase. \Cref{fig:RulebasedAgentMonitoring} shows the results of an Agent-monitoring session with a \emph{RuleBasedCERebuyAgent} playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, a \emph{Data-driven model} that tries to keep the amount of products in its storage as low as possible. Its policy can be found in \Cref{fig:PolicyRuleBasedStorageMinimizer}. As was already mentioned in \nameref{sec:ExplainVendors}, we can see that the \emph{RuleBasedCERebuyAgent} performed significantly worse than the other Rule-Based agent (\Cref{fig:RulebasedAgentMonitoring1}). This is mainly due to the fact that it is a purely \emph{Inventory-based model}, while the \emph{RuleBasedCERebuyAgentStorageMinimizer} is a \emph{Data-driven} model. Certain characteristics of the \emph{RuleBasedCERebuyAgentStorageMinimizer} can also be seen in \Cref{fig:RulebasedAgentMonitoring2} and \Cref{fig:RulebasedAgentMonitoring3}, as it sells significantly less refurbished products, but is still able to make about the same amount of profits as the simpler \emph{RuleBasedCERebuyAgent}. This can be attributed to its quality of keeping storage costs low by minimizing inventory size.
 
-\begin{figure}[t]
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}{0.33\textwidth}
 		\centering
@@ -207,7 +255,7 @@ First, aside from training Reinforcement-Learning agents, even though this is th
 
 The second reason for having the Agent-monitoring as a stand-alone tool is to be able to monitor trained Reinforcement-Learning agents not only with the competitors they were trained against, but any combination of other agents, including other trained Reinforcement-Learning agents. \Cref{fig:SACDuopolyOtherCompetitors} shows this use-case on the example of our trained SAC-Agent from the SAC-Duopoly experiment playing not against the \emph{RuleBasedCERebuyAgentCompetitive} it was trained against, but instead playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, as introduced in the previous section.
 
-\begin{figure}[ht]
+\begin{figure}[t]
 	\centering
 	\begin{subfigure}{0.33\textwidth}
 		\centering
