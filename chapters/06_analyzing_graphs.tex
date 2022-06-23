@@ -27,7 +27,7 @@ Before starting our monitoring, we will need to conduct an experiment, where a R
 % 		      \item Rebuy price: 2
 % 	      \end{itemize}
 % 	      It should be noted that the configured maximum possible price is 10, which can also be configured using the configuration files. Depending on this maximum price, the prices set by \emph{FixedPriceAgents} must be adjusted to allow them to realistically compete in the market.
-% 	\item The second agent is a \emph{RuleBasedCERebuyAgentCompetitive}, a more complicated and sophisticated version of the simple \emph{RuleBasedCEAgent}, which was introduced in \nameref{subsec:InventoryBasedModels}. The competitive version used for this experiment combines features of both the basic \emph{RuleBasedCEAgent} and the \emph{RuleBasedCERebuyAgentStorageMinimizer}. It's policy implementation can be found in \todo{Insert code snippet in Appendix}xyz.\todo{Check if the agents are correct/order is correct}
+% 	\item The second agent is a \emph{RuleBasedCERebuyAgentCompetitive}, a more complicated and sophisticated version of the simple \emph{RuleBasedCERebuyAgent}, which was introduced in \nameref{subsec:InventoryBasedModels}. The competitive version used for this experiment combines features of both the basic \emph{RuleBasedCERebuyAgent} and the \emph{RuleBasedCERebuyAgentStorageMinimizer}. It's policy implementation can be found in \todo{Insert code snippet in Appendix}xyz.\todo{Check if the agents are correct/order is correct}
 % 	\item For the third competitor, we will again be using the \emph{RuleBasedCERebuyAgentStorageMinimizer}.
 % \end{enumerate}
 % This experiment will be referred to as the \emph{PPO-Oligopoly}.\todo{Config files for experiment, reuse same market config figure.}
@@ -177,7 +177,35 @@ Run two different Policyanalyzer-runs: Once with only one feature, once with two
 
 \subsection*{Agent-monitoring}
 
-Even though most of the diagrams that are created through the Agent-monitoring tool are created if it is run immediately after a training session, it is disconnected from the Live-monitoring tool. There are two major reasons for this: First, aside from training Reinforcement-Learning agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically Rule-Based pricing methods, as we have done ourselve for our Rule-Based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training a Reinforcement-Learning agent.
+Even though most of the diagrams that are created through the Agent-monitoring tool are created if it is run immediately after a training session, it is disconnected from the Live-monitoring tool. There are two major reasons for this:
+
+\subsubsection*{Testing Rule-Based pricing methods}
+
+First, aside from training Reinforcement-Learning agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically Rule-Based pricing methods, as we have done ourselve for our Rule-Based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training a Reinforcement-Learning agent, which is not an option for this usecase. \Cref{fig:RulebasedAgentMonitoring} shows the results of an Agent-monitoring session with a \emph{RuleBasedCERebuyAgent} playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, which is a slightly more sophisticated version, trying to keep the amount of products in its storage as low as possible.\todo{policy in appendix} As was already mentioned in \nameref{sec:ExplainVendors}, we can see that the \emph{RuleBasedCERebuyAgent} performed significantly worse than the other Rule-Based agent (\Cref{fig:RulebasedAgentMonitoring1}). This is mainly due to the fact that it is a purely \emph{Inventory-based} model, while the \emph{RuleBasedCERebuyAgentStorageMinimizer} is a \emph{Data-driven} model. Certain characteristics of the \emph{RuleBasedCERebuyAgentStorageMinimizer} can also be seen in \Cref{fig:RulebasedAgentMonitoring2} and \Cref{fig:RulebasedAgentMonitoring3}, as it sells significantly less refurbished products, but is still able to make about the same amount of profits as the simpler \emph{RuleBasedCERebuyAgent}. This can be attributed to its quality of keeping storage costs low by minimizing inventory size.
+
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/rulebased/RuleBasedMonitoringProfits.pdf}\\
+		\subcaption{Total profits per vendor}\label{fig:RulebasedAgentMonitoring1}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/rulebased/RuleBasedMonitoringPurchasesRefurbished.pdf}\\
+		\subcaption{Refurbished products sold}\label{fig:RulebasedAgentMonitoring2}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/rulebased/RuleBasedMonitoringProfitsRefurbished.pdf}\\
+		\subcaption{Profits by refurbished sales}\label{fig:RulebasedAgentMonitoring3}
+	\end{subfigure}
+	\caption{Violinplots showing a selection of collected data when running Agent-monitoring after training.}\label{fig:RulebasedAgentMonitoring}
+\end{figure}
+
+\subsubsection*{Other competitors for trained agents}
+
+The second reason for having the Agent-monitoring as a stand-alone tool is to be able to monitor trained Reinforcement-Learning agents not only with the competitors they were trained against, but any combination of other agents, including other trained Reinforcement-Learning agents.\todo{Do it for SAC-Duopoly experiment}
 
 \section*{Less useful diagrams}\label{sec:UselessDiagrams}
 

@@ -1,0 +1,16 @@
+{
+	"task": "exampleprinter",
+	"marketplace": "recommerce.market.circular.circular_sim_market.CircularEconomyRebuyPriceDuopoly",
+	"agents": [
+		{
+			"name": "StableBaselinesSAC",
+			"agent_class": "recommerce.rl.stable_baselines.sb_sac.StableBaselinesSAC",
+			"argument": "Stable-Baselines (SAC_Duopoly_1)_01000.zip"
+		},
+		{
+			"name": "RuleBasedCERebuyAgentCompetitive",
+			"agent_class": "recommerce.market.circular.circular_vendors.RuleBasedCERebuyAgentCompetitive",
+			"argument": ""
+		}
+	]
+}
