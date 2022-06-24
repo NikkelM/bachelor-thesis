@@ -1,5 +1,5 @@
 \begin{jointwork}\label{ch:SimulatingMarketplace}
-	In this section we will outline the requirements and challenges of transferring the vast amount of features and parameters that influence vendor and customer decisions in real recommerce markets to our simulated market environment. We will take a brief look at different market scenarios as well as how our customers work, with a focus on the unique feature of recommerce markets; the buyback of used items by the vendors. The focus of this chapter will however lie on the vendors, the Rule-Based as well as the ones trained using Reinforcement-Learning, comparing their features and how they fare against each other. These comparisons will be done using our various monitoring tools, which will be explained in the following chapter, \fullref{ch:Approaches} and put to use in \fullref{ch:AnalysingGraphs}. For further information on the overall framework structure refer to \cite{LeoThesis}, for detailed insights into our market processes, see \cite{NickThesis}.\todo{Rework start of this parapgraph}
+	This chapter will introduce the various components that make up a recommerce market, and how they were implemented in our simulation framework. We will take a brief look at different market scenarios as well as how our customers make decisions. The focus of this chapter will however lie on the vendors, the Rule-Based as well as the ones trained using Reinforcement-Learning algorithms, comparing their features and how they fare against each other. These comparisons will be done using our various monitoring tools, which will be explained in the following chapter, \fullref{ch:Approaches} and put to use in \fullref{ch:AnalysingGraphs}. For further information on the overall framework structure refer to \cite{LeoThesis}, for detailed insights into our market processes, see \cite{NickThesis}.
 \end{jointwork}
 
 \section{Market scenarios}\label{sec:MarketScenarios}
@@ -29,6 +29,7 @@ Most customers' behaviour can be classified into one of a (non-exhaustive) numbe
 
 Within each simulated step, after the various vendors have set their prices, purchase decisions are made by the customers. To save on computational time, probability distributions are used to determine what part of the total number of customers will decide to take which action. See below for the way these distributions are calculated for an exemplary Circular Economy marketplace, for further information also see \cite{NickThesis}.
 
+\pagebreak
 \begin{definition}\label{def:customerDecisions}
 	Let \(P_{in}\) be the price of the new and \(P_{ir}\) the price of the refurbished product of vendor \(i\). Using these prices, for each vendor, we define \(R_{in}\) as the \emph{preference ratio} regarding \(P_{in}\):
 	\[
@@ -52,6 +53,7 @@ Once a customer has decided to buy a product from any of the available vendors, 
 
 In our simulation, all owners are memoryless, meaning that they do not remember the original price they paid for the product. Additionally, each vendor in the market is obligated to buy back any product, independent of the original vendor. In each step, every owner has the option to either keep the product for another step, discard it (meaning it is removed from circulation and not sold back to a vendor), or sell it to any one of the vendors in the market. Similarly to the way we compute customer purchasing decisions, the decisions owners take are also represented through probability distributions. When deciding if and to which vendor a product should be sold, the following formula is used:
 
+\pagebreak
 \begin{definition}\label{def:ownerDecisions}
 	We keep the variables defined in \Cref{def:customerDecisions}. Additionally, let \(P_{ib}\) be the price at which vendor \(i\) is willing to buy back an owner's product. For each vendor, we define \(P_{im}\) as the purchase option with the lowest price:
 	\[
