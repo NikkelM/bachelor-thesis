@@ -10,7 +10,7 @@ x Order items in Appendix according to when they are referenced first/according 
 - check if all ref's are numbered correctly, same with sections
 - check if all refs go to correct places (esp. figures)
 x https://carbon.now.sh/ for code
-- Arbeiten der anderen zitieren
+x Arbeiten der anderen zitieren
 - Shorten/simplify class names, especially the RuleBased-Agents
 - make sure "Fachwörter" are all in the same format, normal, emph or texttt
 - Rename classes for the thesis to be more descriptive and short
@@ -20,36 +20,36 @@ x https://carbon.now.sh/ for code
 - remove color from links (format.tex Z. 85)
 - textbf for different references? nameref, Cref, fullRef
 - highlight keywords throughout thesis
-- page numbers for appendix/Bibliography
+x page numbers for appendix/Bibliography
 
-- direct vs. indirect speech
-- tenses
-- gender neutrality (he vs. she vs. they for the user for example)
+x direct vs. indirect speech
+x tenses
+x gender neutrality (he vs. she vs. they for the user for example)
 
-- Capitalization, especially Rulebased, Reinforcement-Learning
+x Capitalization, especially Rulebased, Reinforcement-Learning
 - \emph should be used consistently
 
 Seemingly interchangeable phrases should be identical/used correctly across the thesis:
 - monitoring session vs. monitoring run
 - market simulation vs. market situation vs. (market) scenario
-- re-buy vs. rebuy and re-sell vs. resell
-	- rebuy prices vs. rebuy-prices
-- refurbished vs. used
-- we vs. one vs. users
-- in the real market vs. on the real market
-- effect vs. affect
-- reinforcement-learning vs. Reinforcement Learning vs. RL vs. Reinforcement-Learning vs. ...
-- TensorFlow not Tensorflow (same for board)
-- trained on x episodes vs. trained for x episodes
-- Live monitoring vs. Live-monitoring
+x re-buy vs. rebuy and re-sell vs. resell
+	x rebuy prices vs. rebuy-prices
+x refurbished vs. used
+x we vs. one vs. users
+x in the real market vs. on the real market
+x effect vs. affect
+x reinforcement-learning vs. Reinforcement Learning vs. RL vs. Reinforcement-Learning vs. ...
+x TensorFlow not Tensorflow (same for board)
+x trained on x episodes vs. trained for x episodes
+x Live monitoring vs. Live-monitoring
 
-- make sure vendors vs. agents is always used correctly
+x make sure vendors vs. agents is always used correctly
 
 - simulating marketplace chapter:
 - indentation of the inventory, databased etc. subssecs
 
 approaches chapter:
-- "A" monitoring session vs. "The" monitoring session
+x "A" monitoring session vs. "The" monitoring session
 
 workflow chapter:
-- in the section for config files -> mention webserver?
+x in the section for config files -> mention webserver?
