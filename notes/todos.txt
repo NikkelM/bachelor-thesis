@@ -5,7 +5,7 @@ x Add a link to the recommerce repository?
 x format labels to use meta-info for sections etc. (sec: vs section:) https://en.m.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
 x Order items in Appendix according to when they are referenced first/according to their types
 - Numbered section not in ToC: https://latex.org/forum/viewtopic.php?t=11333
-	- number sections manually; \section*{1.2\space\space SectionTitle}
+	- number sections manually; \section*{1.2 SectionTitle}
 	- works only in chapters with no section in ToC (because of the counter)
 - check if all ref's are numbered correctly, same with sections
 - check if all refs go to correct places (esp. figures)
