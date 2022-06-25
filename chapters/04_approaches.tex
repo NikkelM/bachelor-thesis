@@ -1,5 +1,5 @@
 \begin{jointwork}\label{ch:Approaches}
-	In this section we will take a look at the different approaches we took to monitoring agents in our framework, explaining the reasons why we chose to implement specific features and how they help us in determining an agents strengths and weaknesses.
+	In this chapter, we will take a look at the different approaches we took to monitoring agents in our framework, explaining the reasons why we chose to implement specific features and how they help us in determining an agents strengths and weaknesses.
 \end{jointwork}
 
 \section{When to monitor what}\label{sec:WhenToMonitorWhat}
@@ -9,14 +9,14 @@ Our \emph{workflow} (which will be explained in more detail in \cbfref{ch:OurWor
 As mentioned above, we split our monitoring tools into the following two categories:
 
 \begin{enumerate}
-	\item \textbf{During training}: Having data available as soon as possible without having to wait for a long training session to end is crucial to an efficient workflow. Our framework enables us to collect and visualize data while a training session is still running. This allows users to always be well-informed about the currently running experiments. In some cases, when an agent's performance is severely lacking, users may want to stop a training session before it has finished, which is enabled through these monitoring tools. We also include the \emph{Live-monitoring} tool in this category, which runs directly after a training session has finished, see \bfref{subsec:LiveMonitoring}.
+	\item \textbf{During training} (\bfref{sec:DuringTraining}): Having data available as soon as possible without having to wait for a long training session to end is crucial to an efficient workflow. Our framework enables us to collect and visualize data while a training session is still running. This allows users to always be well-informed about the currently running experiments. In some cases, when an agent's performance is severely lacking, users may want to stop a training session before it has finished, which is enabled through these monitoring tools. We also include the \emph{Live-monitoring} tool in this category, which runs directly after a training session has finished, see \bfref{subsec:LiveMonitoring}.
 
-	\item \textbf{On complete agents}: After a training session has finished we have a complete and final set of data available for an agent, which enables us to perform more thorough and reliable tests. These can include simulating runs of a marketplace to gather data on the agent's performance in different scenarios and against different competitors, or running a static analysis of the agent's policy in different market states. The tools available for trained agents are in the same way also usable on rule-based agents.
+	\item \textbf{On complete agents} (\bfref{sec:CompleteAgents}): After a training session has finished we have a complete and final set of data available for an agent, which enables us to perform more thorough and reliable tests. These can include simulating runs of a marketplace to gather data on the agent's performance in different scenarios and against different competitors, or running a static analysis of the agent's policy in different market states. The tools available for trained agents are in the same way also usable on rule-based agents.
 \end{enumerate}
 
 In the following sections, we will take a look at the tools our framework provides for monitoring agents, distinguishing between the two general types of monitoring mentioned above. The goal of these sections is to give a short overview of each tool, how and why they were implemented and what value they offer to the framework as a whole. We will also discuss some features that are not yet available, explaining how they could benefit the entire workflow and enrich the overall experience.
 
-\section{Monitoring during a training session}
+\section{Monitoring during training}\label{sec:DuringTraining}
 
 When talking about monitoring agents during a training session, we are always referring to RL agents, as rule-based agents always perform the same and cannot be trained. But even though they cannot be trained, our monitoring tools listed in the next section, \bfref{sec:CompleteAgents}, can still be applied to rule-based agents as well, as users may want to compare different rule-based strategies against each other, or measure the strategy's performance on a market before training an RL agent.
 
