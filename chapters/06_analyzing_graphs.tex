@@ -39,7 +39,7 @@ For the interested reader,\todo{@Rainer @Alex: Is this expression okay, or how s
 In the following sections we will use our different monitoring tools on the results of the SAC-Duopoly experiment. We will start with the Live-monitoring tool, which runs automatically after the training run has completed and creates over 90 graphs and diagrams already. Due to this high number of available diagrams, we will always only look at a curated selection, highlighting those which give the best insights into the trained agent. \todo{@Rainer @Alex: In this section I would only mention our old `statistics plots'. For space reasons as well, should I really write that section? I don't think it would add much.}We have also dedicated a section to diagrams which are being created, but not as useful to the user, where we will try to identify the reason for the lack of information that can be gained from these diagrams (see \bfref{sec:UselessDiagrams}).
 
 \pagebreak
-\subsection*{6.2.1 Live- and Agent-monitoring}\label{subsec:LiveMonitoringResults}
+\subsection{Live- and Agent-monitoring}\label{subsec:LiveMonitoringResults}
 
 \begin{figure}[t]
 	\centering
@@ -105,7 +105,7 @@ This might lead one to believe that the two competitors' policies align closely 
 
 We can also observe that the models which were trained for longer are not necessarily better or even the same quality of the models with less experience. There is a significant improvement going from the model shown in \Cref{fig:SACDuopolyProfitsDensity1} to the one in \Cref{fig:SACDuopolyProfitsDensity2}, this shift in the probability density curve can be correlated with the maximum mean rewards the two models could achieve during the training: For the model trained for 500 episodes, this was around 450, for the other it was about 660 (\Cref{fig:SACDuopolyProfitsMean1}). Both of these values have respectively high probabilities of being reached during the second simulation after the training has concluded, i case of the model trained for 1,000 episodes, this even coincides with the maximum in the density plot (\Cref{fig:SACDuopolyProfitsDensity2}). Going from the model trained for 1,000 episodes to the next one, which was trained for 1,500 episodes (\Cref{fig:SACDuopolyProfitsDensity3}), both the probability densities and the mean rewards stay very close to each other. From this we can conclude that training the SAC-Agent for more than 1,000 episodes is very likely to not have a great effect on the maximum reward achievable by the algorithm. Going from the model trained for 1,500 episodes to the last one, saved at the end of the training (\Cref{fig:SACDuopolyProfitsDensity4}), we can however see a deterioration in performance: While the mean rewards hardly changed (see \Cref{fig:SACDuopolyProfitsMean1}), the probability density curve got wider at its base, extending out further towards a reward of 400, and lowering the probability of achieving a reward of 700 from previously above 0.5\% to under 0.4\%. This means that the model which was trained for the longest time produces less predictable results than those trained less, which is a tame version of so-called \emph{Catastrophic Forgetting}, which will be explained further in \bfref{subsec:FutureLiveMonitoring}. The insights gained by our monitoring tools combined with the fact that we save `intermediate' models of the RL agent during training allows us to find the optimal trained model to use for further investigation and eventual deployment in the real market. In the case of the SAC-Duopoly\_1 experiment, the optimal model would be the one trained for 1,000 episodes.
 
-\subsubsection*{6.2.1.1 Further investigation}
+\subsection{Further investigation}
 
 Evaluating a model based on just the mean profits achieved by the monitored agents may not be enough for many users, which is why our Live-monitoring offers many other useful diagrams as well. In this section, we will take a look at a small selection of them. The graphs used will be from the SAC-Duopoly\_1 experiment.
 
@@ -160,7 +160,7 @@ Violinplots do however not replace the need for densityplots, as both have an eq
 	\caption{Violinplots showing a selection of collected data when running Agent-monitoring after training.}\label{fig:SACDuopolyViolinPlots}
 \end{figure}
 
-\subsection*{6.2.2 Exampleprinter}
+\subsection{Exampleprinter}
 
 All of the diagrams shown in the previous section were created as part of the automatic monitoring done after a training session has concluded. There are however two other tools at our disposal to monitor the trained RL agent after they have been trained. For this, we only need the intermediate models saved during and at the end of training. In the case of the SAC-Duopoly\_1 experiment, we will be using the model saved after 1,000 episodes, as we discovered it had the best performance, see \bfref{subsec:LiveMonitoringResults}. The first tool we will now utilize is the Exampleprinter, as introduced in \bfref{subsec:Exampleprinter}.
 
@@ -174,7 +174,7 @@ At the end of the monitoring session, we receive an animated overview diagram th
 	\caption{Actions and market states during step 17 of the Exampleprinter session.}\label{fig:SACDuopolyExampleprinter17}
 \end{figure}
 
-\subsection*{6.2.3 Policyanalyser}\label{subsec:ResultsPolicyanalyser}
+\subsection{Policyanalyser}\label{subsec:ResultsPolicyanalyser}
 
 After an RL agent has been succesfully trained, or after implementing a new rule-based pricing method, users may want to analyse specific characteristics of the agent's policy. For this, the Policyanalyser can be used. We will show both use cases of the Policyanalyser, by first analysing the policy of our trained SAC-Agent and then analysing the policy of one of our rule-based agents, the \emph{RuleBasedCERebuyAgentStorageMinimizer}. As was explained in \bfref{subsec:Policyanalyser}, we need to define both a marketplace and a template market state before running the Policyanalyser. For our experiments, we used a Circular economy with rebuy prices, and the following default market state:
 
@@ -226,11 +226,11 @@ Next, we will analyse the policy of the \emph{RuleBasedCERebuyAgentStorageMinimi
 
 \Cref{fig:PolicyanalyserRuleBased2} shows the price the rule-based agent will set for buying back items from customers. According to its policy, the rebuy price depends on both the agent's own storage and either its own price for new items (if inventory is low) or competitor's rebuy prices, both of which can be seen nicely in the diagram. As soon as inventory exceeds the limit set in the policy, the agent sets a rebuy price that is 1 lower than the lowest competitor's rebuy price - which in this case is 2, as defined by the template market state. If inventory is low enough, rebuy prices are instead dependent on the vendor's own new prices, as seen in \Cref{fig:PolicyanalyserRuleBased1}, always being one lower, also following the competitor's new price.
 
-\subsection*{6.2.4 Other use cases for Agent-monitoring}
+\subsection{Other use cases for Agent-monitoring}
 
 Even though most of the diagrams that are created through the Agent-monitoring tool are created if it is run immediately after a training session, it is disconnected from the Live-monitoring tool. There are two major reasons for this, explained in the following two sections.
 
-\subsubsection*{6.2.4.1 Testing rule-based pricing methods}
+\subsubsection{Testing rule-based pricing methods}
 
 First, aside from training RL agents, even though this is the main focus, our market simulation framework can just as well be used to implement and test classically rule-based pricing methods, as we have done ourselves for our rule-based vendors. In order to make this workflow possible, users need to be able to use the Agent-monitoring tool, as it is the only way of running large-scale simulations of different marketplaces aside from training an agent, which is not an option for this use case. \Cref{fig:RulebasedAgentMonitoring} shows the results of an Agent-monitoring session with a \emph{RuleBasedCERebuyAgent} playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, a \emph{Data-driven model} that tries to keep the amount of products in its storage as low as possible. Its policy can be found in \Cref{fig:PolicyRuleBasedStorageMinimizer}. As was already mentioned in \fullref{sec:ExplainVendors}, we can see that the \emph{RuleBasedCERebuyAgent} performed significantly worse than the other rule-based agent (\Cref{fig:RulebasedAgentMonitoring1}). This is mainly due to the fact that it is a purely \emph{Inventory-based model}, while the \emph{RuleBasedCERebuyAgentStorageMinimizer} is a \emph{Data-driven} model. Certain characteristics of the \emph{RuleBasedCERebuyAgentStorageMinimizer} can also be seen in \Cref{fig:RulebasedAgentMonitoring2} and \Cref{fig:RulebasedAgentMonitoring3}, as it sells significantly less refurbished products, but is still able to make about the same amount of profits as the simpler \emph{RuleBasedCERebuyAgent}. This can be attributed to its quality of keeping storage costs low by minimizing inventory size.
 
@@ -254,7 +254,7 @@ First, aside from training RL agents, even though this is the main focus, our ma
 	\caption{Diagrams created during an Agent-monitoring session comparing two rule-based pricing methods.}\label{fig:RulebasedAgentMonitoring}
 \end{figure}
 
-\subsubsection*{6.2.4.2 Testing trained models against different competitors}
+\subsubsection{Testing trained models against different competitors}
 
 The second reason for having the Agent-monitoring as a stand-alone tool is to be able to monitor trained RL agents not only with the competitors they were trained against, but any combination of other agents, including other trained RL agents. \Cref{fig:SACDuopolyOtherCompetitors} shows this use case on the example of our trained SAC-Agent from the SAC-Duopoly experiment playing not against the \emph{RuleBasedCERebuyAgentCompetitive} it was trained against, but instead playing against a \emph{RuleBasedCERebuyAgentStorageMinimizer}, as introduced in the previous section.
 
@@ -282,7 +282,7 @@ From \Cref{fig:SACDuopolyOtherCompetitors1} we can infer that the SAC-Agent we t
 
 The impact the different rule-based agent has on the simulation can also be seen in the difference between storage costs of both vendors between the two monitoring runs. While in \Cref{fig:SACDuopolyMixedGraphs1}, both vendors paid storage costs between 50 and 150, this was not the case for the second simulation, where storage costs were much lower for both vendors (\Cref{fig:SACDuopolyOtherCompetitors2}). As the \emph{RuleBasedCERebuyAgentStorageMinimizer} focusses on keeping a low inventory at all times, it also buys back less items. This seems to have agreed with the SAC-Agent's policy, as the trained agent also kept fewer items in inventory in the simulation against this competitor. It was however not able to manage inventory as well as the rule-based agent, as both its storage costs were higher, and sales of refurbished items lower, see \Cref{fig:SACDuopolyOtherCompetitors3}.
 
-\section*{6.3 Less useful diagrams}\label{sec:UselessDiagrams}
+% \section*{6.3 Less useful diagrams}\label{sec:UselessDiagrams}
 
-See todo-note at the top.
+% See todo-note at the top.
 % This section is meant to highlight a number of diagrams which are not very useful, such as the `Statistics diagrams'. The reason for this can be twofold: Either the data shown in the diagram is not inertly useful, or the graph provides duplicated or confusing information.
