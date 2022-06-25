@@ -76,7 +76,7 @@
 	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgentStorageMinimizer}, simplified for readability.}\label{fig:PolicyRuleBasedStorageMinimizer}
 \end{figure}
 
-\begin{figure}[!]
+\begin{figure}[ht]
 	\includegraphics[width = \textwidth]{images/policies/RuleBasedCERebuyAgentCompetitivePolicy.png}\\
 	\caption{Policy implementation of the \emph{RuleBasedCERebuyAgentCompetitive}, simplified for readability.}\label{fig:PolicyRuleBasedCompetitive}
 \end{figure}
@@ -85,17 +85,17 @@
 \section{SAC-Duopoly experiment - Configuration files}\label{sec:AppendixConfigFiles}
 
 \begin{figure}[ht]
-	\includegraphics[width = \textwidth]{images/configs/SACDuopolyEnvironment.png}\\
-	\caption{The \texttt{environment\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigEnvironment}
+	\includegraphics[width = 0.95\textwidth]{images/configs/SACDuopoly/SACDuopolyEnvironment.png}\\
+	\caption{The \texttt{environment\_config.json} of the SAC-Duopoly experiment, simplified for readability.}\label{fig:SACDuopolyConfigEnvironment}
 \end{figure}
 
 \begin{figure}[ht]
-	\includegraphics[width = \textwidth]{images/configs/SACDuopolyMarket.png}\\
+	\includegraphics[width = 0.95\textwidth]{images/configs/SACDuopoly/SACDuopolyMarket.png}\\
 	\caption{The \texttt{market\_config.json} of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigMarket}
 \end{figure}
 
 \begin{figure}[ht]
-	\includegraphics[width = \textwidth]{images/configs/SACDuopolyAgent.png}\\
+	\includegraphics[width = 0.95\textwidth]{images/configs/SACDuopoly/SACDuopolyAgent.png}\\
 	\caption{The configuration file for the SAC-Agent of the SAC-Duopoly experiment.}\label{fig:SACDuopolyConfigAgent}
 \end{figure}
 
@@ -104,9 +104,22 @@
 
 \subsection{Configuration files}\label{sec:AppendixOligopolyConfig}
 
+The \texttt{market\_config.json} is the same as the one for the SAC-Duopoly experiment and can be found in \Cref{fig:SACDuopolyConfigMarket}.
+
+\begin{figure}[ht]
+	\includegraphics[width = \textwidth]{images/configs/PPOOligopoly/PPOOligopolyEnvironment.png}\\
+	\caption{The \texttt{environment\_config.json} of the PPO-Oligopoly experiment, simplified for readability.}\label{fig:PPOOligopolyConfigEnvironment}
+\end{figure}
+
+\begin{figure}[ht]
+	\includegraphics[width = \textwidth]{images/configs/PPOOligopoly/PPOOligopolyAgent.png}\\
+	\caption{The configuration file for the PPO-Agent of the PPO-Oligopoly experiment.}\label{fig:PPOOligopolyConfigAgent}
+\end{figure}
+
+\clearpage
 \subsection{Diagrams}\label{sec:AppendixOligopolyDiagrams}
 
 \begin{figure}[ht]
-	\includegraphics[width = 0.75\textwidth]{images/experiments/PPOOligopoly/LineProfitsAll.pdf}\\
+	\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/LineProfitsAll.pdf}\\
 	\caption{Mean profits achieved during the training run. The model was trained for 5,000 episodes with all agents playing at the same time.}\label{fig:PPOOligopolyLineProfitsAll}
 \end{figure}

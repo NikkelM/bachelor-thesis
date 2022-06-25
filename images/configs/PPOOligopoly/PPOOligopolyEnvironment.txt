@@ -1,0 +1,31 @@
+{
+  "task": "training",
+  "marketplace": "CircularEconomyRebuyPriceOligopoly",
+  "agents": [
+  	{
+      "name": "StableBaselinesPPO",
+      "agent_class": "StableBaselinesPPO",
+      "argument": ""
+    },
+  	{
+      "name": "RuleBasedCERebuyAgentCompetitive",
+      "agent_class": "RuleBasedCERebuyAgentCompetitive",
+      "argument": ""
+    },
+  	{
+      "name": "RuleBasedCERebuyAgent",
+      "agent_class": "RuleBasedCERebuyAgent",
+      "argument": ""
+    },
+  	{
+      "name": "FixedPriceCERebuyAgent",
+      "agent_class": "FixedPriceCERebuyAgent",
+      "argument": [4, 7, 2]
+    },
+  	{
+      "name": "RuleBasedCERebuyAgentStorageMinimizer",
+      "agent_class": "RuleBasedCERebuyAgentStorageMinimizer",
+      "argument": ""
+    }
+  ]
+}
