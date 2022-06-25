@@ -1,0 +1,17 @@
+def policy(market_state) -> tuple:
+  own_storage = market_state.own_storage
+  comp_refurbished, comp_new, comp_rebuy = get_competitor_prices()
+
+  price_new = max(median(comp_new) - 1, market.production_price + 1)
+
+  if own_storage < market.max_storage / 15:
+    # try to fill up the storage immediately
+	price_refurbished = max(comp_new + comp_refurbished)
+	rebuy_price = price_new - 1
+  
+  else:
+    # storage too full, try to get rid of some refurbished products
+	rebuy_price = min(comp_rebuy) - market.max_price / 0.1
+	price_refurbished = np.quantile(comp_refurbished, 0.25)
+
+  return clamped_prices(price_refurbished, price_new, rebuy_price)

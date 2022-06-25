@@ -1,0 +1,33 @@
+def policy(market_state) -> tuple:
+  products_in_storage = market_state.products_in_storage
+  price_refurbished = 0
+  price_new = market.production_price
+  rebuy_price = 0
+  
+  if products_in_storage < market.max_storage / 15:
+    # try to fill up the storage immediately
+	price_refurbished = market.max_price * 6/10
+	price_new += market.max_price * 6/10
+	rebuy_price = price_refurbished - 1
+
+  elif products_in_storage < market.max_storage / 10:
+	# try to fill up the storage
+	price_refurbished = market.max_price * 5/10
+	price_new += market.max_price * 5/10
+	rebuy_price = price_refurbished - 2
+
+  elif products_in_storage < market.max_storage / 8:
+	# storage content is ok
+	price_refurbished = market.max_price * 4/10
+	price_new += market.max_price * 4/10
+	rebuy_price = price_refurbished // 2
+
+  else:
+	# storage too full
+    # try to get rid of some refurbished products
+	price_refurbished = market.max_price * 2/10
+	price_new += market.max_price * 7/10
+	rebuy_price = 0
+
+  price_new = min(9, price_new)
+  return (price_refurbished, price_new, rebuy_price)

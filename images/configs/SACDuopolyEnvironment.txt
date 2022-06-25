@@ -1,0 +1,16 @@
+{
+  "task": "training",
+  "marketplace": "CircularEconomyRebuyPriceDuopoly",
+  "agents": [
+  	{
+      "name": "StableBaselinesSAC",
+      "agent_class": "StableBaselinesSAC",
+      "argument": ""
+    },
+  	{
+      "name": "RuleBasedCERebuyAgentCompetitive",
+      "agent_class": "RuleBasedCERebuyAgentCompetitive",
+      "argument": ""
+    }
+  ]
+}
