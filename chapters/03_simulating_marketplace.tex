@@ -27,25 +27,37 @@ Most customers' behaviour can be classified into one of a (non-exhaustive) numbe
 
 To make Linear markets a little more complex and add another dimension than just the \emph{new price} of a product for vendors to consider, random quality values are assigned to each vendor's products. Customers in this economy model were modelled to take this quality value into account when making their purchasing decisions, further reinforcing the shopping style mentioned above. As Circular Economy markets are inherently more complex than their linear counterparts (through the addition of two new price channels, which influence each other through their effect on customers), it was decided to remove the additional layer of quality values from these markets.
 
-Within each simulated time step, after the various vendors have set their prices, purchasing decisions are made by the customers. To save on computational time, probability distributions are used to determine what part of the total number of customers will decide to take which action. See below for the way these distributions are calculated for an exemplary Circular Economy marketplace, for further information also see \cite{NickThesis}.
+Within each simulated time step, after the various vendors have set their prices, purchasing decisions are made by the customers. To save on computational time, probability distributions are used to determine what part of the total number of customers will decide to take which action. See below for the way these distributions are calculated for an exemplary recommerce marketplace, for further information also see \cite{NickThesis}.
 
 \clearpage
 \begin{definition}\label{def:customerDecisions}
-	Let \(P_{in}\) be the price of the new and \(P_{ir}\) the price of the refurbished product of vendor \(i\). Prices will always be within the range of \([0,10]\). Using these prices, for each vendor, we define \(R_{in}\) as the \emph{preference ratio} regarding \(P_{in}\):
+	Let \(C_{in}\) be the price (cost) of the new and \(C_{ir}\) the price of the refurbished product of vendor \(i\). Prices will always be within the range of \([0,10]\). Using these prices, for each vendor, we define \(R_{in}\) as the customer's \emph{preference ratio} regarding \(C_{in}\):
 	\[
-		R_{in} := \frac{10}{P_{in}} - e^{P_{in} - 8}
+		R_{in} := \frac{10}{C_{in}} - e^{C_{in} - 8}
 	\]
-	and similarly, \(R_{ir}\) as the \emph{preference ratio} regarding \(P_{ir}\):
+	and similarly, \(R_{ir}\) as the \emph{preference ratio} regarding \(C_{ir}\):
 	\[
-		R_{ir} := \frac{5.5}{P_{ir}} - e^{P_{ir} - 5}
+		R_{ir} := \frac{5.5}{C_{ir}} - e^{C_{ir} - 5}
 	\]
-\end{definition}\todo{Better explanation of the probabilities, for customers and owners}
+\end{definition}
 
-% Using these preference ratios, customers adjust their determined cost-benefit ratios to value a used product to be 55\% the quality of that of a new product. Additionally, the constants of 8 and 5 in the exponent of the substracted exponential function act as price thresholds above which it becomes exponentially more unlikely that a customer will chose the respective product.  
+Following the numerators of the two fractions, customers adjust their determined cost-benefit ratios to value a refurbished product to be 55\% the quality of that of a new product. This needs to be done as there is no inherent quality value for products in our simulated recommerce markets. Additionally, the constants of 8 and 5 in the exponent of the substracted exponential function act as price thresholds above which it becomes exponentially more unlikely that a customer will chose the respective product, as the value of the preference ratio will decrease.
 
-In order to be usable as a probability distribution, the different ratios need to add up to \(1\). We use \emph{softmax} to normalize our values, after which each \emph{preference ratio} will be within the interval \((0,1)\), with all ratios adding up to \(1\) as needed.
+In order to be usable as a probability distribution, the different ratios need to add up to \(1\). We use the \emph{softmax} function to normalize our values, after which each \emph{preference ratio} will be within the interval \((0,1)\), with all ratios adding up to \(1\) as needed.
 
-Following this, the market uses a \emph{multinomial} distribution to draw \(n\) samples, with \(n\) being the number of customers making a pruchasing decision in this step of the simulation.
+\begin{definition}\label{def:customerSoftmax}
+	Let \(R_{in}\) and \(R_{ir}\) be the preference ratios as defined in \Cref{def:customerDecisions}. Let \(S_{r}\) be the sum of those ratios:
+	\[
+		S_{r} := R_{in} + R_{ir}
+	\]
+	We can now determine the concrete probabilities that customers will chose either the new or used product by using the \emph{softmax} function on our probability ratios. Let \(P_{ij}\) be the probability that a customer chooses to buy product \(j\) from vendor \(i\):
+	\[
+		P_{ij} := \frac{e^{P_{ij}}}{S_{r}}
+	\]
+	All \(P_{ij}\) are collected in the set of probabilities \(P\). Following the definition of \emph{softmax}, all probabilities in \(P\) sum up to 1, as required.
+\end{definition}
+
+Following this conversion of the preference ratios, the market uses a standard \emph{multinomial} distribution to draw \(n\) samples out of the pool of probabilities \(P\), with \(n\) being the number of customers making a purchasing decision in this step of the simulation.
 
 As mentioned above, the current decisionmaking process of customers in our simulation is still quite basic. \bfref{sec:DivergingFromRealMarket} introduces a number of parameters and circumstances that can be used to make customer behaviour more realistic. Through the modular approach when building the framework, any customer behaviour implemented in the future can easily be added to the pool of available options, as long as it manifests in the form of a probability distribution, at which point the number of customers can be split between different distributions when drawing from the \emph{multinomial} distribution (or any other distribution if so desired).
 
@@ -55,19 +67,18 @@ Once a customer has decided to buy a product from any of the available vendors, 
 
 In our simulation, all owners are memoryless, meaning that they do not remember the original price they paid for the product. Additionally, each vendor in the market is obligated to buy back any product, independent of the original vendor. In each step, every owner has the option to either keep the product for another step, discard it (meaning it is removed from circulation and not sold back to a vendor), or sell it to any one of the vendors in the market. Similarly to the way we compute customer purchasing decisions, the decisions owners take are also represented through probability distributions. When deciding if and to which vendor a product should be sold, the following formula is used:
 
-\pagebreak
 \begin{definition}\label{def:ownerDecisions}
-	We keep the variables defined in \Cref{def:customerDecisions}. Additionally, let \(P_{ib}\) be the price at which vendor \(i\) is willing to buy back an owner's product. \(P_{ib}\) will again be within the range of \([0,10]\). For each vendor, we define \(P_{im}\) as the purchase option with the lowest price:
+	We keep the variables defined in \Cref{def:customerDecisions}. Additionally, let \(C_{ib}\) be the price at which vendor \(i\) is willing to buy back an owner's product. \(C_{ib}\) will again be within the range of \([0,10]\). For each vendor, we define \(C_{im}\) as the purchase option with the lowest price:
 	\[
-		P_{im} := \min(P_{in}, P_{ir})
+		C_{im} := \min(C_{in}, C_{ir})
 	\]
 	We define the likelihood \(R_{ib}\) that the owner will return their product to vendor \(i\) as follows:
 	\[
-		R_{ib} := 2 \cdot e^{(P_{ib} - P_{im}) / P_{im}}
+		R_{ib} := 2 \cdot e^{(C_{ib} - C_{im}) / C_{im}}
 	\]
 	Additionally, the owner's \emph{discard preference} \(R_{d}\) is updated for each vendor as follows:
 	\[
-		R_{d} := \min({R_{d}, \frac{2}{P_{ib}+1}})
+		R_{d} := \min({R_{d}, \frac{2}{C_{ib}+1}})
 	\]
 	Meaning the owner is more likely to discard their product if rebuy prices are low across the board.
 \end{definition}
@@ -103,7 +114,7 @@ All of our RL agents fall into this category. As they are not the focus of this 
 There are two `origins' of the algorithms in our framework. In the earlier phases, \hyperref[item:QLearning]{Q-Learning} and \hyperref[item:ActorCritic]{Actor-Critic} algorithms were custom implemented by us. Later on, we used the \hyperref[item:StableBaselines]{Stable-Baselines} library to incorporate a greater number of pre-implemented algorithms into our framework. While these are not as easily configurable, they can quickly be used without much additional work.
 
 \medskip
-\noindent\textbf{Q-Learning}\phantomsection:\label{item:QLearning} \emph{Q-Learning} agents were the first RL agents we introduced in our framework, as its algorithm is one of the easier ones to implement~\cite{reinforcementLearningOverview}. The \emph{Q-Learning} algorithm used in our framework is implemented using the \emph{pytorch} framework (see \cite{Pytorch}). However, the drawback of using \emph{Q-Learning} in our framework is that it can only be applied to discrete action and state spaces. This means that when using \emph{Q-Learning}, only `whole' prices can be set by our vendors, and any decimal places must be omitted. This of course limits the framework in its realism, as the fine-tuning of prices using decimal places can be critical in influencing customer decisions. In the initial exploration-phase of our simulation framework this was not a problem, as relatively small action spaces were used, adapted to this limitation. But by now, our simulation framework also supports continuous action and state spaces, to allow more complex algorithms such as those introduced in the sections below to function. While approaches for \emph{Q-Learning} algorithms that can work with continuous action and state spaces have been presented in the past (\cite{QLearningContinuous},~\cite{QLearningContinuous2}), we have chosen not to implement such an algorithm in our framework, but rather explore approaches other than \emph{Q-Learning}, such as \emph{Actor-Critic} algorithms, introduced below.\todo{Actorcritic on new page?}
+\noindent\textbf{Q-Learning}\phantomsection:\label{item:QLearning} \emph{Q-Learning} agents were the first RL agents we introduced in our framework, as its algorithm is one of the easier ones to implement~\cite{reinforcementLearningOverview}. The \emph{Q-Learning} algorithm used in our framework is implemented using the \emph{pytorch} framework (see \cite{Pytorch}). However, the drawback of using \emph{Q-Learning} in our framework is that it can only be applied to discrete action and state spaces. This means that when using \emph{Q-Learning}, only `whole' prices can be set by our vendors, and any decimal places must be omitted. This of course limits the framework in its realism, as the fine-tuning of prices using decimal places can be critical in influencing customer decisions. In the initial exploration-phase of our simulation framework this was not a problem, as relatively small action spaces were used, adapted to this limitation. But by now, our simulation framework also supports continuous action and state spaces, to allow more complex algorithms such as those introduced in the sections below to function. While approaches for \emph{Q-Learning} algorithms that can work with continuous action and state spaces have been presented in the past (\cite{QLearningContinuous},~\cite{QLearningContinuous2}), we have chosen not to implement such an algorithm in our framework, but rather explore approaches other than \emph{Q-Learning}, such as \emph{Actor-Critic} algorithms, introduced below.
 
 \medskip
 \noindent\textbf{Actor-Critic}\phantomsection:\label{item:ActorCritic} \emph{Actor-Critic} algorithms are more complex than Q-Learning algorithms, and have therefore been implemented later in the process. They are structured different then Q-Learning algorithms in the way that they are `split' into two parts: The \emph{actor} is responsible for selecting actions, while the \emph{critic} is responsible for critiquing  the actions taken by the \emph{actor}, thereby improving its performance~\cite{ActorCritic}. Similar to the \emph{Q-Learning} agents, the \emph{Actor-Critic} algorithms have also been implemented by us. In total, one discrete and two continuous \emph{Actor-Critic} agents can be used, in addition to those provided through \emph{Stable-Baselines}, see the next section.
