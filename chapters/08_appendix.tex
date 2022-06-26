@@ -82,7 +82,9 @@
 \end{figure}
 
 \clearpage
-\section{SAC-Duopoly experiment - Configuration files}\label{sec:AppendixConfigFiles}
+\section{SAC-Duopoly experiment}\label{sec:AppendixSACDuopoly}
+
+\subsection{Configuration files}\label{subsec:AppendixSACDuopolyConfigFiles}
 
 \begin{figure}[ht]
 	\includegraphics[width = 0.95\textwidth]{images/configs/SACDuopoly/SACDuopolyEnvironment.png}\\
@@ -100,9 +102,48 @@
 \end{figure}
 
 \clearpage
+\subsection{Additional diagrams - Policyanalyser}\label{subsec:AppendixSACDuopolyPolicyanalyser}
+
+\Cref{fig:AppendixSACDuopolyPolicyanalyser1} and \Cref{fig:AppendixSACDuopolyPolicyanalyser2} show additional results of a Policyanalyser session run on the trained SAC-Agent. In \Cref{fig:AppendixSACDuopolyPolicyanalyser1refurbished} we can see that the lower the agent's storage and the higher the competitor's new price, the higher the agent will set the price for its refurbished products. This is the result of both the agent seeing that it can increase prices and still be cheaper than its opponent, and the agent lowering prices to sell more refurbished products if storage is full to reduce storage costs. \Cref{fig:AppendixSACDuopolyPolicyanalyser1rebuy} shows that rebuy prices are low if storage is low, but the competitor's new prices also slightly, but inconsistently, influence rebuy prices.
+
+% SAC_long_comp_new_own_storage
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/policyanalyzer/Appendix/comp_new_own_storage/refurbished_price.png}\\
+		\subcaption{Refurbished prices}\label{fig:AppendixSACDuopolyPolicyanalyser1refurbished}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/policyanalyzer/Appendix/comp_new_own_storage/rebuy_price.png}\\
+		\subcaption{Rebuy prices}\label{fig:AppendixSACDuopolyPolicyanalyser1rebuy}
+	\end{subfigure}
+	\caption{Prices set by the trained SAC-Agent, depending on the competitor's new price and the agent's own storage.}\label{fig:AppendixSACDuopolyPolicyanalyser1}
+\end{figure}
+
+\Cref{fig:AppendixSACDuopolyPolicyanalyser2new} shows that new prices rise the more items are in the agent's storage, this is to incentivise customers to rather buy refurbished products, which will decrease inventory and thereby storage costs. Competitor's storage seems to have close to no effect on the agent's new price. \Cref{fig:AppendixSACDuopolyPolicyanalyser2rebuy} shows that rebuy prices are only high of inventory is very low, which is the result in the agent trying to always have at least some products in storage, as otherwise it would not be able to sell refurbished products. In anticipation of low rebuy prices by its competitor, the agent also sets low rebuy prices of competitor storage is low.
+
+% SAC_long_both_storage
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/policyanalyzer/Appendix/both_storage/new_price.png}\\
+		\subcaption{New prices}\label{fig:AppendixSACDuopolyPolicyanalyser2new}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/SACDuopoly/policyanalyzer/Appendix/both_storage/rebuy_price.png}\\
+		\subcaption{Rebuy prices}\label{fig:AppendixSACDuopolyPolicyanalyser2rebuy}
+	\end{subfigure}
+	\caption{Prices set by the trained SAC-Agent, depending on both the competitor's and the agent's storage.}\label{fig:AppendixSACDuopolyPolicyanalyser2}
+\end{figure}
+
+\clearpage
 \section{PPO-Oligopoly experiment}\label{sec:AppendixOligopoly}
 
-\subsection{Configuration files}\label{sec:AppendixOligopolyConfig}
+\subsection{Configuration files}\label{subsec:AppendixOligopolyConfig}
 
 The \texttt{market\_config.json} is the same as the one for the SAC-Duopoly experiment and can be found in \Cref{fig:SACDuopolyConfigMarket}.
 
@@ -117,7 +158,7 @@ The \texttt{market\_config.json} is the same as the one for the SAC-Duopoly expe
 \end{figure}
 
 \clearpage
-\subsection{Diagrams}\label{sec:AppendixOligopolyDiagrams}
+\subsection{Diagrams}\label{subsec:AppendixOligopolyDiagrams}
 
 Some of the more interesting diagrams created during the training and subsequent Live-monitoring of the PPO-Oligopoly experiment are shown here, without in-depth interpretation. The agent was trained for a total of 5,000 episodes. Following the standard Oligopoly setup, all vendors played at the same time, setting prices after one another within each step.
 
