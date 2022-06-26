@@ -64,6 +64,60 @@
 \end{table}
 
 \newpage
+
+\section{Exemplary calculation of customer purchase probabilities}\label{sec:customerPropExample}
+
+In this section, we will calculate the probability distribution for an exemplary market scenario\footnote{Refer to \bfref{sec:Customers} for the explanation of customer behaviour in our framework.}. We assume a Circular Economy, Duopoly market scenario with prices set by the two vendors as shown in \Cref{tab:CustomerExamplePrices}.
+
+\begin{table}[!htb]
+	\begin{tabular}{|r|c|c|}
+		\hline
+		         & \(P_{new}\) & \(P_{ref}\) \\\hline
+		Vendor 0 & 7           & 4           \\\hline
+		Vendor 1 & 6           & 2           \\\hline
+	\end{tabular}\medskip
+	\caption{Prices set by the vendors in our exemplary market scenario.}\label{tab:CustomerExamplePrices}
+\end{table}
+
+\noindent This will result in the following preference ratios for new products, following the definition in Equation \eqref{eq:NewPref}:
+
+\begin{equation}
+	r_{0,new} := r_{new}(P_{0,new}) = \frac{10}{7} - e^{7 - 8} \approx 1.06
+\end{equation}
+\begin{equation}
+	r_{1,new} := r_{new}(P_{1,new}) = \frac{10}{6} - e^{6 - 8} \approx 1.53
+\end{equation}
+
+We can immediately see that customers prefer the new product offered by vendor 1 over the one offered by vendor 0, signified by the higher preference ration, which is due to the lower price of the product offered by vendor 1. The same calculation can now be done for the refurbished products following Equation \eqref{eq:RefPref}:
+
+\begin{equation}
+	r_{0,ref} := r_{ref}(P_{0,ref}) = \frac{5.5}{4} - e^{4 - 5} \approx 1.01
+\end{equation}
+\begin{equation}
+	r_{1,ref} := r_{ref}(P_{1,ref}) = \frac{5.5}{2} - e^{2 - 5} \approx 2.70
+\end{equation}
+
+It seems that a price of 2 for a refurbished item is a great deal. In order to draw samples from the \emph{multinomial} distribution, we must now normalize our preference ratios using \emph{softmax}. For this, we first calculate the sum over all preference ratios as defined in Equation \eqref{eq:PrefSum} (including the `nothingpreference' of Equation \eqref{eq:NothingPref}):
+
+\begin{equation}
+	S = e^{1} + e^{1.06} + e^{1.53} + e^{1.01} + e^{2.70} \approx 27.85
+\end{equation}
+
+Using this sum, we can now calculate the purchase probabilities for each product using Equation \eqref{eq:Softmax}, the results of which can be seen in \Cref{tab:CustomerExampleSoftmax}.
+
+\begin{table}[!htb]
+	\begin{tabular}{|r|c|c|c|}
+		\hline
+		         & \(\pi_{new}\) & \(\pi_{ref}\) & \(\pi_{not}\)         \\\hline
+		Vendor 0 & 0.10          & 0.10          & \multirow{2}{*}{0.10} \\\cline{1-3}
+		Vendor 1 & 0.17          & 0.53          &                       \\\hline
+	\end{tabular}\medskip
+	\caption{Purchase probabilites created by applying the \emph{softmax} function on the different preference ratios.}\label{tab:CustomerExampleSoftmax}
+\end{table}
+
+\noindent These probabilites sum to 1, as required, and can subsequently be used to draw samples from the multinomial distribution, which will be omitted here.
+
+\newpage
 \section{Rule-based agents - Policies}\label{sec:AppendixPolicies}
 
 \begin{figure}[ht]
