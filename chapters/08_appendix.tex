@@ -119,23 +119,69 @@ The \texttt{market\_config.json} is the same as the one for the SAC-Duopoly expe
 \clearpage
 \subsection{Diagrams}\label{sec:AppendixOligopolyDiagrams}
 
+Some of the more interesting diagrams created during the training and subsequent Live-monitoring of the PPO-Oligopoly experiment are shown here, without in-depth interpretation. The agent was trained for a total of 5,000 episodes. Following the standard Oligopoly setup, all vendors played at the same time, setting prices after one another within each step.
+
+% All profits + cum profits histogram
 \begin{figure}[ht]
 	\centering
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyLineProfitsAll.pdf}\\
-		\subcaption{Mean profits achieved during the training run}\label{fig:PPOOligopolyLineProfitsAll}
+		\subcaption{Profits per episode achieved during the training run}\label{fig:PPOOligopolyLineProfitsAll}
 	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyCumulativeRewards.pdf}\\
-		\subcaption{Cumulative rewards per training stage, recorded during the Agent-monitoring session}\label{fig:PPOOligopolyCumulativeRewards}
+		\subcaption{Cumulative rewards per training stage per interval, recorded during the Agent-monitoring session}\label{fig:PPOOligopolyCumulativeRewards}
 	\end{subfigure}
-	\caption{Training progress of the PPO-Oligopoly experiment. The agent was trained for 5,000 episodes with all agents playing at the same time. The PPO-Agent took significantly longer than the SAC-Agent (\Cref{fig:SACDuopolyProfitsMean}) to reach its maximum possible profit.}\label{fig:PPOOligopolyDiagrams1}
+	\caption{The PPO-Agent took significantly longer than the SAC-Agent (\Cref{fig:SACDuopolyProfitsMean}) to reach its maximum possible profit (\Cref{fig:PPOOligopolyLineProfitsAll}) and the model that was trained longest outperforms the other two (\Cref{fig:PPOOligopolyCumulativeRewards}), as was to be expected following the steady increase in profits during training.}\label{fig:PPOOligopolyMixed}
 \end{figure}
 
 % price rebuy + price refurb
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyLinePriceRebuy.pdf}\\
+		\subcaption{Rebuy prices}\label{fig:PPOOligopolyLinePriceRebuy}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyLinePriceRefurbished.pdf}\\
+		\subcaption{Prices for refurbished products}\label{fig:PPOOligopolyLinePriceRefurbished}
+	\end{subfigure}
+	\caption{While rebuy prices were consistently at or below 1 (excluding the \emph{FixedPriceAgent}), prices for refurbished products rose consistently, with the \emph{RuleBasedCERebuyAgentStorageMinimizer} leading the price run.}\label{fig:PPOOligopolyDiagramsPrices}
+\end{figure}
 
-% purch new + purch refurb
 
-% buy nothing + throw away
+% purch refurb + storage costs
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyLinePurchasesRefurbished.pdf}\\
+		\subcaption{Number of purchases of refurbished products}\label{fig:PPOOligopolyLinePurchasesRefurbished}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyLineStorageCosts.pdf}\\
+		\subcaption{Storage costs per episode}\label{fig:PPOOligopolyLineStorageCosts}
+	\end{subfigure}
+	\caption{Except in the case of the \emph{FixedPriceAgent}, a higher number of sales of refurbished products was always followed by a similar decrease in storage costs, meaning that the number of bought back products likely stayed on a steady level over the course of training. This is confirmed by \Cref{fig:PPOOligopolyLineOwnerRebuys}.}\label{fig:PPOOligopolyDiagramsPurchases}
+\end{figure}
+
+% rebuys + buy nothing
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyLineOwnerRebuys.pdf}\\
+		\subcaption{Number of products bought back by each vendor}\label{fig:PPOOligopolyLineOwnerRebuys}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{images/experiments/PPOOligopoly/PPOOligopolyLineBuyNothing.pdf}\\
+		\subcaption{Number of customers that bought no product}\label{fig:PPOOligopolyLineBuyNothing}
+	\end{subfigure}
+	\caption{The number of products bought back by vendors (except for the \emph{FixedPriceAgent}) stayed similar over the whole course of training. With an increase in rebuy-prices (\Cref{fig:PPOOligopolyLinePriceRebuy}), the \emph{FixedPriceAgent} lost some of its rebuys to the other vendors. Following an overall increase in prices (see e.g. \Cref{fig:PPOOligopolyLinePriceRefurbished}), more and more customers chose to buy none of the advertised products.}\label{fig:PPOOligopolyDiagramsOwners}
+\end{figure}
