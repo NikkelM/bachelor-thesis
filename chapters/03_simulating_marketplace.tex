@@ -1,88 +1,113 @@
 \begin{jointwork}\label{ch:SimulatingMarketplace}
-	This chapter will introduce the various components that make up a recommerce market, and how they were implemented in our simulation framework. We will take a brief look at different market scenarios as well as how our customers make decisions. The focus of this chapter will however lie on the vendors, the rule-based as well as the ones trained using RL algorithms, comparing their features and how they fare against each other. These comparisons will be done using our various monitoring tools, which will be explained in the following chapter, \cbfref{ch:Approaches} and put to use in \cbfref{ch:AnalysingGraphs}. For further information on the overall framework structure refer to \cite{LeoThesis}, for detailed insights into our market processes, see \cite{NickThesis}.
+	This chapter will introduce the various components that make up a recommerce market, and how they were implemented in our simulation framework. We will take a brief look at different market scenarios as well as how our customers make decisions. The focus of this chapter will however lie on the vendors, the rule-based as well as the ones trained using Reinforcement learning algorithms. For further information on the overall framework structure refer to \cite{LeoThesis}, for detailed insights into our market processes, see \cite{NickThesis}.
 \end{jointwork}
 
 \section{Market scenarios}\label{sec:MarketScenarios}
 
-In our framework, we implemented a number of `market blueprints' for classic Linear Economy markets as well as for Circular Economy markets both with and without rebuy prices enabled. There are marketplaces available for each combination of the following two features:
+In our framework, we implemented a number of `market blueprints' for classic Linear Economy markets as well as for Circular Economy markets both with and without rebuy prices. There are marketplaces available for each combination of the following two features:
 \begin{enumerate}
 	\item Marketplace type: Linear Economy, Circular Economy, Circular Economy with rebuy prices
 	\item Market environment: Monopoly, Duopoly, Oligopoly
 \end{enumerate}
-The marketplace type defines the number of prices the vendor has to set. In a Linear Economy, vendors only set prices for new items, in a Circular Economy prices for refurbished items need to be set as well. In order to simulate a recommerce market, the user can choose a Circular Economy with rebuy prices. The market environment defines the number of competing vendors in the simulation: Monopolistic and competitive markets are available, where the Duopoly is simply a particular version of an Oligopoly. Depending on the chosen market environment, one, two, or any number of vendors can be chosen to be used in the experiment. \Cref{fig:OverviewDiagram} shows a reduced overview of the classes in our framework which concern themselves with the market simulation, and how they interact with each other during the simulation.
+The marketplace type defines the number of prices the vendor has to set. In a Linear Economy, vendors only set prices for new items, in a Circular Economy prices for refurbished items need to be set as well. Without rebuy prices, customers simply return products to vendors `for free'. In order to simulate a proper \emph{recommerce} market, users can choose a Circular Economy with rebuy prices.
 
-In the most common use case of our framework, the training of RL agents, only the agent (or multiple agents in the case of training multiple RL agents against each other) that is to be trained needs to be configured by the user, as each market environment is equipped with a pre-defined set of competitors that will play against the agent defined by the user. To allow for more control over the simulation, users are however also able to change these competitors to use any vendors they want - as long as they are a valid fit for the marketplace type and the number of competitors chosen matches the market environment.
+The market environment defines the number of competing vendors in the simulation: Monopolistic and competitive markets are available, where the Duopoly is simply a particular version of an Oligopoly with only two competing vendors. Depending on the chosen market environment one, two, or any number of vendors can be chosen to be used in an experiment. \Cref{fig:OverviewDiagram} shows a reduced overview of the classes in our framework which concern themselves with the market simulation, and how they interact with each other during the simulation.
+
+In the most common use case of our framework, the training of RL agents, only the agent (or multiple agents in the case of training multiple RL agents against each other) that is to be trained needs to be configured by the user, as each market environment is equipped with a pre-defined set of competitors that will play against the agent defined by the user. To allow for more control over the simulation, users are however also able to change these competitors to use any vendors they want - as long as they are a valid fit for the marketplace type and the number of competitors chosen matches the market environment. How to configure an experiment will be explained in \cbfref{ch:OurWorkflow}.
 
 \begin{figure}[t]
 	\centering
 	\includegraphics[width = \textwidth]{images/overview_diagram.pdf}\\
-	\caption{Class diagram outlining interactions between classes concerning the market simulation.\\}\label{fig:OverviewDiagram}
+	\caption{Interactions between classes concerning the market simulation.\\}\label{fig:OverviewDiagram}
 \end{figure}
 
 \section{Customers}\label{sec:Customers}
 
-Customers are at the centre of every type of marketplace, which makes them an integral part of our market simulation. However, since each customer in the real market is an individual with different backgrounds and makes purchase decisions based on personal preferences, modelling a realistic depiction of real-world customers proves to be very difficult and time-consuming. For this reason we decided to keep our initial implementation of the customers as simple as possible, taking into account future extension and scalability concerns.
+Customers are at the centre of every type of marketplace, which makes them an integral part of our market simulation. However, since each customer in the real market is an individual with different backgrounds and makes purchase decisions based on personal preferences, modelling a realistic depiction of real-world customers proves to be very difficult and time-consuming. For this reason, we decided to keep our initial implementation of the customers as simple as possible, taking into account future extension and scalability concerns.
 
-Most customers' behaviour can be classified into one of a (non-exhaustive) number of categories, such as those proposed in~\cite{ShoppingStyles}, also see \Cref{tab:shoppingStyles}. As we are focussing on dynamic pricing and our vendors can only change/influence the prices of their products, we decided on primarily building customers that value price over any other features a product may have, thereby incentivizing our vendors to make the most of their pricing power. This behaviour coincides with the shopping style of the \emph{Price Conscious} or \emph{Value for money} consumer.
+Most customers' behaviour can be classified into one of a (non-exhaustive) number of categories, such as those proposed in~\cite{ShoppingStyles}, see \Cref{tab:shoppingStyles}. As we are focussing on dynamic pricing and our vendors can only change/influence the prices of their products, we decided on primarily building customers that value price over any other features a product may have, thereby incentivizing our vendors to make the most of their pricing power. This behaviour coincides with the proposed shopping style of the \emph{Price Conscious} or \emph{Value for money} consumer.
 
-To make Linear markets a little more complex and add another dimension than just the \emph{new price} of a product for vendors to consider, random quality values are assigned to each vendor's products. Customers in this economy model were modelled to take this quality value into account when making their purchasing decisions, further reinforcing the shopping style mentioned above. As Circular Economy markets are inherently more complex than their linear counterparts (through the addition of two new price channels, which influence each other through their effect on customers), it was decided to remove the additional layer of quality values from these markets.
+To make Linear markets a little more complex and add another dimension than just the \emph{new price} of a product for vendors to consider, random quality values are assigned to each vendor's products at the start of an episode. Customers in this economy model were modelled to take this quality value into account when making their purchasing decisions, further reinforcing the shopping style mentioned above. As Circular Economy markets are inherently more complex than their linear counterparts (through the addition of two new price channels, which influence each other through their effect on customer behaviour), it was decided to remove the additional layer of quality values from these markets.
 
-Within each simulated time step, after the various vendors have set their prices, purchasing decisions are made by the customers. To save on computational time, probability distributions are used to determine what part of the total number of customers will decide to take which action. See below for the way these distributions are calculated for an exemplary recommerce marketplace, for further information also see \cite{NickThesis}.
+Within each simulated time step, after the various vendors have set their prices, purchasing decisions are made by the customers. To save on computational time, probability distributions are used to determine what part of the total number of customers will decide to take which action, instead of simulating each customer individually. See \Cref{def:customerDecisions} and \Cref{def:customerSoftmax} for the way these distributions are calculated for an exemplary recommerce marketplace, for further information also see \cite{NickThesis}.
 
 \clearpage
 \begin{definition}\label{def:customerDecisions}
-	Let \(C_{in}\) be the price (cost) of the new and \(C_{ir}\) the price of the refurbished product of vendor \(i\). Prices will always be within the range of \([0,10]\). Using these prices, for each vendor, we define \(R_{in}\) as the customer's \emph{preference ratio} regarding \(C_{in}\):
+	Let \(P_{i, new}\) be the price of the new and \(P_{i, ref}\) the price of the refurbished product set by vendor \(i\), with \(0 \leq i < n\) and \(n \in \mathbb{N}\) the number of vendors in the market. Prices will always be within the range \([0,10]\). We also define \(r_{new}(P)\) as the function determining the customers' \emph{preference ratio} regarding a new price set by any vendor:
 	\[
-		R_{in} := \frac{10}{C_{in}} - e^{C_{in} - 8}
+		r_{new}(P) := \frac{10}{P} - e^{P - 8}
 	\]
-	and similarly, \(R_{ir}\) as the \emph{preference ratio} regarding \(C_{ir}\):
+	and similarly, \(r_{ref}(C)\) as the preference ratio regarding the refurbished price:
 	\[
-		R_{ir} := \frac{5.5}{C_{ir}} - e^{C_{ir} - 5}
+		r_{ref}(P) := \frac{5.5}{P} - e^{P - 5}.
+	\]
+	Additionally, there is a static preference \(r_{not}\) that any customer will opt to buy no product:
+	\[
+		r_{not} = 1.
 	\]
 \end{definition}
 
-Following the numerators of the two fractions, customers adjust their determined cost-benefit ratios to value a refurbished product to be 55\% the quality of that of a new product. This needs to be done as there is no inherent quality value for products in our simulated recommerce markets. Additionally, the constants of 8 and 5 in the exponent of the substracted exponential function act as price thresholds above which it becomes exponentially more unlikely that a customer will chose the respective product, as the value of the preference ratio will decrease.
+Following the numerators of the two fractions, customers adjust their determined cost-benefit ratios to value a refurbished product to be 55\% the quality of that of a new product. This adjustment is necessary as there is no inherent quality value for products in our simulated recommerce markets. Additionally, the constants of 8 and 5 respectively in the exponent of the substracted exponential function act as price thresholds above which it becomes exponentially more unlikely that a customer will choose the respective product, as the value of the preference ratio will decrease.
 
-In order to be usable as a probability distribution, the different ratios need to add up to \(1\). We use the \emph{softmax} function to normalize our values, after which each \emph{preference ratio} will be within the interval \((0,1)\), with all ratios adding up to \(1\) as needed.
+In order to be usable as a probability distribution, the different preference ratios need to add up to \(1\). \Cref{def:customerSoftmax} explains how we use the \emph{softmax} function to normalize our values, after which each preference ratio will be within the interval \((0,1)\), with all ratios adding up to \(1\) as needed. We use \emph{softmax} to normalize our values, as it is able to deal with the possibly negative results of the two \(r\)-functions. % \todo{Possibly a citation for softmax usage in RL?}
 
 \begin{definition}\label{def:customerSoftmax}
-	Let \(R_{in}\) and \(R_{ir}\) be the preference ratios as defined in \Cref{def:customerDecisions}. Let \(S_{r}\) be the sum of those ratios:
+	We keep the definitions from \Cref{def:customerDecisions}. Now, let \(S\) be the sum of the exponentials of the preference ratios for all \(n\) vendors and the preference to buy nothing:
 	\[
-		S_{r} := R_{in} + R_{ir}
+		S := e^{r_{not}} + \sum_{i=0}^{n}\biggl(e^{r_{new}(P_{i, new})}+e^{r_{ref}(P_{i, ref})}\biggr).
 	\]
-	We can now determine the concrete probabilities that customers will chose either the new or used product by using the \emph{softmax} function on our probability ratios. Let \(P_{ij}\) be the probability that a customer chooses to buy product \(j\) from vendor \(i\):
+	We can now normalize the preference ratios and determine the concrete probabilities of customers choosing to buy the new, refurbished or no product by using the \emph{softmax} function on our preference ratios. Let \(\pi_{i, j}\) be the probability that a customer chooses to buy product \(j\) from vendor \(i\), with \(0 \leq i < n\) and \(j \in \{new, ref\}\):
 	\[
-		P_{ij} := \frac{e^{P_{ij}}}{S_{r}}
+		\pi_{i, j} := \frac{e^{r_{j}(P_{i, j})}}{S}
 	\]
-	All \(P_{ij}\) are collected in the set of probabilities \(P\). Following the definition of \emph{softmax}, all probabilities in \(P\) sum up to 1, as required.
+	and let \(\pi_{not}\) be the probability of a customer buying no product:
+	\[
+		\pi_{not} := \frac{e^{r_{n}}}{S}.
+	\]
+	All of these probabilities are collected in the set \(\Pi\). Following the definition of \emph{softmax}, all probabilities in \(\Pi\) sum up to 1, as required.
 \end{definition}
 
-Following this conversion of the preference ratios, the market uses a standard \emph{multinomial} distribution to draw \(n\) samples out of the pool of probabilities \(P\), with \(n\) being the number of customers making a purchasing decision in this step of the simulation.
+Following this conversion of the preference ratios, the market uses a standard \emph{multinomial} distribution to draw \(m\) samples out of the pool of probabilities \(\Pi\), with \(m \in \mathbb{N}\) being the number of customers making a purchasing decision in this step of the simulation. The result of this sampling decides how many customers buy which or no product.
 
-As mentioned above, the current decisionmaking process of customers in our simulation is still quite basic. \bfref{sec:DivergingFromRealMarket} introduces a number of parameters and circumstances that can be used to make customer behaviour more realistic. Through the modular approach when building the framework, any customer behaviour implemented in the future can easily be added to the pool of available options, as long as it manifests in the form of a probability distribution, at which point the number of customers can be split between different distributions when drawing from the \emph{multinomial} distribution (or any other distribution if so desired).
+The following shows the calculation of such probability distributions in an exemplary market scenario. We assume a Circular Economy, Duopoly market scenario with the prices as detailed in \Cref{tab:CustomerExamplePrices}. This will result in the following preference
+\begin{wraptable}{l}{5.1cm}
+	\begin{tabular}{|r|l|l|}
+		\hline
+		         & new & refurbished \\\hline
+		Vendor 0 & 7   & 4           \\\hline
+		Vendor 1 & 6   & 2           \\\hline
+	\end{tabular}
+	\caption{Prices set by the vendors in our example.}\label{tab:CustomerExamplePrices}
+\end{wraptable}
+\noindent ratios by customers...
+
+As mentioned at the start of this section, the current decisionmaking process of customers in our simulation is still quite basic. \bfref{sec:DivergingFromRealMarket} introduces a number of parameters and circumstances that can be used to make customer behaviour more realistic. Through the modular approach when building the framework, any customer behaviour implemented in the future can easily be added to the pool of available options, as long as it manifests in the form of a probability distribution, at which point the number of customers can also be split between different distributions when drawing from the \emph{multinomial} distribution (or any other distribution if so desired).
 
 \subsection{Owners}
 
-Once a customer has decided to buy a product from any of the available vendors, they turn into an \emph{owner}. In the next step of the simulation, they are offered the option of selling their now used product back to one of the vendors. If they decide to do so, the vendor pays them the advertised \emph{rebuy price} and adds the used product to their inventory, from where it can then be sold as a refurbished product in the next step.
+Once a customer has decided to buy a product from any of the available vendors, they turn into an \emph{owner}. In the next step of the simulation, they are offered the option of selling their now used product back to one of the vendors. If they decide to do so, the vendor pays them the advertised \emph{rebuy price} and adds the used product to their inventory, from where it can then be sold as a refurbished product in the following step.
 
-In our simulation, all owners are memoryless, meaning that they do not remember the original price they paid for the product. Additionally, each vendor in the market is obligated to buy back any product, independent of the original vendor. In each step, every owner has the option to either keep the product for another step, discard it (meaning it is removed from circulation and not sold back to a vendor), or sell it to any one of the vendors in the market. Similarly to the way we compute customer purchasing decisions, the decisions owners take are also represented through probability distributions. When deciding if and to which vendor a product should be sold, the following formula is used:
+In our simulation, all owners are memoryless, meaning that they do not remember the original price they paid for the product. Additionally, each vendor in the market is obligated to buy back any product, independent of the original vendor. In each step, every owner has the option to either keep the product, discard it (meaning it is removed from the market and not sold back to a vendor), or sell it to any one of the vendors in the market. Similar to the way we compute customer purchasing decisions, the decisions owners take are also represented through probability distributions. Within each time step, a constant percentage of all owners, currently defined to be 5\%, will either return or discard (throw away) their product, with the rest of the owners keeping their product for at least one more time step. When deciding what to do, owners act according to the following preference ratios:
 
 \begin{definition}\label{def:ownerDecisions}
-	We keep the variables defined in \Cref{def:customerDecisions}. Additionally, let \(C_{ib}\) be the price at which vendor \(i\) is willing to buy back an owner's product. \(C_{ib}\) will again be within the range of \([0,10]\). For each vendor, we define \(C_{im}\) as the purchase option with the lowest price:
+	We keep the variables defined in \Cref{def:customerDecisions}. Additionally, let \(P_{i,back}\) be the price at which vendor \(i\) is willing to buy back an owner's product (the \emph{rebuy price}). \(P_{i, back}\) will be within the range of \([0,10]\). For each vendor \(i\), we define \(P_{i,min}\) as the vendor's purchase option with the lowest price:
 	\[
-		C_{im} := \min(C_{in}, C_{ir})
+		P_{i, min} := \min(P_{i, new}, P_{i, ref}).
 	\]
-	We define the likelihood \(R_{ib}\) that the owner will return their product to vendor \(i\) as follows:
+	We define \(r_{back}(P)\) as the function determining an owner's \emph{preference ratio} to sell their product to vendor \(i\), \(0 \leq i < n\) regarding the rebuy price:
 	\[
-		R_{ib} := 2 \cdot e^{(C_{ib} - C_{im}) / C_{im}}
+		r_{back}(P) := 2 \cdot e^{\frac{P_{i, back} - P_{i, min}}{P_{i, min}}}.
 	\]
-	Additionally, the owner's \emph{discard preference} \(R_{d}\) is updated for each vendor as follows:
+	Additionally, the owner's \emph{discard preference} \(r_{disc}\) is updated for each vendor as follows:
 	\[
-		R_{d} := \min({R_{d}, \frac{2}{C_{ib}+1}})
+		r_{disc} := \min\biggl({r_{disc}, \frac{2}{P_{i, back} + 1}}\biggr).
 	\]
 	Meaning the owner is more likely to discard their product if rebuy prices are low across the board.
 \end{definition}
 
+Equal to the way our customers work, we again normalize these preference ratios using the \emph{softmax} function defined in \Cref{def:customerSoftmax} (substituting \(r_{not}\) with \(r_{disc}\) and the ratios for new and refurbished products with \(r_{back}\)) and subsequently draw samples from a \emph{multinomial} distribution.
+
+\clearpage
 \section{Vendors}\label{sec:ExplainVendors}
 
 Vendors are the main focus of our market simulation. While our framework will not be able to reproduce all types of pricing models used in the real market, we strive to model as many different models as possible (and feasible in the scope of the project). Due to the modular nature of the framework, it is possible for users to easily create and add their own pricing strategies in the form of a vendor that can play on a market. This allows users to not only add other RL algorithms, but also to define new rule-based strategies. For this reason, we also do not restrict the usage of our monitoring tools to just RL agents, but allow users to monitor type of vendor, independent of the underlying way in which it computes prices.
