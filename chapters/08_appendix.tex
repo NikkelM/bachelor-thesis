@@ -97,7 +97,7 @@ We can immediately see that customers prefer the new product offered by vendor 1
 	r_{1,ref} := r_{ref}(P_{1,ref}) = \frac{5.5}{2} - e^{2 - 5} \approx 2.70
 \end{equation}
 
-It seems that a price of 2 for a refurbished item is a great deal. In order to draw samples from the \emph{multinomial} distribution, we must now normalize our preference ratios using \emph{softmax}. For this, we first calculate the sum over all preference ratios as defined in Equation \eqref{eq:PrefSum} (including the `nothingpreference' of Equation \eqref{eq:NothingPref}):
+It seems that a price of 2 for a refurbished item is a great deal. In order to draw samples from the \emph{multinomial} distribution, we must now normalise our preference ratios using \emph{softmax}. For this, we first calculate the sum over all preference ratios as defined in Equation \eqref{eq:PrefSum} (including the `nothingpreference' of Equation \eqref{eq:NothingPref}):
 
 \begin{equation}
 	S = e^{1} + e^{1.06} + e^{1.53} + e^{1.01} + e^{2.70} \approx 27.85
