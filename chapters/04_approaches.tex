@@ -2,7 +2,7 @@
 	In this chapter we will take a look at the different approaches we took to monitoring agents in our framework, explaining the reasons why we chose to implement specific features and how they help us in determining an agent's strengths and weaknesses.
 \end{jointwork}
 
-\section{When to monitor what}\label{sec:WhenToMonitorWhat}
+\section{Monitoring use cases}\label{sec:WhenToMonitorWhat}
 
 Our \emph{workflow} (which will be explained in more detail in \cbfref{ch:OurWorkflow}) can generally be split into two parts when it comes to monitoring and evaluating agents: \emph{during} and \emph{after} training. When talking about the \emph{workflow} we refer to the process of configuring and starting a training session, where a Reinforcement learning agent is being trained on a specific marketplace against competitors. The \emph{workflow} also includes the subsequent collection of data used to evaluate an agent's performance. We are also introducing the term of the \emph{complete agent} in this section, which will be used to refer to both RL agents that have completed a training run and rule-based agents, which do not need training.
 
