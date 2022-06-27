@@ -2,74 +2,75 @@
 
 % This page uses a different geometry, as the content will be centered (not including the binding correction).
 \ifprintVersion
-    \ifprofessionalPrint
-        \newgeometry
-        {
-            textwidth = 134 mm,
-            textheight = 220 mm,
-            top = 38 mm + \extraborderlength,
-            inner = 38 mm + \mybindingcorrection + \extraborderlength,
-        }
-    \else
-        \newgeometry
-        {
-            textwidth = 134 mm,
-            textheight = 220 mm,
-            top = 38 mm,
-            inner = 38 mm + \mybindingcorrection,
-        }
-    \fi
+	\ifprofessionalPrint
+		\newgeometry
+		{
+			textwidth = 134 mm,
+			textheight = 220 mm,
+			top = 38 mm + \extraborderlength,
+			inner = 38 mm + \mybindingcorrection + \extraborderlength,
+		}
+	\else
+		\newgeometry
+		{
+			textwidth = 134 mm,
+			textheight = 220 mm,
+			top = 38 mm,
+			inner = 38 mm + \mybindingcorrection,
+		}
+	\fi
 \else
-    \newgeometry
-    {
-        textwidth = 134 mm,
-        textheight = 220 mm,
-        top = 38 mm,
-        inner = 38 mm,
-    }
+	\newgeometry
+	{
+		textwidth = 134 mm,
+		textheight = 220 mm,
+		top = 38 mm,
+		inner = 38 mm,
+	}
 \fi
 
 % The format of the title page.
 \begin{titlepage}
-    \sffamily
-    \begin{center}
-        \includegraphics[height = 3.2 cm]{core/title_page/logo_UP.pdf} \hfill \includegraphics[height = 3 cm]{core/title_page/logo_HPI.pdf}\\
-        \vfil
-        {\LARGE
-            \rule[1 ex]{\textwidth}{1.5 pt}
-            \onehalfspacing\printTitleBold\\[1 ex]
-            {\vspace*{-1 ex}\Large \printGermanTitle}\\
-            \rule[-1 ex]{\textwidth}{1 pt}
-        }
-        \vfil
-        {\Large\textbf{\printAuthor}}
-        \vfil
-        {\large Universitäts\colloquialDegreeNameLowercase arbeit\\[0.25 ex]
-        zur Erlangung des akademischen Grades}\\[0.25 ex]
-        \bigskip
-        {\Large \colloquialDegreeName{} of Science}\\[0.5 ex]
-        {\large\emph{(\degreeAbbreviation\,Sc.)}}\\
-        \bigskip
-        {\large im Studiengang
-        \printProgram}
-        \vfil
-        {\large eingereicht am \printDateReceived{} am Fachgebiet\\[0.25 ex]
-        Enterprise Platform and Integration Concepts\\[0.25 ex]
-        der Digital-Engineering-Fakultät der Universität Potsdam}
-    \end{center}
-    
-    \vfil
-    \begin{table}[h]
-        \centering
-        \large
-        \sffamily 
-        {\def\arraystretch{1.2}
-            \begin{tabular}{>{\bfseries}p{3.8 cm}p{5.3 cm}}
-                % Gutachter               & \printNameOfSupervisor\\
-                Betreuer                & \printAdditionalExaminers
-            \end{tabular}
-        }
-    \end{table}
+	\sffamily
+	\begin{center}
+		\includegraphics[height = 3.2 cm]{core/title_page/logo_UP.pdf} \hfill \includegraphics[height = 3 cm]{core/title_page/logo_HPI.pdf}\\
+		\vfil
+		{\LARGE
+			\rule[1 ex]{\textwidth}{1.5 pt}
+			\onehalfspacing\printTitleBold\\[1 ex]
+			% {\vspace*{-1 ex}\Large \printGermanTitle}\\
+			\rule[-1 ex]{\textwidth}{1 pt}
+		}
+		\vfil
+		{\Large\textbf{\printAuthor}}
+		\vfil
+		{\large \colloquialDegreeName{} thesis\\[0.25 ex]
+			submitted for the degree of}\\[0.25 ex]
+		\bigskip
+		{\Large \colloquialDegreeName{} of Science}\\[0.5 ex]
+		{\large\emph{(\degreeAbbreviation\,Sc.)}}\\
+		\bigskip
+		{\large in
+			\printProgram}
+		\vfil
+		{\large submitted 30 June 2022 to the\\[0.25 ex]
+			Enterprise Platform and Integration Concepts\\[0.25 ex]
+			research group of the Digital-Engineering faculty\\[0.25 ex]
+			of the University of Potsdam}
+	\end{center}
+
+	\vfil
+	\begin{table}[h]
+		\centering
+		\large
+		\sffamily
+		{\def\arraystretch{1.2}
+			\begin{tabular}{>{\bfseries}p{3.8 cm}p{5.3 cm}}
+				% Gutachter               & \printNameOfSupervisor\\
+				Supervisors & \printAdditionalExaminers
+			\end{tabular}
+		}
+	\end{table}
 \end{titlepage}
 
 \restoregeometry
