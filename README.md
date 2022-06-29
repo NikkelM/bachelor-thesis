@@ -8,4 +8,4 @@ Sustainable recommerce markets are growing faster than ever. In such markets, cu
 
 ## Overleaf project
 
-The Thesis is based on [this](https://www.overleaf.com/latex/templates/hpi-bachelor-and-master-thesis-template/tfnkxhwbrzpy) template.
+The thesis is based on [this](https://www.overleaf.com/latex/templates/hpi-bachelor-and-master-thesis-template/tfnkxhwbrzpy) template.
