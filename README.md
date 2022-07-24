@@ -1,6 +1,8 @@
 # Monitoring of Agents for Dynamic Pricing in different Recommerce Markets
 
-Find the submitted version of the thesis [here](https://github.com/NikkelM/bachelor-thesis/releases/tag/UserBuild_2022.06.27_16-57).
+Follow these links for the submitted version of the thesis:
+- [Print](https://github.com/NikkelM/bachelor-thesis/releases/tag/UserBuild_2022.06.27_16-57)
+- [Online](https://github.com/NikkelM/bachelor-thesis/releases/tag/UserBuild_2022.07.04_12-39)
 
 ## Abstract
 
